@@ -4,7 +4,8 @@ using namespace std;
 
 enum CareerLevel
 {
-	CareerLevel_1 = 0,
+	CareerLevel_None = 0,
+	CareerLevel_1,
 	CareerLevel_2,
 	CareerLevel_3,
 	CareerLevel_4,
@@ -12,15 +13,27 @@ enum CareerLevel
 
 enum Certi
 {
-	Certi_ADV = 0,
+	Certi_None = 0, 
+	Certi_ADV,
 	Certi_PRO,
 	Certi_EX,
 };
 
 typedef struct PhoneNum
 {
-	int middleNum;
-	int lastNum;
+	int _middleNum;
+	int _lastNum;
+
+	PhoneNum()
+	{
+
+	}
+
+	PhoneNum(const int middleNum, const int lastNum)
+	{
+		_middleNum = middleNum;
+		_lastNum = lastNum;
+	}
 
 	PhoneNum& operator=(const PhoneNum& r)
 	{
@@ -29,17 +42,29 @@ typedef struct PhoneNum
 			return *this;
 		}
 
-		middleNum = r.middleNum;
-		lastNum = r.lastNum;
+		_middleNum = r._middleNum;
+		_lastNum = r._lastNum;
 		return *this;
 	}
 };
 
 typedef struct BirthDay
 {
-	int year;
-	int month;
-	int day;
+	int _year;
+	int _month;
+	int _day;
+
+	BirthDay()
+	{
+
+	}
+
+	BirthDay(const int year, const int month, const int day)
+	{
+		_year = year;
+		_month = month;
+		_day = day;
+	}
 
 	BirthDay& operator=(const BirthDay& r)
 	{
@@ -48,9 +73,9 @@ typedef struct BirthDay
 			return *this;
 		}
 
-		year = r.year;
-		month = r.month;
-		day = r.day;
+		_year = r._year;
+		_month = r._month;
+		_day = r._day;
 		return *this;
 	}
 };
@@ -58,6 +83,11 @@ typedef struct BirthDay
 class Employee
 {
 public:
+	Employee()
+	{
+
+	}
+
 	Employee(const int& employeeNum, const string& name, const CareerLevel& cl, const PhoneNum& phoneNum, const BirthDay& birthDay, const Certi& certi) :
 		_employeeNum(employeeNum),
 		_name(name),
@@ -90,6 +120,16 @@ public:
 	Certi GetCerti()
 	{
 		return _certi;
+	}
+
+	void SetData(const int& employeeNum, const string& name, const CareerLevel& cl, const PhoneNum& phoneNum, const BirthDay& birthDay, const Certi& certi)
+	{
+		_employeeNum = employeeNum;
+		_name = name;
+		_cl = cl;
+		_phoneNum = phoneNum;
+		_birthDay = birthDay;
+		_certi = certi;
 	}
 private:
 	

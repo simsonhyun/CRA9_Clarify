@@ -5,12 +5,14 @@ using namespace std;
 
 enum Option1
 {
-	Option1_p,	// print
+	Option1_None = 0,
+	Option1_p,		// print
 	Option1_null,
 };
 
 enum Option2
 {
+	Option2_None = 0,
 	Option2_Name_f,		// first name
 	Option2_Name_l,		// last name
 	Option2_PhoneNum_m,	// middle Number
@@ -23,6 +25,7 @@ enum Option2
 
 enum Column
 {
+	Column_None = 0,
 	Column_employeeNum,
 	Column_Name,
 	Column_CareerLevel,

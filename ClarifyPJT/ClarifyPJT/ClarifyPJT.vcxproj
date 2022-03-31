@@ -139,14 +139,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="CommandParser.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CommandManager.h" />
+    <ClInclude Include="CommandParser.h" />
     <ClInclude Include="DataManager.h" />
     <ClInclude Include="Employee.h" />
     <ClInclude Include="CommonType.h" />
     <ClInclude Include="Add.h" />
+    <ClInclude Include="RunProgram.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
