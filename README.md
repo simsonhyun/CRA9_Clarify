@@ -1,16 +1,16 @@
 # commit format
-[Type] [Title]
+ [Type] [Title]   
 summary
 
-- example -
-[Feature] [Add 함수 구현] 
+ ### example  
+[Feature] [Add 함수 구현]    
 12345123
 
-- Type -
-[Feature] : 기능 추가
-[Fix] : 버그 수정
-[Refactor] : 코드 리펙토링
-[Test] : 테스트 코드
+ ### Type
+[Feature] : 기능 추가   
+[Fix] : 버그 수정   
+[Refactor] : 코드 리펙토링   
+[Test] : 테스트 코드   
 
 
 # Ground Rule
