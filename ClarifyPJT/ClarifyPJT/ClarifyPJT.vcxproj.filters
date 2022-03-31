@@ -38,11 +38,14 @@
     <ClInclude Include="Add.h">
       <Filter>소스 파일\Add</Filter>
     </ClInclude>
-    <ClInclude Include="CommonType.h">
-      <Filter>소스 파일\Common</Filter>
+    <ClInclude Include="DataManager.h">
+      <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Employee.h">
-      <Filter>소스 파일\Common</Filter>
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="CommonType.h">
+      <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
