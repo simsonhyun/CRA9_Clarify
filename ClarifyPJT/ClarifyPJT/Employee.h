@@ -1,11 +1,8 @@
 #pragma once
 #include <string>
-#include "BirthDay.h"
-#include "Name.h"
-#include "PhoneNum.h"
 using namespace std;
 
-enum class CareerLevel
+enum CareerLevel
 {
 	CareerLevel_None = 0,
 	CareerLevel_1,
@@ -14,7 +11,7 @@ enum class CareerLevel
 	CareerLevel_4,
 };
 
-enum class Certi
+enum Certi
 {
 	Certi_None = 0, 
 	Certi_ADV,
@@ -22,58 +19,110 @@ enum class Certi
 	Certi_EX,
 };
 
+typedef struct PhoneNum
+{
+	int _middleNum;
+	int _lastNum;
+
+	PhoneNum()
+	{
+
+	}
+
+	PhoneNum(const int middleNum, const int lastNum)
+	{
+		_middleNum = middleNum;
+		_lastNum = lastNum;
+	}
+
+	PhoneNum& operator=(const PhoneNum& r)
+	{
+		if (this == &r)
+		{
+			return *this;
+		}
+
+		_middleNum = r._middleNum;
+		_lastNum = r._lastNum;
+		return *this;
+	}
+};
+
+typedef struct BirthDay
+{
+	int _year;
+	int _month;
+	int _day;
+
+	BirthDay()
+	{
+
+	}
+
+	BirthDay(const int year, const int month, const int day)
+	{
+		_year = year;
+		_month = month;
+		_day = day;
+	}
+
+	BirthDay& operator=(const BirthDay& r)
+	{
+		if (this == &r)
+		{
+			return *this;
+		}
+
+		_year = r._year;
+		_month = r._month;
+		_day = r._day;
+		return *this;
+	}
+};
+
 class Employee
 {
 public:
-	Employee() :
-		_employeeNum(0),
-		_name({"", ""}),
-		_cl(CareerLevel::CareerLevel_None),
-		_phoneNum({0, 0}),
-		_birthDay({0, 0, 0}),
-		_certi(Certi::Certi_None)
-	{ }
+	Employee()
+	{
 
-	Employee(const int& employeeNum, const Name& name, const CareerLevel& cl, const PhoneNum& phoneNum, const BirthDay& birthDay, const Certi& certi) :
+	}
+
+	Employee(const int& employeeNum, const string& name, const CareerLevel& cl, const PhoneNum& phoneNum, const BirthDay& birthDay, const Certi& certi) :
 		_employeeNum(employeeNum),
 		_name(name),
 		_cl(cl),
 		_phoneNum(phoneNum),
 		_birthDay(birthDay),
 		_certi(certi)
-	{ }
+	{}
 
-	int GetEmployeeNum() const
+	int GetEmployeeNum()
 	{
 		return _employeeNum;
 	}
-
-	Name GetName() const
+	string GetName()
 	{
 		return _name;
 	}
-
-	CareerLevel GetCl() const
+	CareerLevel GetCl()
 	{
 		return _cl;
 	}
-
-	PhoneNum GetPhoneNum() const
+	PhoneNum GetPhoneNum()
 	{
 		return _phoneNum;
 	}
-
-	BirthDay GetBirthDay() const
+	BirthDay GetBirthDay()
 	{
 		return _birthDay;
 	}
-
-	Certi GetCerti() const
+	Certi GetCerti()
 	{
 		return _certi;
 	}
 
-	void SetData(const int& employeeNum, const Name& name, const CareerLevel& cl, const PhoneNum& phoneNum, const BirthDay& birthDay, const Certi& certi)
+	void SetData(const int& employeeNum, const string& name, const CareerLevel& cl, const PhoneNum& phoneNum, const BirthDay& birthDay, const Certi& certi)
 	{
 		_employeeNum = employeeNum;
 		_name = name;
@@ -82,7 +131,6 @@ public:
 		_birthDay = birthDay;
 		_certi = certi;
 	}
-
 private:
 	
 
@@ -93,7 +141,7 @@ public:
 	static const int MAX_EMPLOYEE_BIRTH = 2021;
 private:
 	int _employeeNum;
-	Name _name;
+	string _name;
 	CareerLevel _cl;
 	PhoneNum _phoneNum;
 	BirthDay _birthDay;

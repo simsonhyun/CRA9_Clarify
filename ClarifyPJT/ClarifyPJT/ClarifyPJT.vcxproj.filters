@@ -61,18 +61,7 @@
     </ClInclude>
     <ClInclude Include="RunProgram.h">
       <Filter>헤더 파일\Common</Filter>
-    </ClInclude>
-    <ClInclude Include="Add.h">
+    </ClInclude>    <ClInclude Include="Add.h">
       <Filter>헤더 파일\Add</Filter>
-    </ClInclude>
-    <ClInclude Include="Name.h">
-      <Filter>헤더 파일\Common</Filter>
-    </ClInclude>
-    <ClInclude Include="BirthDay.h">
-      <Filter>헤더 파일\Common</Filter>
-    </ClInclude>
-    <ClInclude Include="PhoneNum.h">
-      <Filter>헤더 파일\Common</Filter>
-    </ClInclude>
-  </ItemGroup>
+    </ClInclude>  </ItemGroup>
 </Project>
