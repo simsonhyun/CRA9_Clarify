@@ -4,8 +4,10 @@
 class RunProgram
 {
 public:
-	const void run()
+	const void run(const string& cmdString)
 	{
+		InputParameter inputParameter = commandParser.ConvertParameter(cmdString);
+
 
 	}
 private:

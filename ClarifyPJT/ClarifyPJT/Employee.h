@@ -130,7 +130,9 @@ public:
 		_phoneNum = phoneNum;
 		_birthDay = birthDay;
 		_certi = certi;
+		
 	}
+
 private:
 	
 
