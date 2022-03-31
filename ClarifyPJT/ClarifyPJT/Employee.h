@@ -4,7 +4,7 @@ using namespace std;
 
 enum CareerLevel
 {
-	CareerLevel_1,
+	CareerLevel_1 = 0,
 	CareerLevel_2,
 	CareerLevel_3,
 	CareerLevel_4,
@@ -12,7 +12,7 @@ enum CareerLevel
 
 enum Certi
 {
-	Certi_ADV,
+	Certi_ADV = 0,
 	Certi_PRO,
 	Certi_EX,
 };
@@ -58,6 +58,39 @@ typedef struct BirthDay
 class Employee
 {
 public:
+	Employee(const int& employeeNum, const string& name, const CareerLevel& cl, const PhoneNum& phoneNum, const BirthDay& birthDay, const Certi& certi) :
+		_employeeNum(employeeNum),
+		_name(name),
+		_cl(cl),
+		_phoneNum(phoneNum),
+		_birthDay(birthDay),
+		_certi(certi)
+	{}
+
+	int GetEmployeeNum()
+	{
+		return _employeeNum;
+	}
+	string GetName()
+	{
+		return _name;
+	}
+	CareerLevel GetCl()
+	{
+		return _cl;
+	}
+	PhoneNum GetPhoneNum()
+	{
+		return _phoneNum;
+	}
+	BirthDay GetBirthDay()
+	{
+		return _birthDay;
+	}
+	Certi GetCerti()
+	{
+		return _certi;
+	}
 private:
 	
 
