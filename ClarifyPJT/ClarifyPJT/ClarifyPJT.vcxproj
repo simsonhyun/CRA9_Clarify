@@ -142,6 +142,7 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="DataManager.h" />
     <ClInclude Include="Employee.h" />
     <ClInclude Include="CommonType.h" />
     <ClInclude Include="Add.h" />
