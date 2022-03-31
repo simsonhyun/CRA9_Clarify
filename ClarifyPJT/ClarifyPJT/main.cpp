@@ -3,8 +3,6 @@
 
 int main(int argc, char* argv[])
 {
-	Add addTest;
-
 	DataManager* dataManager = new DataManager();
 
 	return 0;

@@ -6,6 +6,7 @@ using namespace std;
 enum Option1
 {
 	Option1_p,	// print
+	Option1_null,
 };
 
 enum Option2
@@ -17,6 +18,7 @@ enum Option2
 	Option2_BirthDay_y,	// year
 	Option2_BirthDay_m,	// month
 	Option2_BirthDay_d,	// day
+	Option2_null,
 };
 
 enum Column
@@ -27,6 +29,7 @@ enum Column
 	Column_PhoneNum,
 	Column_BirthDay,
 	Column_Certi,
+	Column_null,
 };
 
 typedef struct InputParameter
