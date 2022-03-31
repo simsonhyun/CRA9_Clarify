@@ -1,32 +1,38 @@
 #include "CommandParser.h"
 
 // public
-InputParameter CommandParser::ConvertParameter(const string&& inputString)
+InputParameter CommandParser::ConvertParameter(const string& inputString)
 {
-	InputParameter ret;
+	InputParameter inputParameter;
 	vector<string> parsedStrings = _Parsing(inputString, ",");
 
 	Column column = _ConvertColumn(parsedStrings.at(COLUMN_OFFSET));
 
-	ret.option1 = _ConvertOption1(parsedStrings.at(OPTION1_OFFSET));
-	ret.option2 = _ConvertOption2(parsedStrings.at(OPTION2_OFFSET), column);
-	ret.column = column;
+	inputParameter.command = _ConvertCommand(parsedStrings.at(CMD_OFFSET));
+	inputParameter.option1 = _ConvertOption1(parsedStrings.at(OPTION1_OFFSET));
+	inputParameter.option2 = _ConvertOption2(parsedStrings.at(OPTION2_OFFSET), column);
+	inputParameter.column = column;
 
-	if (parsedStrings.at(CMD_OFFSET) == "ADD")
+	if (inputParameter.command == Command_Add)
 	{
-		ret.inputEmployee.SetData(stoi(parsedStrings.at(ADDCMD_EMPLOYEENUM_OFFSET)),
-			parsedStrings.at(ADDCMD_NAME_OFFSET),
-			_ConvertCareerLevel(parsedStrings.at(ADDCMD_CL_OFFSET)),
-			_ConvertPhoneNum(parsedStrings.at(ADDCMD_PHONENUM_OFFSET)),
-			_ConvertBirthDay(parsedStrings.at(ADDCMD_BIRTHDAY_OFFSET)),
-			_ConvertCerti(parsedStrings.at(ADDCMD_CERTI_OFFSET)));
+		inputParameter.inputEmployee.SetData(stoi(parsedStrings.at(ADDCMD_EMPLOYEENUM_OFFSET)),
+											  parsedStrings.at(ADDCMD_NAME_OFFSET),
+											  _ConvertCareerLevel(parsedStrings.at(ADDCMD_CL_OFFSET)),
+											  _ConvertPhoneNum(parsedStrings.at(ADDCMD_PHONENUM_OFFSET)),
+											  _ConvertBirthDay(parsedStrings.at(ADDCMD_BIRTHDAY_OFFSET)),
+											  _ConvertCerti(parsedStrings.at(ADDCMD_CERTI_OFFSET)));
+	}
+	else if (inputParameter.command == Command_Mod)
+	{
+		_SetValue(parsedStrings.at(VALUE_OFFSET), column, inputParameter.option2, inputParameter.inputEmployee);
+		_SetValue(parsedStrings.at(MODCMD_DEST_VALUE_OFFSET), _ConvertColumn(parsedStrings.at(MODCMD_DEST_COLUMN_OFFSET)), Option2_None, inputParameter.inputDestEmployee);
 	}
 	else
 	{
-		_SetValue(parsedStrings.at(VALUE_OFFSET), column, ret);
+		_SetValue(parsedStrings.at(VALUE_OFFSET), column, inputParameter.option2, inputParameter.inputEmployee);
 	}
 
-	return ret;
+	return inputParameter;
 }
 
 // private
@@ -45,6 +51,69 @@ vector<string> CommandParser::_Parsing(const string& inputString, const string& 
 	}
 
 	return values;
+}
+
+void CommandParser::_SetValue(const string& inputString, const Column& column, const Option2& option2, Employee& employee)
+{
+	if (column == Column_employeeNum)
+	{
+		employee.SetData(stoi(inputString), " ", CareerLevel_None, PhoneNum(0, 0), BirthDay(0, 0, 0), Certi_None);
+	}
+	else if (column == Column_Name)
+	{
+		employee.SetData(0, inputString, CareerLevel_None, PhoneNum(0, 0), BirthDay(0, 0, 0), Certi_None);
+	}
+	else if (column == Column_CareerLevel)
+	{
+		employee.SetData(0, " ", _ConvertCareerLevel(inputString), PhoneNum(0, 0), BirthDay(0, 0, 0), Certi_None);
+	}
+	else if (column == Column_PhoneNum)
+	{
+		employee.SetData(0, " ", CareerLevel_None, _ConvertPhoneNum(inputString), BirthDay(0, 0, 0), Certi_None);
+	}
+	else if (column == Column_BirthDay)
+	{
+		if (option2 == Option2_BirthDay_y)
+		{
+			employee.SetData(0, " ", CareerLevel_None, PhoneNum(0, 0), BirthDay(stoi(inputString.substr(0, 4)), 0, 0), Certi_None);
+		}
+		else if (option2 == Option2_BirthDay_m)
+		{
+			employee.SetData(0, " ", CareerLevel_None, PhoneNum(0, 0), BirthDay(0, stoi(inputString.substr(0, 2)), 0), Certi_None);
+		}
+		else if (option2 == Option2_BirthDay_d)
+		{
+			employee.SetData(0, " ", CareerLevel_None, PhoneNum(0, 0), BirthDay(0, 0, stoi(inputString.substr(0, 2))), Certi_None);
+		}
+		else
+		{
+			employee.SetData(0, " ", CareerLevel_None, PhoneNum(0, 0), _ConvertBirthDay(inputString), Certi_None);
+		}
+	}
+	else if (column == Column_Certi)
+	{
+		employee.SetData(0, " ", CareerLevel_None, PhoneNum(0, 0), BirthDay(0, 0, 0), _ConvertCerti(inputString));
+	}
+}
+
+Command CommandParser::_ConvertCommand(const string& inputString)
+{
+	if (inputString == "ADD")
+	{
+		return Command_Add;
+	}
+	else if (inputString == "SCH")
+	{
+		return Command_Sch;
+	}
+	else if (inputString == "DEL")
+	{
+		return Command_Del;
+	}
+	else if (inputString == "MOD")
+	{
+		return Command_Mod;
+	}
 }
 
 CareerLevel CommandParser::_ConvertCareerLevel(const string& inputClString)
@@ -187,44 +256,5 @@ Column CommandParser::_ConvertColumn(const string& inputString)
 	else
 	{
 		return Column_None;
-	}
-}
-
-void CommandParser::_SetValue(const string& inputString, const Column& column, InputParameter& inputParameter)
-{
-	if (column == Column_employeeNum)
-	{
-		inputParameter.inputEmployee.SetData(stoi(inputString), " ", CareerLevel_None, PhoneNum(0, 0), BirthDay(0, 0, 0), Certi_None);
-	}
-	else if (column == Column_Name)
-	{
-		inputParameter.inputEmployee.SetData(0, inputString, CareerLevel_None, PhoneNum(0, 0), BirthDay(0, 0, 0), Certi_None);
-	}
-	else if (column == Column_CareerLevel)
-	{
-		inputParameter.inputEmployee.SetData(0, " ", _ConvertCareerLevel(inputString), PhoneNum(0, 0), BirthDay(0, 0, 0), Certi_None);
-	}
-	else if (column == Column_PhoneNum)
-	{
-		inputParameter.inputEmployee.SetData(0, " ", CareerLevel_None, _ConvertPhoneNum(inputString), BirthDay(0, 0, 0), Certi_None);
-	}
-	else if (column == Column_BirthDay)
-	{
-		if (inputParameter.option2 == Option2_BirthDay_y)
-		{
-			inputParameter.inputEmployee.SetData(0, " ", CareerLevel_None, PhoneNum(0, 0), BirthDay(stoi(inputString.substr(0, 4)), 0, 0), Certi_None);
-		}
-		else if (inputParameter.option2 == Option2_BirthDay_m)
-		{
-			inputParameter.inputEmployee.SetData(0, " ", CareerLevel_None, PhoneNum(0, 0), BirthDay(0, stoi(inputString.substr(0, 2)), 0), Certi_None);
-		}
-		else if (inputParameter.option2 == Option2_BirthDay_d)
-		{
-			inputParameter.inputEmployee.SetData(0, " ", CareerLevel_None, PhoneNum(0, 0), BirthDay(0, 0, stoi(inputString.substr(0, 2))), Certi_None);
-		}
-	}
-	else if (column == Column_Certi)
-	{
-		inputParameter.inputEmployee.SetData(0, " ", CareerLevel_None, PhoneNum(0, 0), BirthDay(0, 0, 0), _ConvertCerti(inputString));
 	}
 }
