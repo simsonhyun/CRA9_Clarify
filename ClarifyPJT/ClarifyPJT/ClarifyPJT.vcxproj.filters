@@ -13,10 +13,30 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="소스 파일\Sch">
+      <UniqueIdentifier>{652036f6-1bf5-46fd-84ab-91557f333b2e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Add">
+      <UniqueIdentifier>{7cb2f1cd-e619-42ce-8756-a04abbde0374}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Del">
+      <UniqueIdentifier>{540dbc9f-702c-4d16-9d55-64a05a96b644}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Mod">
+      <UniqueIdentifier>{93b37356-c286-4ac8-9435-f31d0c1e29e0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Common">
+      <UniqueIdentifier>{9a65ff2a-c21a-43fe-9fc9-172759746ec0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Add.h">
+      <Filter>소스 파일\Add</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
