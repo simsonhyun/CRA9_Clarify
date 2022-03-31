@@ -6,13 +6,17 @@ using namespace std;
 class DataManager
 {
 public:
+	DataManager()
+	{
+		_employees.reserve(MAX_EMPLOYEE_COUNT);
+	}
+
 	const vector<Employee>& getData(void)
 	{
 		return _employees;
 	}
 
 private:
-
 
 
 
