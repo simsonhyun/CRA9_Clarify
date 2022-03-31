@@ -1,4 +1,17 @@
-﻿# CRA9_Clarify
+# commit format
+[Type] [Title]
+summary
+
+- example -
+[Feature] [Add 함수 구현] 
+12345123
+
+- Type -
+[Feature] : 기능 추가
+[Fix] : 버그 수정
+[Refactor] : 코드 리펙토링
+[Test] : 테스트 코드
+
 
 # Ground Rule
  - 리뷰 요청에 빠르게 응답하기
