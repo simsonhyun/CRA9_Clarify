@@ -38,5 +38,11 @@
     <ClInclude Include="Add.h">
       <Filter>소스 파일\Add</Filter>
     </ClInclude>
+    <ClInclude Include="CommonType.h">
+      <Filter>소스 파일\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Employee.h">
+      <Filter>소스 파일\Common</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
