@@ -144,15 +144,12 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="BirthDay.h" />
     <ClInclude Include="CommandManager.h" />
     <ClInclude Include="CommandParser.h" />
     <ClInclude Include="DataManager.h" />
     <ClInclude Include="Employee.h" />
     <ClInclude Include="CommonType.h" />
     <ClInclude Include="Add.h" />
-    <ClInclude Include="Name.h" />
-    <ClInclude Include="PhoneNum.h" />
     <ClInclude Include="RunProgram.h" />
     <ClInclude Include="Sch.h" />
   </ItemGroup>

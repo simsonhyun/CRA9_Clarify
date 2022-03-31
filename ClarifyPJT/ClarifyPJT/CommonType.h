@@ -3,22 +3,13 @@
 #include "Employee.h"
 using namespace std;
 
-enum class Command
-{
-	Command_None = 0,
-	Command_Add,
-	Command_Sch,
-	Command_Del,
-	Command_Mod,
-};
-
-enum class Option1
+enum Option1
 {
 	Option1_None = 0,
 	Option1_p,		// print
 };
 
-enum class Option2
+enum Option2
 {
 	Option2_None = 0,
 	Option2_Name_f,		// first name
@@ -30,7 +21,7 @@ enum class Option2
 	Option2_BirthDay_d,	// day
 };
 
-enum class Column
+enum Column
 {
 	Column_employeeNum = 0,
 	Column_Name,
@@ -43,10 +34,8 @@ enum class Column
 
 typedef struct InputParameter
 {
-	Command command;
 	Option1 option1;
 	Option2 option2;
 	Column column;
 	Employee inputEmployee;
-	Employee inputDestEmployee;
-} InputParameter;
+};
