@@ -53,8 +53,6 @@ TEST(TestCommandParser, CheckParsing0)
 	inputParameter.option2 = Option2_None;
 	inputParameter.column = Column_None;
 	inputParameter.inputEmployee.SetData(17111236, "VSID TVO", CareerLevel_1, phoneNum, birthday, Certi_PRO);
-
-	Employee testEmployee(17111236, "VSID TVO", CareerLevel_1, phoneNum, birthday, Certi_PRO);
 	
 	InputParameter testParameter = commandParser.ConvertParameter("ADD, , , ,17111236,VSID TVO,CL1,010-3669-1077,20120718,PRO");
 
@@ -75,8 +73,6 @@ TEST(TestCommandParser, CheckParsing1)
 	inputParameter.column = Column_employeeNum;
 	inputParameter.inputEmployee.SetData(79110836, " ", CareerLevel_None, PhoneNum(0, 0), BirthDay(0, 0, 0), Certi_None);
 
-	Employee testEmployee(79110836, " ", CareerLevel_None, PhoneNum(0, 0), BirthDay(0, 0, 0), Certi_None);
-
 	InputParameter testParameter = commandParser.ConvertParameter("SCH, , , ,employeeNum,79110836");
 
 	EXPECT_EQ(testParameter.option1, inputParameter.option1);
@@ -96,12 +92,31 @@ TEST(TestCommandParser, CheckParsing2)
 	inputParameter.column = Column_BirthDay;
 	inputParameter.inputEmployee.SetData(0, " ", CareerLevel_None, PhoneNum(0, 0), BirthDay(0, 0, 04), Certi_None);
 
-	Employee testEmployee(0, " ", CareerLevel_None, PhoneNum(0, 0), BirthDay(0, 0, 04), Certi_None);
-
 	InputParameter testParameter = commandParser.ConvertParameter("SCH,-p,-d, ,birthday,04");
 
 	EXPECT_EQ(testParameter.option1, inputParameter.option1);
 	EXPECT_EQ(testParameter.option2, inputParameter.option2);
 	EXPECT_EQ(testParameter.column, inputParameter.column);
 	EXPECT_EQ(testParameter.inputEmployee.GetBirthDay()._day, inputParameter.inputEmployee.GetBirthDay()._day);
+}
+
+TEST(TestCommandParser, CheckParsing3)
+{
+	// MOD,-p, , ,name,FB NTAWR,birthday,20050520
+	CommandParser commandParser = CommandParser();
+
+	InputParameter inputParameter;
+	inputParameter.option1 = Option1_p;
+	inputParameter.option2 = Option2_None;
+	inputParameter.column = Column_Name;
+	inputParameter.inputEmployee.SetData(0, "FB NTAWR", CareerLevel_None, PhoneNum(0, 0), BirthDay(0, 0, 0), Certi_None);
+	inputParameter.inputDestEmployee.SetData(0, " ", CareerLevel_None, PhoneNum(0, 0), BirthDay(2005, 05, 20), Certi_None);
+
+	InputParameter testParameter = commandParser.ConvertParameter("MOD,-p, , ,name,FB NTAWR,birthday,20050520");
+
+	EXPECT_EQ(testParameter.option1, inputParameter.option1);
+	EXPECT_EQ(testParameter.option2, inputParameter.option2);
+	EXPECT_EQ(testParameter.column, inputParameter.column);
+	EXPECT_EQ(testParameter.inputEmployee.GetBirthDay()._day, inputParameter.inputEmployee.GetBirthDay()._day);
+	EXPECT_EQ(testParameter.inputDestEmployee.GetBirthDay()._day, inputParameter.inputDestEmployee.GetBirthDay()._day);
 }
