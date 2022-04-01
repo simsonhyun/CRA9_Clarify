@@ -15,6 +15,10 @@ public:
 	{
 		return _employees;
 	}
+	void setData(const Employee& employee)
+	{
+		_employees.push_back(employee);
+	}
 	int getSize(void)
 	{
 		return _employees.size();

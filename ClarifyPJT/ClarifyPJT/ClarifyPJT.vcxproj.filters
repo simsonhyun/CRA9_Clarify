@@ -34,6 +34,9 @@
     <Filter Include="헤더 파일\Add">
       <UniqueIdentifier>{883b7162-e127-40db-bdb3-0f5b53e89a80}</UniqueIdentifier>
     </Filter>
+    <Filter Include="헤더 파일\Sch">
+      <UniqueIdentifier>{a3320a34-e996-416b-a5de-9cfd8b229719}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -56,5 +59,11 @@
     <ClInclude Include="Add.h">
       <Filter>헤더 파일\Add</Filter>
     </ClInclude>
+    <ClInclude Include="sch.h">
+      <Filter>헤더 파일\Sch</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
 </Project>

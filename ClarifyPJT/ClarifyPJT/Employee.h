@@ -67,27 +67,27 @@ public:
 		_certi(certi)
 	{}
 
-	int GetEmployeeNum()
+	int GetEmployeeNum() const
 	{
 		return _employeeNum;
 	}
-	string GetName()
+	string GetName() const
 	{
 		return _name;
 	}
-	CareerLevel GetCl()
+	CareerLevel GetCl() const
 	{
 		return _cl;
 	}
-	PhoneNum GetPhoneNum()
+	PhoneNum GetPhoneNum() const
 	{
 		return _phoneNum;
 	}
-	BirthDay GetBirthDay()
+	BirthDay GetBirthDay() const
 	{
 		return _birthDay;
 	}
-	Certi GetCerti()
+	Certi GetCerti() const
 	{
 		return _certi;
 	}
