@@ -13,7 +13,7 @@ TEST(TEST_ADD_MODULE, ADD_TEST) {
 	birthday._month = 01;
 	birthday._day = 23;
 	Employee employee(12345678, Name("�浿", "ȫ"), CareerLevel::CareerLevel_2, phonenum, birthday, Certi::Certi_PRO);
-	InputParameter inputParameter = { Command::Command_None, Option1::Option1_null, Option2::Option2_null, Column::Column_null, employee };
+	InputParameter inputParameter = { Command::Command_None, Option1::Option1_null, Option2::Option2_null, Column::Column_null, Column::Column_null, employee };
 	
 	add.Command(inputParameter);
 
@@ -48,7 +48,7 @@ TEST(TEST_ADD_MODULE, ADD_MAX_SIZE_TEST) {
 	for (int i = 0; i < 100000; i++, employeeNum++)
 	{
 		Employee inputemployee(employeeNum, Name("�浿", "ȫ"), CareerLevel::CareerLevel_2, phonenum, birthday, Certi::Certi_PRO);
-		InputParameter inputParameter = { Command::Command_None, Option1::Option1_null, Option2::Option2_null, Column::Column_null, inputemployee };
+		InputParameter inputParameter = { Command::Command_None, Option1::Option1_null, Option2::Option2_null, Column::Column_null, Column::Column_null,inputemployee };
 		add.Command(inputParameter);
 	}
 
