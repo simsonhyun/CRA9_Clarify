@@ -11,13 +11,19 @@ public:
 		_employees.reserve(MAX_EMPLOYEE_COUNT);
 	}
 
-	const vector<Employee>& getData(void)
+	vector<Employee>& getData(void)
 	{
 		return _employees;
 	}
+
 	int getSize(void)
 	{
 		return _employees.size();
+	}
+
+	void setData(const Employee& employee)
+	{
+		_employees.push_back(employee);
 	}
 
 private:

@@ -39,6 +39,9 @@
     <ClCompile Include="main.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="CommandParser.cpp">
+      <Filter>소스 파일\Common</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CommonType.h">
@@ -53,8 +56,23 @@
     <ClInclude Include="CommandManager.h">
       <Filter>헤더 파일\Common</Filter>
     </ClInclude>
+    <ClInclude Include="CommandParser.h">
+      <Filter>헤더 파일\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="RunProgram.h">
+      <Filter>헤더 파일\Common</Filter>
+    </ClInclude>
     <ClInclude Include="Add.h">
       <Filter>헤더 파일\Add</Filter>
+    </ClInclude>
+    <ClInclude Include="Name.h">
+      <Filter>헤더 파일\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="BirthDay.h">
+      <Filter>헤더 파일\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="PhoneNum.h">
+      <Filter>헤더 파일\Common</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
