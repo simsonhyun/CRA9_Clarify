@@ -36,6 +36,9 @@
     <ClInclude Include="pch.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="DeleteBasicTest.cpp" />
+    <ClCompile Include="DeleteOption1Test.cpp" />
+    <ClCompile Include="DeleteOption2Test.cpp" />
     <ClCompile Include="test.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -45,7 +48,6 @@
     </ClCompile>
     <ClCompile Include="test_Add.cpp" />
     <ClCompile Include="test_common.cpp" />
-    <ClCompile Include="test_Del.cpp" />
     <ClCompile Include="test_Sch.cpp" />
   </ItemGroup>
   <ItemGroup>
