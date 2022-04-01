@@ -114,6 +114,10 @@ Command CommandParser::_ConvertCommand(const string& inputString)
 	{
 		return Command_Mod;
 	}
+	else 
+	{
+		return Command_None;
+	}
 }
 
 CareerLevel CommandParser::_ConvertCareerLevel(const string& inputClString)
@@ -133,6 +137,10 @@ CareerLevel CommandParser::_ConvertCareerLevel(const string& inputClString)
 	else if (inputClString == "CL4")
 	{
 		return CareerLevel_4;
+	}
+	else
+	{
+		return CareerLevel_None;
 	}
 }
 
@@ -163,6 +171,10 @@ Certi CommandParser::_ConvertCerti(const string& inputCertiString)
 	else if (inputCertiString == "EX")
 	{
 		return Certi_EX;
+	}
+	else
+	{
+		return Certi_None;
 	}
 }
 
