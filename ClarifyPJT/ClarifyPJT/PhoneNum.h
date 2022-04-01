@@ -26,6 +26,16 @@ public:
 		return *this;
 	}
 
+	bool operator==(const PhoneNum& r)
+	{
+		return (_middleNum == r._middleNum) && (_lastNum == r._lastNum);
+	}
+
+	bool operator!=(const PhoneNum& r)
+	{
+		return (_middleNum != r._middleNum) || (_lastNum != r._lastNum);
+	}
+
 private:
 public:
 	int _middleNum;

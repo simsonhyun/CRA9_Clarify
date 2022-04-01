@@ -18,7 +18,7 @@ public:
 
 	int getSize(void)
 	{
-		return _employees.size();
+		return (int)_employees.size();
 	}
 
 	void setData(const Employee& employee)

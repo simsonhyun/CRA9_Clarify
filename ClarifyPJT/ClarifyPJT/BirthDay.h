@@ -29,6 +29,16 @@ public:
 		return *this;
 	}
 
+	bool operator==(const BirthDay& r)
+	{
+		return (_year == r._year) && (_month == r._month) && (_day == r._day);
+	}
+
+	bool operator!=(const BirthDay& r)
+	{
+		return (_year != r._year) || (_month != r._month) || (_day != r._day);
+	}
+
 private:
 public:
 	int _year;
