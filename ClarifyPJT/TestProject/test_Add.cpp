@@ -6,14 +6,14 @@ TEST(TEST_ADD_MODULE, ADD_TEST) {
 	Add add = Add(dataManager);
 
 	PhoneNum phonenum;
-	phonenum.middleNum = 1234;
-	phonenum.lastNum = 5678;
+	phonenum._middleNum = 1234;
+	phonenum._lastNum = 5678;
 	BirthDay birthday;
-	birthday.year = 1990;
-	birthday.month = 01;
-	birthday.day = 23;
+	birthday._year = 1990;
+	birthday._month = 01;
+	birthday._day = 23;
 	Employee employee(12345678, "ȫ�浿", CareerLevel_2, phonenum, birthday, Certi_PRO);
-	InputParameter inputParameter = { Option1_null, Option2_null, Column_null, employee };
+	InputParameter inputParameter = { Command_None, Option1_null, Option2_null, Column_null, employee };
 	
 	add.Command(inputParameter);
 
@@ -23,11 +23,11 @@ TEST(TEST_ADD_MODULE, ADD_TEST) {
 	EXPECT_EQ(result->GetEmployeeNum(), employee.GetEmployeeNum());
 	EXPECT_EQ(result->GetName(), employee.GetName());
 	EXPECT_EQ(result->GetCl(), employee.GetCl());
-	EXPECT_EQ(result->GetPhoneNum().middleNum, employee.GetPhoneNum().middleNum);
-	EXPECT_EQ(result->GetPhoneNum().lastNum, employee.GetPhoneNum().lastNum);
-	EXPECT_EQ(result->GetBirthDay().year, employee.GetBirthDay().year);
-	EXPECT_EQ(result->GetBirthDay().month, employee.GetBirthDay().month);
-	EXPECT_EQ(result->GetBirthDay().day, employee.GetBirthDay().day);
+	EXPECT_EQ(result->GetPhoneNum()._middleNum, employee.GetPhoneNum()._middleNum);
+	EXPECT_EQ(result->GetPhoneNum()._lastNum, employee.GetPhoneNum()._lastNum);
+	EXPECT_EQ(result->GetBirthDay()._year, employee.GetBirthDay()._year);
+	EXPECT_EQ(result->GetBirthDay()._month, employee.GetBirthDay()._month);
+	EXPECT_EQ(result->GetBirthDay()._day, employee.GetBirthDay()._day);
 	EXPECT_EQ(result->GetCerti(), employee.GetCerti());
 
 }
@@ -37,18 +37,18 @@ TEST(TEST_ADD_MODULE, ADD_MAX_SIZE_TEST) {
 	Add add = Add(dataManager);
 
 	PhoneNum phonenum;
-	phonenum.middleNum = 1234;
-	phonenum.lastNum = 5678;
+	phonenum._middleNum = 1234;
+	phonenum._lastNum = 5678;
 	BirthDay birthday;
-	birthday.year = 1990;
-	birthday.month = 01;
-	birthday.day = 23;
+	birthday._year = 1990;
+	birthday._month = 01;
+	birthday._day = 23;
 
 	int employeeNum = 90000000;
 	for (int i = 0; i < 100000; i++, employeeNum++)
 	{
 		Employee inputemployee(employeeNum, "ȫ�浿", CareerLevel_2, phonenum, birthday, Certi_PRO);
-		InputParameter inputParameter = { Option1_null, Option2_null, Column_null, inputemployee };
+		InputParameter inputParameter = { Command_None, Option1_null, Option2_null, Column_null, inputemployee };
 		add.Command(inputParameter);
 	}
 
@@ -63,11 +63,11 @@ TEST(TEST_ADD_MODULE, ADD_MAX_SIZE_TEST) {
 		EXPECT_EQ(result->GetEmployeeNum(), inputEmployee.GetEmployeeNum());
 		EXPECT_EQ(result->GetName(), inputEmployee.GetName());
 		EXPECT_EQ(result->GetCl(), inputEmployee.GetCl());
-		EXPECT_EQ(result->GetPhoneNum().middleNum, inputEmployee.GetPhoneNum().middleNum);
-		EXPECT_EQ(result->GetPhoneNum().lastNum, inputEmployee.GetPhoneNum().lastNum);
-		EXPECT_EQ(result->GetBirthDay().year, inputEmployee.GetBirthDay().year);
-		EXPECT_EQ(result->GetBirthDay().month, inputEmployee.GetBirthDay().month);
-		EXPECT_EQ(result->GetBirthDay().day, inputEmployee.GetBirthDay().day);
+		EXPECT_EQ(result->GetPhoneNum()._middleNum, inputEmployee.GetPhoneNum()._middleNum);
+		EXPECT_EQ(result->GetPhoneNum()._lastNum, inputEmployee.GetPhoneNum()._lastNum);
+		EXPECT_EQ(result->GetBirthDay()._year, inputEmployee.GetBirthDay()._year);
+		EXPECT_EQ(result->GetBirthDay()._month, inputEmployee.GetBirthDay()._month);
+		EXPECT_EQ(result->GetBirthDay()._day, inputEmployee.GetBirthDay()._day);
 		EXPECT_EQ(result->GetCerti(), inputEmployee.GetCerti());
 	}
 }
