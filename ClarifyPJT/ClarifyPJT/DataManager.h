@@ -15,6 +15,7 @@ public:
 	{
 		return _employees;
 	}
+
 	int getSize(void)
 	{
 		return _employees.size();

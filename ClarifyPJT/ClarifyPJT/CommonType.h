@@ -3,7 +3,7 @@
 #include "Employee.h"
 using namespace std;
 
-enum Command
+enum class Command
 {
 	Command_None = 0,
 	Command_Add,
@@ -12,14 +12,14 @@ enum Command
 	Command_Mod,
 };
 
-enum Option1
+enum class Option1
 {
 	Option1_None = 0,
 	Option1_p,		// print
 	Option1_null,
 };
 
-enum Option2
+enum class Option2
 {
 	Option2_None = 0,
 	Option2_Name_f,		// first name
@@ -32,7 +32,7 @@ enum Option2
 	Option2_null,
 };
 
-enum Column
+enum class Column
 {
 	Column_None = 0,
 	Column_employeeNum,

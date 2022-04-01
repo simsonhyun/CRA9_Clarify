@@ -13,19 +13,19 @@ InputParameter CommandParser::ConvertParameter(const string& inputString)
 	inputParameter.option2 = _ConvertOption2(parsedStrings.at(OPTION2_OFFSET), column);
 	inputParameter.column = column;
 
-	if (inputParameter.command == Command_Add)
+	if (inputParameter.command == Command::Command_Add)
 	{
 		inputParameter.inputEmployee.SetData(stoi(parsedStrings.at(ADDCMD_EMPLOYEENUM_OFFSET)),
-											  parsedStrings.at(ADDCMD_NAME_OFFSET),
-											  _ConvertCareerLevel(parsedStrings.at(ADDCMD_CL_OFFSET)),
-											  _ConvertPhoneNum(parsedStrings.at(ADDCMD_PHONENUM_OFFSET)),
-											  _ConvertBirthDay(parsedStrings.at(ADDCMD_BIRTHDAY_OFFSET)),
-											  _ConvertCerti(parsedStrings.at(ADDCMD_CERTI_OFFSET)));
+											 _ConvertName(parsedStrings.at(ADDCMD_NAME_OFFSET), inputParameter.option2),
+											 _ConvertCareerLevel(parsedStrings.at(ADDCMD_CL_OFFSET)),
+											 _ConvertPhoneNum(parsedStrings.at(ADDCMD_PHONENUM_OFFSET)),
+											 _ConvertBirthDay(parsedStrings.at(ADDCMD_BIRTHDAY_OFFSET)),
+											 _ConvertCerti(parsedStrings.at(ADDCMD_CERTI_OFFSET)));
 	}
-	else if (inputParameter.command == Command_Mod)
+	else if (inputParameter.command == Command::Command_Mod)
 	{
 		_SetValue(parsedStrings.at(VALUE_OFFSET), column, inputParameter.option2, inputParameter.inputEmployee);
-		_SetValue(parsedStrings.at(MODCMD_DEST_VALUE_OFFSET), _ConvertColumn(parsedStrings.at(MODCMD_DEST_COLUMN_OFFSET)), Option2_None, inputParameter.inputDestEmployee);
+		_SetValue(parsedStrings.at(MODCMD_DEST_VALUE_OFFSET), _ConvertColumn(parsedStrings.at(MODCMD_DEST_COLUMN_OFFSET)), Option2::Option2_None, inputParameter.inputDestEmployee);
 	}
 	else
 	{
@@ -55,44 +55,44 @@ vector<string> CommandParser::_Parsing(const string& inputString, const string& 
 
 void CommandParser::_SetValue(const string& inputString, const Column& column, const Option2& option2, Employee& employee)
 {
-	if (column == Column_employeeNum)
+	if (column == Column::Column_employeeNum)
 	{
-		employee.SetData(stoi(inputString), " ", CareerLevel_None, PhoneNum(0, 0), BirthDay(0, 0, 0), Certi_None);
+		employee.SetData(stoi(inputString), {"", ""} , CareerLevel::CareerLevel_None, PhoneNum(0, 0), BirthDay(0, 0, 0), Certi::Certi_None);
 	}
-	else if (column == Column_Name)
+	else if (column == Column::Column_Name)
 	{
-		employee.SetData(0, inputString, CareerLevel_None, PhoneNum(0, 0), BirthDay(0, 0, 0), Certi_None);
+		employee.SetData(0, _ConvertName(inputString, option2), CareerLevel::CareerLevel_None, PhoneNum(0, 0), BirthDay(0, 0, 0), Certi::Certi_None);
 	}
-	else if (column == Column_CareerLevel)
+	else if (column == Column::Column_CareerLevel)
 	{
-		employee.SetData(0, " ", _ConvertCareerLevel(inputString), PhoneNum(0, 0), BirthDay(0, 0, 0), Certi_None);
+		employee.SetData(0, {"", ""}, _ConvertCareerLevel(inputString), PhoneNum(0, 0), BirthDay(0, 0, 0), Certi::Certi_None);
 	}
-	else if (column == Column_PhoneNum)
+	else if (column == Column::Column_PhoneNum)
 	{
-		employee.SetData(0, " ", CareerLevel_None, _ConvertPhoneNum(inputString), BirthDay(0, 0, 0), Certi_None);
+		employee.SetData(0, {"", ""}, CareerLevel::CareerLevel_None, _ConvertPhoneNum(inputString), BirthDay(0, 0, 0), Certi::Certi_None);
 	}
-	else if (column == Column_BirthDay)
+	else if (column == Column::Column_BirthDay)
 	{
-		if (option2 == Option2_BirthDay_y)
+		if (option2 == Option2::Option2_BirthDay_y)
 		{
-			employee.SetData(0, " ", CareerLevel_None, PhoneNum(0, 0), BirthDay(stoi(inputString.substr(0, 4)), 0, 0), Certi_None);
+			employee.SetData(0, {"", ""}, CareerLevel::CareerLevel_None, PhoneNum(0, 0), BirthDay(stoi(inputString.substr(0, 4)), 0, 0), Certi::Certi_None);
 		}
-		else if (option2 == Option2_BirthDay_m)
+		else if (option2 == Option2::Option2_BirthDay_m)
 		{
-			employee.SetData(0, " ", CareerLevel_None, PhoneNum(0, 0), BirthDay(0, stoi(inputString.substr(0, 2)), 0), Certi_None);
+			employee.SetData(0, {"", ""}, CareerLevel::CareerLevel_None, PhoneNum(0, 0), BirthDay(0, stoi(inputString.substr(0, 2)), 0), Certi::Certi_None);
 		}
-		else if (option2 == Option2_BirthDay_d)
+		else if (option2 == Option2::Option2_BirthDay_d)
 		{
-			employee.SetData(0, " ", CareerLevel_None, PhoneNum(0, 0), BirthDay(0, 0, stoi(inputString.substr(0, 2))), Certi_None);
+			employee.SetData(0, {"", ""}, CareerLevel::CareerLevel_None, PhoneNum(0, 0), BirthDay(0, 0, stoi(inputString.substr(0, 2))), Certi::Certi_None);
 		}
 		else
 		{
-			employee.SetData(0, " ", CareerLevel_None, PhoneNum(0, 0), _ConvertBirthDay(inputString), Certi_None);
+			employee.SetData(0, {"", ""}, CareerLevel::CareerLevel_None, PhoneNum(0, 0), _ConvertBirthDay(inputString), Certi::Certi_None);
 		}
 	}
-	else if (column == Column_Certi)
+	else if (column == Column::Column_Certi)
 	{
-		employee.SetData(0, " ", CareerLevel_None, PhoneNum(0, 0), BirthDay(0, 0, 0), _ConvertCerti(inputString));
+		employee.SetData(0, {"", ""}, CareerLevel::CareerLevel_None, PhoneNum(0, 0), BirthDay(0, 0, 0), _ConvertCerti(inputString));
 	}
 }
 
@@ -100,23 +100,43 @@ Command CommandParser::_ConvertCommand(const string& inputString)
 {
 	if (inputString == "ADD")
 	{
-		return Command_Add;
+		return Command::Command_Add;
 	}
 	else if (inputString == "SCH")
 	{
-		return Command_Sch;
+		return Command::Command_Sch;
 	}
 	else if (inputString == "DEL")
 	{
-		return Command_Del;
+		return Command::Command_Del;
 	}
 	else if (inputString == "MOD")
 	{
-		return Command_Mod;
+		return Command::Command_Mod;
 	}
 	else 
 	{
-		return Command_None;
+		return Command::Command_None;
+	}
+}
+
+Name CommandParser::_ConvertName(const string& inputNameString, const Option2& option2)
+{
+	vector<string> parsedPhoneNum = _Parsing(inputNameString, " ");
+
+	if (option2 == Option2::Option2_Name_f)
+	{
+		return Name(parsedPhoneNum.at(0), "");
+	}
+	else if (option2 == Option2::Option2_Name_l)
+	{
+		return Name("", parsedPhoneNum.at(0));
+	}
+	else
+	{
+		// LastNameÀÌ ¼º
+		// Input : "È« ±æµ¿"
+		return Name(parsedPhoneNum.at(1), parsedPhoneNum.at(0));
 	}
 }
 
@@ -124,23 +144,23 @@ CareerLevel CommandParser::_ConvertCareerLevel(const string& inputClString)
 {
 	if (inputClString == "CL1")
 	{
-		return CareerLevel_1;
+		return CareerLevel::CareerLevel_1;
 	}
 	else if (inputClString == "CL2")
 	{
-		return CareerLevel_2;
+		return CareerLevel::CareerLevel_2;
 	}
 	else if (inputClString == "CL3")
 	{
-		return CareerLevel_3;
+		return CareerLevel::CareerLevel_3;
 	}
 	else if (inputClString == "CL4")
 	{
-		return CareerLevel_4;
+		return CareerLevel::CareerLevel_4;
 	}
 	else
 	{
-		return CareerLevel_None;
+		return CareerLevel::CareerLevel_None;
 	}
 }
 
@@ -162,19 +182,19 @@ Certi CommandParser::_ConvertCerti(const string& inputCertiString)
 {
 	if (inputCertiString == "ADV")
 	{
-		return Certi_ADV;
+		return Certi::Certi_ADV;
 	}
 	else if (inputCertiString == "PRO")
 	{
-		return Certi_PRO;
+		return Certi::Certi_PRO;
 	}
 	else if (inputCertiString == "EX")
 	{
-		return Certi_EX;
+		return Certi::Certi_EX;
 	}
 	else
 	{
-		return Certi_None;
+		return Certi::Certi_None;
 	}
 }
 
@@ -182,11 +202,11 @@ Option1 CommandParser::_ConvertOption1(const string& inputString)
 {
 	if (inputString == "-p")
 	{
-		return Option1_p;
+		return Option1::Option1_p;
 	}
 	else
 	{
-		return Option1_None;
+		return Option1::Option1_None;
 	}
 }
 
@@ -194,79 +214,79 @@ Option2 CommandParser::_ConvertOption2(const string& inputString, const Column& 
 {
 	if (inputString == " ")
 	{
-		return Option2_None;
+		return Option2::Option2_None;
 	}
 
-	if (column == Column_Name)
+	if (column == Column::Column_Name)
 	{
 		if (inputString == "-f")
 		{
-			return Option2_Name_f;
+			return Option2::Option2_Name_f;
 		}
 		else if (inputString == "-l")
 		{
-			return Option2_Name_l;
+			return Option2::Option2_Name_l;
 		}
 	}
-	else if (column == Column_PhoneNum)
+	else if (column == Column::Column_PhoneNum)
 	{
 		if (inputString == "-m")
 		{
-			return Option2_PhoneNum_m;
+			return Option2::Option2_PhoneNum_m;
 		}
 		else if (inputString == "-l")
 		{
-			return Option2_PhoneNum_l;
+			return Option2::Option2_PhoneNum_l;
 		}
 	}
-	else if (column == Column_BirthDay)
+	else if (column == Column::Column_BirthDay)
 	{
 		if (inputString == "-y")
 		{
-			return Option2_BirthDay_y;
+			return Option2::Option2_BirthDay_y;
 		}
 		else if (inputString == "-m")
 		{
-			return Option2_BirthDay_m;
+			return Option2::Option2_BirthDay_m;
 		}
 		else if (inputString == "-d")
 		{
-			return Option2_BirthDay_d;
+			return Option2::Option2_BirthDay_d;
 		}
 	}
 
 	cout << "=================== Error Test=====================" << endl;
-	return Option2_None;
+	return Option2::Option2_None;
 }
 
 Column CommandParser::_ConvertColumn(const string& inputString)
 {
 	if (inputString == "employeeNum")
 	{
-		return Column_employeeNum;
+		return Column::Column_employeeNum;
 	}
 	else if (inputString == "name")
 	{
-		return Column_Name;
+		return Column::Column_Name;
 	}
 	else if (inputString == "cl")
 	{
-		return Column_CareerLevel;
+		return Column::Column_CareerLevel;
 	}
 	else if (inputString == "phoneNum")
 	{
-		return Column_PhoneNum;
+		return Column::Column_PhoneNum;
 	}
 	else if (inputString == "birthday")
 	{
-		return Column_BirthDay;
+		return Column::Column_BirthDay;
 	}
 	else if (inputString == "certi")
 	{
-		return Column_Certi;
+		return Column::Column_Certi;
 	}
 	else
 	{
-		return Column_None;
+		return Column::Column_None;
 	}
 }
