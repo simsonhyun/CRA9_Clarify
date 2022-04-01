@@ -114,7 +114,7 @@ private:
 	}
 
 public:
-	string Print(const Command& command, const vector< Employee>& commandResultEmployees)
+	string Print(const Command& command, const Option1& option1, const vector< Employee>& commandResultEmployees)
 	{
 		string retString;
 
@@ -122,6 +122,15 @@ public:
 		{
 			retString = _GetCommandString(command);
 			retString.append("NONE");
+			retString += 0xA; // Next Line
+
+			return retString;
+		}
+
+		if (option1 == Option1::Option1_None)
+		{
+			retString = _GetCommandString(command);
+			retString.append(to_string(commandResultEmployees.size()));
 			retString += 0xA; // Next Line
 
 			return retString;
@@ -139,11 +148,6 @@ public:
 		}
 
 		return retString;
-	}
-
-	void PrintNotOption(int commandResult) const
-	{
-
 	}
 
 private:

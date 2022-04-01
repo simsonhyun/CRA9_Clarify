@@ -141,7 +141,7 @@ TEST(TestPrintManager, CheckPrint0)
 	inputEmployees.push_back(Employee(2117175, Name("LDEXRI", "SBILHUT"), CareerLevel::CareerLevel_4, PhoneNum(2814, 1699), BirthDay(1995, 07, 04), Certi::Certi_ADV));
 	inputEmployees.push_back(Employee(2117175, Name("LDEXRI", "TEST"), CareerLevel::CareerLevel_4, PhoneNum(2814, 1699), BirthDay(1995, 07, 04), Certi::Certi_ADV));
 
-	EXPECT_EQ(printManager.Print(Command::Command_Sch, inputEmployees), testString);
+	EXPECT_EQ(printManager.Print(Command::Command_Sch, Option1::Option1_p, inputEmployees), testString);
 }
 
 TEST(TestPrintManager, CheckPrint1)
@@ -156,5 +156,20 @@ TEST(TestPrintManager, CheckPrint1)
 	// inputEmployees.push_back(Employee(2117175, Name("LDEXRI", "SBILHUT"), CareerLevel::CareerLevel_4, PhoneNum(2814, 1699), BirthDay(1995, 07, 04), Certi::Certi_ADV));
 	// inputEmployees.push_back(Employee(2117175, Name("LDEXRI", "TEST"), CareerLevel::CareerLevel_4, PhoneNum(2814, 1699), BirthDay(1995, 07, 04), Certi::Certi_ADV));
 
-	EXPECT_EQ(printManager.Print(Command::Command_Sch, inputEmployees), testString);
+	EXPECT_EQ(printManager.Print(Command::Command_Sch, Option1::Option1_p, inputEmployees), testString);
+}
+
+TEST(TestPrintManager, CheckPrint2)
+{
+	// input : SCH, , , ,birthday,04
+
+	string testString = "SCH,2";
+	testString += '\n';
+
+	PrintManager printManager = PrintManager();
+	vector<Employee> inputEmployees;
+	inputEmployees.push_back(Employee(2117175, Name("LDEXRI", "SBILHUT"), CareerLevel::CareerLevel_4, PhoneNum(2814, 1699), BirthDay(1995, 07, 04), Certi::Certi_ADV));
+	inputEmployees.push_back(Employee(2117175, Name("LDEXRI", "TEST"), CareerLevel::CareerLevel_4, PhoneNum(2814, 1699), BirthDay(1995, 07, 04), Certi::Certi_ADV));
+
+	EXPECT_EQ(printManager.Print(Command::Command_Sch, Option1::Option1_None, inputEmployees), testString);
 }
