@@ -1,203 +1,61 @@
 #include "Del.h"
 
+bool
+EmployeeNumDeletePolicy::deleteByPolicy(InputParameter input, Employee& aEmployee) const {
+	if ((input.option2 == Option2::Option2_None) && (input.inputEmployee.GetEmployeeNum() == aEmployee.GetEmployeeNum())) return true;
+	return false;
+}
+
+bool
+NameDeletePolicy::deleteByPolicy(InputParameter input, Employee& aEmployee) const {
+	if ((input.option2 == Option2::Option2_None) && (input.inputEmployee.GetName() == aEmployee.GetName())) return true;
+	if ((input.option2 == Option2::Option2_Name_f) && (input.inputEmployee.GetName()._firstName == aEmployee.GetName()._firstName)) return true;
+	if ((input.option2 == Option2::Option2_Name_l) && (input.inputEmployee.GetName()._lastName == aEmployee.GetName()._lastName)) return true;
+	return false;
+}
+
+bool
+CareerLevelDeletePolicy::deleteByPolicy(InputParameter input, Employee& aEmployee) const {
+	if ((input.option2 == Option2::Option2_None) && (input.inputEmployee.GetCl() == aEmployee.GetCl())) return true;
+	return false;
+}
+
+bool
+PhoneNumDeletePolicy::deleteByPolicy(InputParameter input, Employee& aEmployee) const {
+	if ((input.option2 == Option2::Option2_None) && (input.inputEmployee.GetPhoneNum() == aEmployee.GetPhoneNum())) return true;
+	if ((input.option2 == Option2::Option2_PhoneNum_m) && (input.inputEmployee.GetPhoneNum()._middleNum == aEmployee.GetPhoneNum()._middleNum)) return true;
+	if ((input.option2 == Option2::Option2_PhoneNum_l) && (input.inputEmployee.GetPhoneNum()._lastNum == aEmployee.GetPhoneNum()._lastNum)) return true;
+	return false;
+}
+
+bool
+BirthDayDeletePolicy::deleteByPolicy(InputParameter input, Employee& aEmployee) const {
+	if ((input.option2 == Option2::Option2_None) && (input.inputEmployee.GetBirthDay() == aEmployee.GetBirthDay())) return true;
+	if ((input.option2 == Option2::Option2_BirthDay_y) && (input.inputEmployee.GetBirthDay()._year == aEmployee.GetBirthDay()._year)) return true;
+	if ((input.option2 == Option2::Option2_BirthDay_m) && (input.inputEmployee.GetBirthDay()._month == aEmployee.GetBirthDay()._month)) return true;
+	if ((input.option2 == Option2::Option2_BirthDay_d) && (input.inputEmployee.GetBirthDay()._day == aEmployee.GetBirthDay()._day)) return true;
+	return false;
+}
+
+bool
+CertiDeletePolicy::deleteByPolicy(InputParameter input, Employee& aEmployee) const {
+	if ((input.option2 == Option2::Option2_None) && (input.inputEmployee.GetCerti() == aEmployee.GetCerti())) return true;
+	return false;
+}
+
 vector<Employee>
-EmployeeNumDeletePolicy::deleteByPolicyWithPrint(InputParameter input, DataManager& data) const {
+Del::deleteEmployeeInfo(InputParameter input) {
 	vector<Employee> deleteList;
-	vector<Employee>& employees = data.getData();
+	deleteList.reserve(getDataManager()->MAX_EMPLOYEE_COUNT);
+	vector<Employee>& employees = getDataManager()->getData();
 	for (vector<Employee>::iterator aEmployee = employees.begin(); aEmployee != employees.end(); ) {
-		if (input.inputEmployee.GetEmployeeNum() == aEmployee->GetEmployeeNum()) {
+		if (deletePolicy[static_cast<int>(input.column)]->deleteByPolicy(input, *aEmployee)) {
 			deleteList.push_back(*aEmployee);
 			aEmployee = employees.erase(aEmployee);
+			if ((input.option1 == Option1::Option1_p) && (deleteList.size() == 5)) break;
 			continue;
 		}
 		aEmployee++;
 	}
 	return deleteList;
-}
-
-int
-EmployeeNumDeletePolicy::deleteByPolicyWithoutPrint(InputParameter input, DataManager& data) const {
-	int deleteList = 0;
-	vector<Employee>& employees = data.getData();
-	for (vector<Employee>::iterator aEmployee = employees.begin(); aEmployee != employees.end(); ) {
-		if (input.inputEmployee.GetEmployeeNum() == aEmployee->GetEmployeeNum()) {
-			deleteList++;
-			aEmployee = employees.erase(aEmployee);
-			continue;
-		}
-		aEmployee++;
-	}
-	return deleteList;
-}
-
-
-
-vector<Employee>
-NameDeletePolicy::deleteByPolicyWithPrint(InputParameter input, DataManager& data) const {
-	vector<Employee> deleteList;
-	vector<Employee>& employees = data.getData();
-	for (vector<Employee>::iterator aEmployee = employees.begin(); aEmployee != employees.end(); ) {
-		if (input.inputEmployee.GetName() == aEmployee->GetName()) {
-			deleteList.push_back(*aEmployee);
-			aEmployee = employees.erase(aEmployee);
-			continue;
-		}
-		aEmployee++;
-	}
-	return deleteList;
-}
-
-int
-NameDeletePolicy::deleteByPolicyWithoutPrint(InputParameter input, DataManager& data) const {
-	int deleteList = 0;
-	vector<Employee>& employees = data.getData();
-	for (vector<Employee>::iterator aEmployee = employees.begin(); aEmployee != employees.end(); ) {
-		if (input.inputEmployee.GetName() == aEmployee->GetName()) {
-			deleteList++;
-			aEmployee = employees.erase(aEmployee);
-			continue;
-		}
-		aEmployee++;
-	}
-	return deleteList;
-}
-
-
-
-vector<Employee>
-CareerLevelDeletePolicy::deleteByPolicyWithPrint(InputParameter input, DataManager& data) const {
-	vector<Employee> deleteList;
-	vector<Employee>& employees = data.getData();
-	for (vector<Employee>::iterator aEmployee = employees.begin(); aEmployee != employees.end(); ) {
-		if (input.inputEmployee.GetCl() == aEmployee->GetCl()) {
-			deleteList.push_back(*aEmployee);
-			aEmployee = employees.erase(aEmployee);
-			continue;
-		}
-		aEmployee++;
-	}
-	return deleteList;
-}
-
-int
-CareerLevelDeletePolicy::deleteByPolicyWithoutPrint(InputParameter input, DataManager& data) const {
-	int deleteList = 0;
-	vector<Employee>& employees = data.getData();
-	for (vector<Employee>::iterator aEmployee = employees.begin(); aEmployee != employees.end(); ) {
-		if (input.inputEmployee.GetCl() == aEmployee->GetCl()) {
-			deleteList++;
-			aEmployee = employees.erase(aEmployee);
-			continue;
-		}
-		aEmployee++;
-	}
-	return deleteList;
-}
-
-
-
-vector<Employee>
-PhoneNumDeletePolicy::deleteByPolicyWithPrint(InputParameter input, DataManager& data) const {
-	vector<Employee> deleteList;
-	vector<Employee>& employees = data.getData();
-	for (vector<Employee>::iterator aEmployee = employees.begin(); aEmployee != employees.end(); ) {
-		if (input.inputEmployee.GetPhoneNum() == aEmployee->GetPhoneNum()) {
-			deleteList.push_back(*aEmployee);
-			aEmployee = employees.erase(aEmployee);
-			continue;
-		}
-		aEmployee++;
-	}
-	return deleteList;
-}
-
-int
-PhoneNumDeletePolicy::deleteByPolicyWithoutPrint(InputParameter input, DataManager& data) const {
-	int deleteList = 0;
-	vector<Employee>& employees = data.getData();
-	for (vector<Employee>::iterator aEmployee = employees.begin(); aEmployee != employees.end(); ) {
-		if (input.inputEmployee.GetPhoneNum() == aEmployee->GetPhoneNum()) {
-			deleteList++;
-			aEmployee = employees.erase(aEmployee);
-			continue;
-		}
-		aEmployee++;
-	}
-	return deleteList;
-}
-
-
-
-vector<Employee>
-BirthDayDeletePolicy::deleteByPolicyWithPrint(InputParameter input, DataManager& data) const {
-	vector<Employee> deleteList;
-	vector<Employee>& employees = data.getData();
-	for (vector<Employee>::iterator aEmployee = employees.begin(); aEmployee != employees.end(); ) {
-		if (input.inputEmployee.GetBirthDay() == aEmployee->GetBirthDay()) {
-			deleteList.push_back(*aEmployee);
-			aEmployee = employees.erase(aEmployee);
-			continue;
-		}
-		aEmployee++;
-	}
-	return deleteList;
-}
-
-int
-BirthDayDeletePolicy::deleteByPolicyWithoutPrint(InputParameter input, DataManager& data) const {
-	int deleteList = 0;
-	vector<Employee>& employees = data.getData();
-	for (vector<Employee>::iterator aEmployee = employees.begin(); aEmployee != employees.end(); ) {
-		if (input.inputEmployee.GetBirthDay() == aEmployee->GetBirthDay()) {
-			deleteList++;
-			aEmployee = employees.erase(aEmployee);
-			continue;
-		}
-		aEmployee++;
-	}
-	return deleteList;
-}
-
-
-
-vector<Employee>
-CertiDeletePolicy::deleteByPolicyWithPrint(InputParameter input, DataManager& data) const {
-	vector<Employee> deleteList;
-	vector<Employee>& employees = data.getData();
-	for (vector<Employee>::iterator aEmployee = employees.begin(); aEmployee != employees.end(); ) {
-		if (input.inputEmployee.GetCerti() == aEmployee->GetCerti()) {
-			deleteList.push_back(*aEmployee);
-			aEmployee = employees.erase(aEmployee);
-			continue;
-		}
-		aEmployee++;
-	}
-	return deleteList;
-}
-
-int
-CertiDeletePolicy::deleteByPolicyWithoutPrint(InputParameter input, DataManager& data) const {
-	int deleteList = 0;
-	vector<Employee>& employees = data.getData();
-	for (vector<Employee>::iterator aEmployee = employees.begin(); aEmployee != employees.end(); ) {
-		if (input.inputEmployee.GetCerti() == aEmployee->GetCerti()) {
-			deleteList++;
-			aEmployee = employees.erase(aEmployee);
-			continue;
-		}
-		aEmployee++;
-	}
-	return deleteList;
-}
-
-
-
-vector<Employee>
-Del::deleteWithPrint(InputParameter input) {
-	return deletePolicy[static_cast<int>(input.column)]->deleteByPolicyWithPrint(input, *getDataManager());
-}
-
-int
-Del::searchWithoutPrint(InputParameter input) {
-	return deletePolicy[static_cast<int>(input.column)]->deleteByPolicyWithoutPrint(input, *getDataManager());
 }

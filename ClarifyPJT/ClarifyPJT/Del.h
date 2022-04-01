@@ -5,44 +5,37 @@
 
 class AbstractDeletePolicy {
 public:
-	virtual vector<Employee> deleteByPolicyWithPrint(InputParameter input, DataManager& data) const = 0;
-	virtual int deleteByPolicyWithoutPrint(InputParameter input, DataManager& data) const = 0;
+	virtual bool deleteByPolicy(InputParameter input, Employee& aEmployee) const = 0;
 };
 
 class EmployeeNumDeletePolicy : public AbstractDeletePolicy {
 public:
-	virtual vector<Employee> deleteByPolicyWithPrint(InputParameter input, DataManager& data) const override;
-	virtual int deleteByPolicyWithoutPrint(InputParameter input, DataManager& data) const override;
+	virtual bool deleteByPolicy(InputParameter input, Employee& aEmployee) const override;
 };
 
 class NameDeletePolicy : public AbstractDeletePolicy {
 public:
-	virtual vector<Employee> deleteByPolicyWithPrint(InputParameter input, DataManager& data) const;
-	virtual int deleteByPolicyWithoutPrint(InputParameter input, DataManager& data) const;
+	virtual bool deleteByPolicy(InputParameter input, Employee& aEmployee) const override;
 };
 
 class CareerLevelDeletePolicy : public AbstractDeletePolicy {
 public:
-	virtual vector<Employee> deleteByPolicyWithPrint(InputParameter input, DataManager& data) const override;
-	virtual int deleteByPolicyWithoutPrint(InputParameter input, DataManager& data) const override;
+	virtual bool deleteByPolicy(InputParameter input, Employee& aEmployee) const override;
 };
 
 class PhoneNumDeletePolicy : public AbstractDeletePolicy {
 public:
-	virtual vector<Employee> deleteByPolicyWithPrint(InputParameter input, DataManager& data) const override;
-	virtual int deleteByPolicyWithoutPrint(InputParameter input, DataManager& data) const override;
+	virtual bool deleteByPolicy(InputParameter input, Employee& aEmployee) const override;
 };
 
 class BirthDayDeletePolicy : public AbstractDeletePolicy {
 public:
-	virtual vector<Employee> deleteByPolicyWithPrint(InputParameter input, DataManager& data) const override;
-	virtual int deleteByPolicyWithoutPrint(InputParameter input, DataManager& data) const override;
+	virtual bool deleteByPolicy(InputParameter input, Employee& aEmployee) const override;
 };
 
 class CertiDeletePolicy : public AbstractDeletePolicy {
 public:
-	virtual vector<Employee> deleteByPolicyWithPrint(InputParameter input, DataManager& data) const override;
-	virtual int deleteByPolicyWithoutPrint(InputParameter input, DataManager& data) const override;
+	virtual bool deleteByPolicy(InputParameter input, Employee& aEmployee) const override;
 };
 
 class Del : public CommandManager {
@@ -56,8 +49,7 @@ public:
 		deletePolicy[static_cast<int>(Column::Column_Certi)] = new CertiDeletePolicy();
 	}
 
-	vector<Employee> deleteWithPrint(InputParameter input);
-	int searchWithoutPrint(InputParameter input);
+	vector<Employee> deleteEmployeeInfo(InputParameter input);
 
 private:
 
