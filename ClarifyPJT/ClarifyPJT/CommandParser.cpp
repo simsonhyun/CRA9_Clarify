@@ -25,7 +25,10 @@ InputParameter CommandParser::ConvertParameter(const string& inputString)
 	else if (inputParameter.command == Command::Command_Mod)
 	{
 		_SetValue(parsedStrings.at(VALUE_OFFSET), column, inputParameter.option2, inputParameter.inputEmployee);
-		_SetValue(parsedStrings.at(MODCMD_DEST_VALUE_OFFSET), _ConvertColumn(parsedStrings.at(MODCMD_DEST_COLUMN_OFFSET)), Option2::Option2_None, inputParameter.inputDestEmployee);
+
+		// Mod¿ë Dest Data
+		inputParameter.destColumn = _ConvertColumn(parsedStrings.at(MODCMD_DEST_COLUMN_OFFSET));
+		_SetValue(parsedStrings.at(MODCMD_DEST_VALUE_OFFSET), inputParameter.destColumn, Option2::Option2_None, inputParameter.inputDestEmployee);
 	}
 	else
 	{

@@ -13,8 +13,8 @@ TEST(TEST_ADD_MODULE, ADD_TEST) {
 	birthday._month = 01;
 	birthday._day = 23;
 	Employee employee(12345678, Name("GILDONG", "HONG"), CareerLevel::CareerLevel_2, phonenum, birthday, Certi::Certi_PRO);
-	InputParameter inputParameter = { Command::Command_None, Option1::Option1_None, Option2::Option2_None, Column::Column_None, employee };
-	
+	InputParameter inputParameter = { Command::Command_None, Option1::Option1_None, Option2::Option2_None, Column::Column_None, Column::Column_None, employee };
+
 	add.Command(inputParameter);
 
 	ASSERT_TRUE(dataManager.getSize() != 0);
@@ -49,15 +49,15 @@ TEST(TEST_ADD_MODULE, ADD_MAX_SIZE_TEST) {
 	for (int i = 0; i < 100000; i++, employeeNum++)
 	{
 		Employee inputemployee(employeeNum, Name("GILDONG", "HONG"), CareerLevel::CareerLevel_2, phonenum, birthday, Certi::Certi_PRO);
-		InputParameter inputParameter = { Command::Command_None, Option1::Option1_None, Option2::Option2_None, Column::Column_None, inputemployee };
+		InputParameter inputParameter = { Command::Command_None, Option1::Option1_None, Option2::Option2_None, Column::Column_None, Column::Column_None, inputemployee };
 		add.Command(inputParameter);
 	}
 
 	ASSERT_TRUE(dataManager.getSize() == 100000);
-	
+
 	employeeNum = 90000000;
 	vector<Employee> employees = dataManager.getData(); //employeenum 순서대로 sorting되든, 입력대로 add되든 test가능
-	for(auto employee: employees)
+	for (auto employee : employees)
 	{
 		Employee inputEmployee(employeeNum++, Name("GILDONG", "HONG"), CareerLevel::CareerLevel_2, phonenum, birthday, Certi::Certi_PRO);
 		Employee* result = &employee;

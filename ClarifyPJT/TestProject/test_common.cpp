@@ -111,6 +111,7 @@ TEST(TestCommandParser, CheckParsing3)
 	inputParameter.option1 = Option1::Option1_p;
 	inputParameter.option2 = Option2::Option2_None;
 	inputParameter.column = Column::Column_Name;
+	inputParameter.destColumn = Column::Column_BirthDay;
 	inputParameter.inputEmployee.SetData(0, Name("NTAWR", "FB"), CareerLevel::CareerLevel_None, PhoneNum(0, 0), BirthDay(0, 0, 0), Certi::Certi_None);
 	inputParameter.inputDestEmployee.SetData(0, Name("", ""), CareerLevel::CareerLevel_None, PhoneNum(0, 0), BirthDay(2005, 05, 20), Certi::Certi_None);
 
@@ -119,6 +120,7 @@ TEST(TestCommandParser, CheckParsing3)
 	EXPECT_EQ(testParameter.option1, inputParameter.option1);
 	EXPECT_EQ(testParameter.option2, inputParameter.option2);
 	EXPECT_EQ(testParameter.column, inputParameter.column);
+	EXPECT_EQ(testParameter.destColumn, inputParameter.destColumn);
 	EXPECT_EQ(testParameter.inputEmployee.GetBirthDay()._day, inputParameter.inputEmployee.GetBirthDay()._day);
 	EXPECT_EQ(testParameter.inputDestEmployee.GetBirthDay()._day, inputParameter.inputDestEmployee.GetBirthDay()._day);
 }

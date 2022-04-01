@@ -34,9 +34,6 @@
     <Filter Include="헤더 파일\Add">
       <UniqueIdentifier>{883b7162-e127-40db-bdb3-0f5b53e89a80}</UniqueIdentifier>
     </Filter>
-    <Filter Include="헤더 파일\Sch">
-      <UniqueIdentifier>{26248ccc-99d6-4e39-8da8-3c2078dfb66f}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -77,11 +74,5 @@
     <ClInclude Include="PhoneNum.h">
       <Filter>헤더 파일\Common</Filter>
     </ClInclude>
-    <ClInclude Include="Sch.h">
-      <Filter>헤더 파일\Sch</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
   </ItemGroup>
 </Project>
