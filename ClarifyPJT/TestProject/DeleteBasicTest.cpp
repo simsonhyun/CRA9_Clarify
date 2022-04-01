@@ -25,7 +25,7 @@ public:
 
 TEST_F(DeleteBasicTest, DeleteByEmployeeNumTestWithPrint) {
 	Employee deleteEmployee = { 12345678, {"±è", "Ã¶¼ö"}, CareerLevel::CareerLevel_2,  {1234, 8765}, {1990, 02, 01}, Certi::Certi_PRO };
-	InputParameter input = { Command::Command_Sch, Option1::Option1_None, Option2::Option2_None, Column::Column_employeeNum, Column::Column_None, deleteEmployee };
+	InputParameter input = { Command::Command_Del, Option1::Option1_None, Option2::Option2_None, Column::Column_employeeNum, Column::Column_None, deleteEmployee };
 
 	vector<Employee> result = deleteTest->deleteEmployeeInfo(input);
 	int deleteCount = 0;
@@ -39,7 +39,7 @@ TEST_F(DeleteBasicTest, DeleteByEmployeeNumTestWithPrint) {
 
 TEST_F(DeleteBasicTest, DeleteByEmployeeNumTestWithoutPrint) {
 	Employee deleteEmployee = { 12345678, {"±è", "Ã¶¼ö"}, CareerLevel::CareerLevel_2,  {1234, 8765}, {1990, 02, 01}, Certi::Certi_PRO };
-	InputParameter input = { Command::Command_Sch, Option1::Option1_p, Option2::Option2_None, Column::Column_employeeNum, Column::Column_None, deleteEmployee };
+	InputParameter input = { Command::Command_Del, Option1::Option1_p, Option2::Option2_None, Column::Column_employeeNum, Column::Column_None, deleteEmployee };
 
 	vector<Employee> result = deleteTest->deleteEmployeeInfo(input);
 	size_t deleteCount = result.size();
@@ -49,7 +49,7 @@ TEST_F(DeleteBasicTest, DeleteByEmployeeNumTestWithoutPrint) {
 
 TEST_F(DeleteBasicTest, DeleteByNameTestWithPrint) {
 	Employee deleteEmployee = { 12345678, {"±è", "Ã¶¼ö"}, CareerLevel::CareerLevel_2,  {1234, 8765}, {1990, 02, 01}, Certi::Certi_PRO };
-	InputParameter input = { Command::Command_Sch, Option1::Option1_None, Option2::Option2_None, Column::Column_Name, Column::Column_None, deleteEmployee };
+	InputParameter input = { Command::Command_Del, Option1::Option1_None, Option2::Option2_None, Column::Column_Name, Column::Column_None, deleteEmployee };
 
 	vector<Employee> result = deleteTest->deleteEmployeeInfo(input);
 	int deleteCount = 0;
@@ -63,7 +63,7 @@ TEST_F(DeleteBasicTest, DeleteByNameTestWithPrint) {
 
 TEST_F(DeleteBasicTest, DeleteByNameTestWithoutPrint) {
 	Employee deleteEmployee = { 12345678, {"±è", "Ã¶¼ö"}, CareerLevel::CareerLevel_2,  {1234, 8765}, {1990, 02, 01}, Certi::Certi_PRO };
-	InputParameter input = { Command::Command_Sch, Option1::Option1_p, Option2::Option2_None, Column::Column_Name, Column::Column_None, deleteEmployee };
+	InputParameter input = { Command::Command_Del, Option1::Option1_p, Option2::Option2_None, Column::Column_Name, Column::Column_None, deleteEmployee };
 
 	vector<Employee> result = deleteTest->deleteEmployeeInfo(input);
 	size_t deleteCount = result.size();
@@ -73,7 +73,7 @@ TEST_F(DeleteBasicTest, DeleteByNameTestWithoutPrint) {
 
 TEST_F(DeleteBasicTest, DeleteByCareerLevelTestWithPrint) {
 	Employee deleteEmployee = { 11111111, {"È«", "±æµ¿"}, CareerLevel::CareerLevel_1,  {9513, 7412}, {1990, 04, 03}, Certi::Certi_PRO };
-	InputParameter input = { Command::Command_Sch, Option1::Option1_None, Option2::Option2_None, Column::Column_CareerLevel, Column::Column_None, deleteEmployee };
+	InputParameter input = { Command::Command_Del, Option1::Option1_None, Option2::Option2_None, Column::Column_CareerLevel, Column::Column_None, deleteEmployee };
 
 	vector<Employee> result = deleteTest->deleteEmployeeInfo(input);
 	int deleteCount = 0;
@@ -87,7 +87,7 @@ TEST_F(DeleteBasicTest, DeleteByCareerLevelTestWithPrint) {
 
 TEST_F(DeleteBasicTest, DeleteByCareerLevelTestWithoutPrint) {
 	Employee deleteEmployee = { 11111111, {"È«", "±æµ¿"}, CareerLevel::CareerLevel_1,  {9513, 7412}, {1990, 04, 03}, Certi::Certi_PRO };
-	InputParameter input = { Command::Command_Sch, Option1::Option1_p, Option2::Option2_None, Column::Column_CareerLevel, Column::Column_None, deleteEmployee };
+	InputParameter input = { Command::Command_Del, Option1::Option1_p, Option2::Option2_None, Column::Column_CareerLevel, Column::Column_None, deleteEmployee };
 
 	vector<Employee> result = deleteTest->deleteEmployeeInfo(input);
 	size_t deleteCount = result.size();
@@ -97,7 +97,7 @@ TEST_F(DeleteBasicTest, DeleteByCareerLevelTestWithoutPrint) {
 
 TEST_F(DeleteBasicTest, DeleteByPhoneNumTestWithPrint) {
 	Employee deleteEmployee = { 11111111, {"È«", "±æµ¿"}, CareerLevel::CareerLevel_1,  {9513, 7412}, {1990, 04, 03}, Certi::Certi_PRO };
-	InputParameter input = { Command::Command_Sch, Option1::Option1_None, Option2::Option2_None, Column::Column_PhoneNum, Column::Column_None, deleteEmployee };
+	InputParameter input = { Command::Command_Del, Option1::Option1_None, Option2::Option2_None, Column::Column_PhoneNum, Column::Column_None, deleteEmployee };
 
 	vector<Employee> result = deleteTest->deleteEmployeeInfo(input);
 	int deleteCount = 0;
@@ -111,7 +111,7 @@ TEST_F(DeleteBasicTest, DeleteByPhoneNumTestWithPrint) {
 
 TEST_F(DeleteBasicTest, DeleteByPhoneNumTestWithoutPrint) {
 	Employee deleteEmployee = { 11111111, {"È«", "±æµ¿"}, CareerLevel::CareerLevel_1,  {9513, 7412}, {1990, 04, 03}, Certi::Certi_PRO };
-	InputParameter input = { Command::Command_Sch, Option1::Option1_p, Option2::Option2_None, Column::Column_PhoneNum, Column::Column_None, deleteEmployee };
+	InputParameter input = { Command::Command_Del, Option1::Option1_p, Option2::Option2_None, Column::Column_PhoneNum, Column::Column_None, deleteEmployee };
 
 	vector<Employee> result = deleteTest->deleteEmployeeInfo(input);
 	size_t deleteCount = result.size();
@@ -121,7 +121,7 @@ TEST_F(DeleteBasicTest, DeleteByPhoneNumTestWithoutPrint) {
 
 TEST_F(DeleteBasicTest, DeleteByBirthDayTestWithPrint) {
 	Employee deleteEmployee = { 87654321, {"°í", "±æµ¿"}, CareerLevel::CareerLevel_4,  {1354, 9516}, {1990, 03, 02}, Certi::Certi_ADV };
-	InputParameter input = { Command::Command_Sch, Option1::Option1_None, Option2::Option2_None, Column::Column_BirthDay, Column::Column_None, deleteEmployee };
+	InputParameter input = { Command::Command_Del, Option1::Option1_None, Option2::Option2_None, Column::Column_BirthDay, Column::Column_None, deleteEmployee };
 
 	vector<Employee> result = deleteTest->deleteEmployeeInfo(input);
 	int deleteCount = 0;
@@ -135,7 +135,7 @@ TEST_F(DeleteBasicTest, DeleteByBirthDayTestWithPrint) {
 
 TEST_F(DeleteBasicTest, DeleteByBirthDayTestWithoutPrint) {
 	Employee deleteEmployee = { 87654321, {"°í", "±æµ¿"}, CareerLevel::CareerLevel_4,  {1354, 9516}, {1990, 03, 02}, Certi::Certi_ADV };
-	InputParameter input = { Command::Command_Sch, Option1::Option1_p, Option2::Option2_None, Column::Column_BirthDay, Column::Column_None, deleteEmployee };
+	InputParameter input = { Command::Command_Del, Option1::Option1_p, Option2::Option2_None, Column::Column_BirthDay, Column::Column_None, deleteEmployee };
 
 	vector<Employee> result = deleteTest->deleteEmployeeInfo(input);
 	size_t deleteCount = result.size();
@@ -145,7 +145,7 @@ TEST_F(DeleteBasicTest, DeleteByBirthDayTestWithoutPrint) {
 
 TEST_F(DeleteBasicTest, DeleteByCertiTestWithPrint) {
 	Employee deleteEmployee = { 87654321, {"°í", "±æµ¿"}, CareerLevel::CareerLevel_4,  {1354, 9516}, {1990, 03, 02}, Certi::Certi_ADV };
-	InputParameter input = { Command::Command_Sch, Option1::Option1_None, Option2::Option2_None, Column::Column_Certi, Column::Column_None, deleteEmployee };
+	InputParameter input = { Command::Command_Del, Option1::Option1_None, Option2::Option2_None, Column::Column_Certi, Column::Column_None, deleteEmployee };
 
 	vector<Employee> result = deleteTest->deleteEmployeeInfo(input);
 	int deleteCount = 0;
@@ -159,7 +159,7 @@ TEST_F(DeleteBasicTest, DeleteByCertiTestWithPrint) {
 
 TEST_F(DeleteBasicTest, DeleteByCertiTestWithoutPrint) {
 	Employee deleteEmployee = { 87654321, {"°í", "±æµ¿"}, CareerLevel::CareerLevel_4,  {1354, 9516}, {1990, 03, 02}, Certi::Certi_ADV };
-	InputParameter input = { Command::Command_Sch, Option1::Option1_p, Option2::Option2_None, Column::Column_Certi, Column::Column_None, deleteEmployee };
+	InputParameter input = { Command::Command_Del, Option1::Option1_p, Option2::Option2_None, Column::Column_Certi, Column::Column_None, deleteEmployee };
 
 	vector<Employee> result = deleteTest->deleteEmployeeInfo(input);
 	size_t deleteCount = result.size();
