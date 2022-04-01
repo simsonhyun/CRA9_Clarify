@@ -5,7 +5,8 @@ using namespace std;
 
 enum Command
 {
-	Command_Add = 0,
+	Command_None = 0,
+	Command_Add,
 	Command_Sch,
 	Command_Del,
 	Command_Mod,
@@ -49,4 +50,4 @@ typedef struct InputParameter
 	Column destColumn;
 	Employee inputEmployee;
 	Employee inputDestEmployee;
-};
+} InputParameter;
