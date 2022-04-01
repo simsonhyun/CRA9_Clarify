@@ -29,6 +29,4 @@ public:
 
 private:
 	vector<Employee> _employees;
-
-
 };

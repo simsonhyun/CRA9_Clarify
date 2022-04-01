@@ -18,5 +18,4 @@ public:
 public:
 private:
 	DataManager* _dataManager;
-
 };
