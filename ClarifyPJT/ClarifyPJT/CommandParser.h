@@ -32,6 +32,7 @@ private:
 	void			_SetValue(const string& inputString, const Column& column, const Option2& option2, Employee& inputParameter);
 
 	Command		_ConvertCommand(const string& inputString);
+	Name		_ConvertName(const string& inputNameString, const Option2& option2);
 	CareerLevel	_ConvertCareerLevel(const string& inputClString);
 	PhoneNum	_ConvertPhoneNum(const string& inputPhoneString);
 	BirthDay	_ConvertBirthDay(const string& inputBirthDayString);
