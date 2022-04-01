@@ -46,7 +46,7 @@ typedef struct PhoneNum
 		_lastNum = r._lastNum;
 		return *this;
 	}
-};
+} PhoneNum;
 
 typedef struct BirthDay
 {
@@ -78,7 +78,7 @@ typedef struct BirthDay
 		_day = r._day;
 		return *this;
 	}
-};
+} BirthDay;
 
 class Employee
 {
