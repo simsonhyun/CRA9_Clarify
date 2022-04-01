@@ -25,7 +25,7 @@ public:
 
 TEST_F(SearchTest, SearchByEmployeeNumTest) {
 	Employee searchEmployee = { 12345678, {"±è", "Ã¶¼ö"}, CareerLevel::CareerLevel_2,  {1234, 8765}, {1990, 02, 01}, Certi::Certi_PRO };
-	InputParameter input = { Command::Command_Sch, Option1::Option1_null, Option2::Option2_null, Column::Column_employeeNum , searchEmployee };
+	InputParameter input = { Command::Command_Sch, Option1::Option1_null, Option2::Option2_null, Column::Column_employeeNum , Column::Column_null, searchEmployee };
 
 	vector<Employee> result = searchTest->searchWithPrint(input);
 	int employeeCnt = 0;
@@ -38,7 +38,7 @@ TEST_F(SearchTest, SearchByEmployeeNumTest) {
 
 TEST_F(SearchTest, SearchByCareerLevelTest) {
 	Employee searchEmployee = { 11111111, {"È«", "±æµ¿"}, CareerLevel::CareerLevel_1,  {9513, 7412}, {1990, 04, 03}, Certi::Certi_PRO };
-	InputParameter input = { Command::Command_Sch, Option1::Option1_null, Option2::Option2_null, Column::Column_CareerLevel , searchEmployee };
+	InputParameter input = { Command::Command_Sch, Option1::Option1_null, Option2::Option2_null, Column::Column_CareerLevel , Column::Column_null, searchEmployee };
 
 	vector<Employee> result = searchTest->searchWithPrint(input);
 	int employeeCnt = 0;
@@ -51,7 +51,7 @@ TEST_F(SearchTest, SearchByCareerLevelTest) {
 
 TEST_F(SearchTest, SearchByCertiTest) {
 	Employee searchEmployee = { 87654321, {"°í", "±æµ¿"}, CareerLevel::CareerLevel_4,  {1354, 9516}, {1990, 03, 02}, Certi::Certi_ADV };
-	InputParameter input = { Command::Command_Sch, Option1::Option1_null, Option2::Option2_null, Column::Column_Certi , searchEmployee };
+	InputParameter input = { Command::Command_Sch, Option1::Option1_null, Option2::Option2_null, Column::Column_Certi , Column::Column_null, searchEmployee };
 
 	vector<Employee> result = searchTest->searchWithPrint(input);
 	int employeeCnt = 0;
