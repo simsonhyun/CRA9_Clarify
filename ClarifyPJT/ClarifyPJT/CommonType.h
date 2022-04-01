@@ -47,6 +47,7 @@ typedef struct InputParameter
 	Option1 option1;
 	Option2 option2;
 	Column column;
+	Column destColumn;
 	Employee inputEmployee;
 	Employee inputDestEmployee;
 } InputParameter;
