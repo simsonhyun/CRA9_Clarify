@@ -34,14 +34,14 @@ enum class Option2
 
 enum class Column
 {
-	Column_None = 0,
-	Column_employeeNum,
+	Column_employeeNum = 0,
 	Column_Name,
 	Column_CareerLevel,
 	Column_PhoneNum,
 	Column_BirthDay,
 	Column_Certi,
 	Column_null,
+	Column_None,
 };
 
 typedef struct InputParameter
