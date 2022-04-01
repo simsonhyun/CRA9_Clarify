@@ -5,7 +5,7 @@
 #include "PhoneNum.h"
 using namespace std;
 
-enum class CareerLevel : int
+enum class CareerLevel
 {
 	CareerLevel_None = 0,
 	CareerLevel_1,
@@ -14,7 +14,7 @@ enum class CareerLevel : int
 	CareerLevel_4,
 };
 
-enum class Certi : int
+enum class Certi
 {
 	Certi_None = 0, 
 	Certi_ADV,
