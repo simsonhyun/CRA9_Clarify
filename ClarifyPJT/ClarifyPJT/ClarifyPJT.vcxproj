@@ -153,6 +153,7 @@
     <ClInclude Include="Add.h" />
     <ClInclude Include="Name.h" />
     <ClInclude Include="PhoneNum.h" />
+    <ClInclude Include="PrintManager.h" />
     <ClInclude Include="RunProgram.h" />
     <ClInclude Include="Sch.h" />
   </ItemGroup>

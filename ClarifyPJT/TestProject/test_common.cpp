@@ -2,6 +2,7 @@
 #include "../ClarifyPJT/CommandManager.h"
 #include "../ClarifyPJT/Employee.h"
 #include "../ClarifyPJT/CommandParser.cpp"
+#include "../ClarifyPJT/PrintManager.h"
 
 TEST(TestDataManager, CheckCommandManagerConstructor)
 {
@@ -111,7 +112,6 @@ TEST(TestCommandParser, CheckParsing3)
 	inputParameter.option1 = Option1::Option1_p;
 	inputParameter.option2 = Option2::Option2_None;
 	inputParameter.column = Column::Column_Name;
-	inputParameter.destColumn = Column::Column_BirthDay;
 	inputParameter.inputEmployee.SetData(0, Name("NTAWR", "FB"), CareerLevel::CareerLevel_None, PhoneNum(0, 0), BirthDay(0, 0, 0), Certi::Certi_None);
 	inputParameter.inputDestEmployee.SetData(0, Name("", ""), CareerLevel::CareerLevel_None, PhoneNum(0, 0), BirthDay(2005, 05, 20), Certi::Certi_None);
 
@@ -120,7 +120,41 @@ TEST(TestCommandParser, CheckParsing3)
 	EXPECT_EQ(testParameter.option1, inputParameter.option1);
 	EXPECT_EQ(testParameter.option2, inputParameter.option2);
 	EXPECT_EQ(testParameter.column, inputParameter.column);
-	EXPECT_EQ(testParameter.destColumn, inputParameter.destColumn);
 	EXPECT_EQ(testParameter.inputEmployee.GetBirthDay()._day, inputParameter.inputEmployee.GetBirthDay()._day);
 	EXPECT_EQ(testParameter.inputDestEmployee.GetBirthDay()._day, inputParameter.inputDestEmployee.GetBirthDay()._day);
+}
+
+TEST(TestPrintManager, CheckPrint0)
+{
+	// ADD, , , ,02117175,SBILHUT LDEXRI,CL4,010-2814-1699,19950704,ADV
+	// ADD, , , ,02117175,TEST LDEXRI,CL4,010-2814-1699,19950704,ADV
+	// input : SCH,-p,-d, ,birthday,04
+	// output : SCH,02117175,SBILHUT LDEXRI,CL4,010-2814-1699,19950704,ADV
+
+	string testString = "SCH,02117175,SBILHUT LDEXRI,CL4,010-2814-1699,19950704,ADV";
+	testString += '\n';
+	testString += "SCH,02117175,TEST LDEXRI,CL4,010-2814-1699,19950704,ADV";
+	testString += '\n';
+
+	PrintManager printManager = PrintManager();
+	vector<Employee> inputEmployees;
+	inputEmployees.push_back(Employee(2117175, Name("LDEXRI", "SBILHUT"), CareerLevel::CareerLevel_4, PhoneNum(2814, 1699), BirthDay(1995, 07, 04), Certi::Certi_ADV));
+	inputEmployees.push_back(Employee(2117175, Name("LDEXRI", "TEST"), CareerLevel::CareerLevel_4, PhoneNum(2814, 1699), BirthDay(1995, 07, 04), Certi::Certi_ADV));
+
+	EXPECT_EQ(printManager.Print(Command::Command_Sch, inputEmployees), testString);
+}
+
+TEST(TestPrintManager, CheckPrint1)
+{
+	// input : SCH,-p,-d, ,birthday,04
+
+	string testString = "SCH,NONE";
+	testString += '\n';
+
+	PrintManager printManager = PrintManager();
+	vector<Employee> inputEmployees;
+	// inputEmployees.push_back(Employee(2117175, Name("LDEXRI", "SBILHUT"), CareerLevel::CareerLevel_4, PhoneNum(2814, 1699), BirthDay(1995, 07, 04), Certi::Certi_ADV));
+	// inputEmployees.push_back(Employee(2117175, Name("LDEXRI", "TEST"), CareerLevel::CareerLevel_4, PhoneNum(2814, 1699), BirthDay(1995, 07, 04), Certi::Certi_ADV));
+
+	EXPECT_EQ(printManager.Print(Command::Command_Sch, inputEmployees), testString);
 }
