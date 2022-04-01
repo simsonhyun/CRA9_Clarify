@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="소스 파일">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="헤더 파일">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="리소스 파일">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="소스 파일\Sch">
+      <UniqueIdentifier>{652036f6-1bf5-46fd-84ab-91557f333b2e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Add">
+      <UniqueIdentifier>{7cb2f1cd-e619-42ce-8756-a04abbde0374}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Del">
+      <UniqueIdentifier>{540dbc9f-702c-4d16-9d55-64a05a96b644}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Mod">
+      <UniqueIdentifier>{93b37356-c286-4ac8-9435-f31d0c1e29e0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Common">
+      <UniqueIdentifier>{9a65ff2a-c21a-43fe-9fc9-172759746ec0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\Common">
+      <UniqueIdentifier>{b0c995b1-e240-4b17-b44b-31cb3ffa6b32}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\Add">
+      <UniqueIdentifier>{883b7162-e127-40db-bdb3-0f5b53e89a80}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\Sch">
+      <UniqueIdentifier>{a3320a34-e996-416b-a5de-9cfd8b229719}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="CommonType.h">
+      <Filter>헤더 파일\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="DataManager.h">
+      <Filter>헤더 파일\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Employee.h">
+      <Filter>헤더 파일\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="CommandManager.h">
+      <Filter>헤더 파일\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Add.h">
+      <Filter>헤더 파일\Add</Filter>
+    </ClInclude>
+    <ClInclude Include="sch.h">
+      <Filter>헤더 파일\Sch</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+</Project>

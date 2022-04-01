@@ -1,0 +1,184 @@
+[33mcommit e199503d2056274e5a1d8b9046b08407922bd871[m[33m ([m[1;36mHEAD -> [m[1;32mfeature/sch[m[33m, [m[1;31morigin/feature/sch[m[33m)[m
+Author: DongYeon <qpoas3@naver.com>
+Date:   Fri Apr 1 11:45:55 2022 +0900
+
+    [Feature][Search(non-option) 구현]
+    non-option(사원번호/CL/CERTI) search 구현
+
+[33mcommit 04a1352057986bda4f41b6c04cd51160625a5ce2[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmaster[m[33m)[m
+Merge: 750a536 eca1ef1
+Author: juyeon0park <102651758+juyeon0park@users.noreply.github.com>
+Date:   Fri Apr 1 09:05:32 2022 +0900
+
+    Merge pull request #4 from simsonhyun/feature/Add
+    
+    [Test][Add Test 추가]
+    Add 모듈 첫번째 Test case 추가
+
+[33mcommit eca1ef1da6bdcd1e978008d41e4ab271d1839a3a[m
+Author: Juyeon Park <kitty4701@gmail.com>
+Date:   Thu Mar 31 17:30:32 2022 +0900
+
+    [Test][Add Test 추가]
+    Add 모듈 테스트 케이스 추가 (Max Size까지의 Add 검증)
+
+[33mcommit 0cf89ea2057858e9d1d41fb89e3ed8ac9c14f543[m
+Author: Juyeon Park <kitty4701@gmail.com>
+Date:   Thu Mar 31 16:56:42 2022 +0900
+
+    [Test][Add Test 추가]
+    Add 모듈 테스트 케이스 추가
+
+[33mcommit aaa0f5f4a80cac5dc4f679924b8c1d051cda6e7f[m
+Merge: 4d7ac5e 26afb05
+Author: Juyeon Park <kitty4701@gmail.com>
+Date:   Thu Mar 31 15:52:30 2022 +0900
+
+    Merge branch 'feature/Add' of https://github.com/simsonhyun/CRA9_Clarify into feature/Add
+
+[33mcommit 4d7ac5ee979c717a89fe73cc70f68f0eb56edaec[m
+Author: Juyeon Park <kitty4701@gmail.com>
+Date:   Thu Mar 31 11:57:10 2022 +0900
+
+    Add branch 생성
+
+[33mcommit 750a536897e500df3ce8011e0e4ffdfdfcde2f2c[m
+Merge: 0b0815e be9176d
+Author: JeongYongKoo <102653126+JeongYongKoo@users.noreply.github.com>
+Date:   Thu Mar 31 15:32:26 2022 +0900
+
+    Merge pull request #3 from simsonhyun/feature/Del
+    
+    [Test] [TC 추가]
+    카페에 올라와 있던 공식 Test case 1 set 추가합니다.
+
+[33mcommit 0b0815eeb33132ff94137fc94e53fd36d9b396a0[m
+Author: simsonhyun <102651536+simsonhyun@users.noreply.github.com>
+Date:   Thu Mar 31 15:31:00 2022 +0900
+
+    Feature/common (#2)
+    
+    * [Feature] [Common 수정]
+    - DataManager Class 추가
+    - Employee Get 함수 추가 및 Test 추가.
+    - CommandManager 추가
+
+[33mcommit be9176d691a4548d26a003ac0d0afdcafc994bdf[m[33m ([m[1;31morigin/feature/Del[m[33m)[m
+Author: JeongYongKoo <wjddydrn1@naver.com>
+Date:   Thu Mar 31 15:22:44 2022 +0900
+
+    [Test] [TC 추가]
+    카페에 올라와있던 공식 Test case 1 set 추가합니다.
+
+[33mcommit 26afb0557b2fe7a3ebd5be017b38b9149140c43e[m
+Merge: c133b26 0893a8c
+Author: Juyeon Park <kitty4701@gmail.com>
+Date:   Thu Mar 31 13:58:34 2022 +0900
+
+    Merge branch 'master' of https://github.com/simsonhyun/CRA9_Clarify into feature/Add
+
+[33mcommit 0893a8cbefaeeb2f0c942d3075a428153f1a5380[m
+Author: sh92.shin <simsonhyun@gmail.com>
+Date:   Thu Mar 31 13:28:47 2022 +0900
+
+    [Feature][InputParameter 수정]
+    
+    inputparameter 수정.
+
+[33mcommit c133b263eb5519cfaf6f15e5604ad62a7e778002[m
+Author: Juyeon Park <kitty4701@gmail.com>
+Date:   Thu Mar 31 11:57:10 2022 +0900
+
+    Add branch 생성
+
+[33mcommit 11d36da9a04d9806c8ef55901ad6a27642be727f[m
+Author: sh92.shin <simsonhyun@gmail.com>
+Date:   Thu Mar 31 11:31:17 2022 +0900
+
+    [Feature] [TestProject 추가]
+    
+    TestProject 추가
+
+[33mcommit 8bfdebaab49fb61036d89874555f585b5109ab21[m
+Merge: c167a34 3dac154
+Author: sh92.shin <simsonhyun@gmail.com>
+Date:   Thu Mar 31 11:22:14 2022 +0900
+
+    Merge branch 'main' of https://github.com/simsonhyun/CRA9_Clarify
+
+[33mcommit c167a34f8dd43f51d022867d406bd1b72f8d5d76[m
+Author: sh92.shin <simsonhyun@gmail.com>
+Date:   Thu Mar 31 11:21:53 2022 +0900
+
+    [Feature] [Common 수정]
+    
+    inputparameter, employee 추가
+
+[33mcommit 3dac1540f7e582ae9e52eca217124e3da56a8f6d[m
+Author: simsonhyun <102651536+simsonhyun@users.noreply.github.com>
+Date:   Thu Mar 31 11:20:08 2022 +0900
+
+    Update README.md
+
+[33mcommit f1ae570a19e0c7317cc1ef50790dea8f0a3bc50a[m
+Author: simsonhyun <102651536+simsonhyun@users.noreply.github.com>
+Date:   Thu Mar 31 11:16:44 2022 +0900
+
+    Update README.md
+
+[33mcommit a3822bc434ff705b5324648a20a46a048c01b0bb[m
+Author: sh92.shin <simsonhyun@gmail.com>
+Date:   Thu Mar 31 09:48:56 2022 +0900
+
+    Visual Studio Filter 폴더 추가.
+
+[33mcommit b76309fff014937dae28f53ae79df39f64dbd992[m
+Author: sh92.shin <simsonhyun@gmail.com>
+Date:   Thu Mar 31 09:35:25 2022 +0900
+
+    ignore 적용 테스트.
+
+[33mcommit e18385e9acdbbe5e5218181a549d5348e884d825[m
+Author: sh92.shin <simsonhyun@gmail.com>
+Date:   Thu Mar 31 09:33:05 2022 +0900
+
+    project 수정.
+
+[33mcommit 573e33a5ce18df3da46cf4ee6ee1f5b87f7d3eb6[m
+Author: sh92.shin <simsonhyun@gmail.com>
+Date:   Thu Mar 31 09:20:26 2022 +0900
+
+    [TEST] first project add.
+
+[33mcommit 68a5fb993f80bf98274e7be7a6772f4aeafd065e[m
+Merge: 75f3df7 cdfa172
+Author: simsonhyun <102651536+simsonhyun@users.noreply.github.com>
+Date:   Thu Mar 31 08:51:55 2022 +0900
+
+    Merge pull request #1 from simsonhyun/test
+    
+    [TEST] test...
+
+[33mcommit cdfa172566933d52dd77108dee803aaf370c26b5[m
+Author: sh92.shin <simsonhyun@gmail.com>
+Date:   Thu Mar 31 08:48:50 2022 +0900
+
+    [TEST] test...
+
+[33mcommit 75f3df7278995638ac1bd3c61548a34065465c26[m
+Author: simsonhyun <102651536+simsonhyun@users.noreply.github.com>
+Date:   Wed Mar 30 16:27:58 2022 +0900
+
+    Update README.md
+
+[33mcommit bc9f7e6d2ebaf2157a6358f7ab680a671b971585[m
+Author: sh92.shin <simsonhyun@gmail.com>
+Date:   Wed Mar 30 16:25:43 2022 +0900
+
+    [TEST] README 수정
+
+[33mcommit e9f428effa68f941456812437e4cc1b9ba18e394[m
+Author: sh92.shin <simsonhyun@gmail.com>
+Date:   Wed Mar 30 16:23:24 2022 +0900
+
+    first commit
