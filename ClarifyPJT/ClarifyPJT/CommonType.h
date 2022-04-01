@@ -16,7 +16,6 @@ enum class Option1
 {
 	Option1_None = 0,
 	Option1_p,		// print
-	Option1_null,
 };
 
 enum class Option2
@@ -29,7 +28,6 @@ enum class Option2
 	Option2_BirthDay_y,	// year
 	Option2_BirthDay_m,	// month
 	Option2_BirthDay_d,	// day
-	Option2_null,
 };
 
 enum class Column
@@ -40,7 +38,6 @@ enum class Column
 	Column_PhoneNum,
 	Column_BirthDay,
 	Column_Certi,
-	Column_null,
 	Column_None,
 };
 
