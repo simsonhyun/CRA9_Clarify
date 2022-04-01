@@ -87,6 +87,10 @@ private:
 	
 
 public:
+	static const int MIN_EMPLOYEE_NUM = 69000000;
+	static const int MAX_EMPLOYEE_NUM = 21999999;
+	static const int MIN_EMPLOYEE_BIRTH = 1969;
+	static const int MAX_EMPLOYEE_BIRTH = 2021;
 private:
 	int _employeeNum;
 	Name _name;
