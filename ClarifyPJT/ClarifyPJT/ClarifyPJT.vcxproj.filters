@@ -31,6 +31,9 @@
     <Filter Include="헤더 파일\Common">
       <UniqueIdentifier>{b0c995b1-e240-4b17-b44b-31cb3ffa6b32}</UniqueIdentifier>
     </Filter>
+    <Filter Include="헤더 파일\Add">
+      <UniqueIdentifier>{883b7162-e127-40db-bdb3-0f5b53e89a80}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -38,9 +41,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Add.h">
-      <Filter>소스 파일\Add</Filter>
-    </ClInclude>
     <ClInclude Include="CommonType.h">
       <Filter>헤더 파일\Common</Filter>
     </ClInclude>
@@ -52,6 +52,9 @@
     </ClInclude>
     <ClInclude Include="CommandManager.h">
       <Filter>헤더 파일\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Add.h">
+      <Filter>헤더 파일\Add</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
