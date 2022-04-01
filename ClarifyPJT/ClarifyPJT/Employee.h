@@ -5,7 +5,7 @@
 #include "PhoneNum.h"
 using namespace std;
 
-enum class CareerLevel
+enum class CareerLevel : int
 {
 	CareerLevel_None = 0,
 	CareerLevel_1,
@@ -14,7 +14,7 @@ enum class CareerLevel
 	CareerLevel_4,
 };
 
-enum class Certi
+enum class Certi : int
 {
 	Certi_None = 0, 
 	Certi_ADV,
@@ -43,32 +43,32 @@ public:
 		_certi(certi)
 	{ }
 
-	int GetEmployeeNum()
+	int GetEmployeeNum() const
 	{
 		return _employeeNum;
 	}
 
-	Name GetName()
+	Name GetName() const
 	{
 		return _name;
 	}
 
-	CareerLevel GetCl()
+	CareerLevel GetCl() const
 	{
 		return _cl;
 	}
 
-	PhoneNum GetPhoneNum()
+	PhoneNum GetPhoneNum() const
 	{
 		return _phoneNum;
 	}
 
-	BirthDay GetBirthDay()
+	BirthDay GetBirthDay() const
 	{
 		return _birthDay;
 	}
 
-	Certi GetCerti()
+	Certi GetCerti() const
 	{
 		return _certi;
 	}
