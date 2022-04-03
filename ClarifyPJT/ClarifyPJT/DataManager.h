@@ -23,6 +23,10 @@ public:
 		}
 		return _employees;
 	}
+	vector<Employee>* getPointerData(void)
+	{
+		return &_employees;
+	}
 
 	int getSize(void)
 	{
