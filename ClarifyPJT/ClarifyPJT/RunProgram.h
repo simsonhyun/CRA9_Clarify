@@ -13,8 +13,9 @@ class RunProgram
 public:
 	const string ADD_RETURN_SIG = "ADD_RETURN";
 	static const int ARGUMENT_COUNT = 3;
+	static const int MAX_FILELENGTH = 300;
 
-	const void init(void)
+	RunProgram()
 	{
 		DataManager* dataManager = new DataManager();
 		add = new Add(*dataManager);
@@ -25,6 +26,9 @@ public:
 
 	const void run(const string& inputText, const string& outputText)
 	{
+		checkInvalidFileName(inputText);
+		checkInvalidFileName(outputText);
+
 		fileManager.InputOpen(inputText);
 		fileManager.OutputOpen(outputText);
 
@@ -64,7 +68,7 @@ public:
 		return fileManager.compareFiles(p1, p2);
 	}
 
-	const bool checkArgument(int argc)
+	const bool checkArgument(int argc) const
 	{
 		if (argc == ARGUMENT_COUNT)
 		{
@@ -72,6 +76,38 @@ public:
 		}
 
 		return false;
+	}
+
+	const void checkInvalidFileName(const string& fileName) const
+	{
+		// 정책 
+		// 1. / 개수 3개 미만
+		// 2. file 이름 300 이하
+		static const char FIND_INVALID_CH = '/';
+
+		bool ret = false;
+		int findCount = 0;
+
+		for (auto ch : fileName)
+		{
+			if (ch == FIND_INVALID_CH)
+			{
+				findCount++;
+			}
+
+			if (findCount > 3)
+			{
+				ret = true;
+				break;
+			}
+		}
+
+		if (fileName.length() >= MAX_FILELENGTH)
+		{
+			ret = true;
+		}
+
+		if (ret) throw invalid_argument("Input Invalid FileName");
 	}
 
 private:

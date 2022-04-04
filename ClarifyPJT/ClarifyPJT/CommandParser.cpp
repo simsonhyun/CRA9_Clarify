@@ -151,7 +151,7 @@ Name CommandParser::_ConvertName(const string& inputNameString, const Option2& o
 	{
 		// LastName이 성
 		// Input : "홍 길동"
-		return Name(parsedPhoneNum.at(1), parsedPhoneNum.at(0));
+		return Name(parsedPhoneNum.at(0), parsedPhoneNum.at(1));
 	}
 }
 

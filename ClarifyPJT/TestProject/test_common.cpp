@@ -54,7 +54,7 @@ TEST(TestCommandParser, CheckParsing0)
 	inputParameter.option1 = Option1::Option1_None;
 	inputParameter.option2 = Option2::Option2_None;
 	inputParameter.column = Column::Column_None;
-	inputParameter.inputEmployee.SetData(17111236, Name("TVO", "VSID"), CareerLevel::CareerLevel_1, phoneNum, birthday, Certi::Certi_PRO);
+	inputParameter.inputEmployee.SetData(17111236, Name("VSID", "TVO"), CareerLevel::CareerLevel_1, phoneNum, birthday, Certi::Certi_PRO);
 	
 	InputParameter testParameter = commandParser.ConvertParameter("ADD, , , ,17111236,VSID TVO,CL1,010-3669-1077,20120718,PRO");
 
@@ -139,8 +139,8 @@ TEST(TestPrintManager, CheckPrint0)
 
 	PrintManager printManager = PrintManager();
 	vector<Employee> inputEmployees;
-	inputEmployees.push_back(Employee(2117175, Name("LDEXRI", "SBILHUT"), CareerLevel::CareerLevel_4, PhoneNum(2814, 1699), BirthDay(1995, 07, 04), Certi::Certi_ADV));
-	inputEmployees.push_back(Employee(2117175, Name("LDEXRI", "TEST"), CareerLevel::CareerLevel_4, PhoneNum(2814, 1699), BirthDay(1995, 07, 04), Certi::Certi_ADV));
+	inputEmployees.push_back(Employee(2117175, Name("SBILHUT", "LDEXRI"), CareerLevel::CareerLevel_4, PhoneNum(2814, 1699), BirthDay(1995, 07, 04), Certi::Certi_ADV));
+	inputEmployees.push_back(Employee(2117175, Name("TEST", "LDEXRI"), CareerLevel::CareerLevel_4, PhoneNum(2814, 1699), BirthDay(1995, 07, 04), Certi::Certi_ADV));
 
 	EXPECT_EQ(printManager.Print(Command::Command_Sch, Option1::Option1_p, inputEmployees), testString);
 }
