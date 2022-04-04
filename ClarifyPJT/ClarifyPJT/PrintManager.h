@@ -116,6 +116,8 @@ private:
 public:
 	string Print(const Command& command, const Option1& option1, const vector< Employee>& commandResultEmployees)
 	{
+		static const int MAX_PRINT_COUNT = 5;
+
 		string retString;
 
 		if (commandResultEmployees.size() == 0)
@@ -136,15 +138,27 @@ public:
 			return retString;
 		}
 
-		for (auto employee : commandResultEmployees)
+		try
 		{
-			retString.append(_GetCommandString(command));
-			retString.append(_ConvertEmployeeNum(employee.GetEmployeeNum()));
-			retString.append(_ConvertName(employee.GetName()));
-			retString.append(_ConvertCl(employee.GetCl()));
-			retString.append(_ConvertPhoneNum(employee.GetPhoneNum()));
-			retString.append(_ConvertBirthDay(employee.GetBirthDay()));
-			retString.append(_ConvertCerti(employee.GetCerti()));
+			if (commandResultEmployees.size() > MAX_PRINT_COUNT)
+			{
+				throw exception("in -p Option, size error");
+			}
+
+			for (auto employee : commandResultEmployees)
+			{
+				retString.append(_GetCommandString(command));
+				retString.append(_ConvertEmployeeNum(employee.GetEmployeeNum()));
+				retString.append(_ConvertName(employee.GetName()));
+				retString.append(_ConvertCl(employee.GetCl()));
+				retString.append(_ConvertPhoneNum(employee.GetPhoneNum()));
+				retString.append(_ConvertBirthDay(employee.GetBirthDay()));
+				retString.append(_ConvertCerti(employee.GetCerti()));
+			}
+		}
+		catch (exception e)
+		{
+			cout << e.what() << endl;
 		}
 
 		return retString;

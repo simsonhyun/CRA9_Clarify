@@ -44,7 +44,7 @@ CertiDeletePolicy::deleteByPolicy(InputParameter input, Employee& aEmployee) con
 }
 
 vector<Employee>
-Del::deleteEmployeeInfo(InputParameter input) {
+Del::Command(InputParameter input) {
 	vector<Employee> deleteList;
 	deleteList.reserve(getDataManager()->MAX_EMPLOYEE_COUNT);
 	vector<Employee>& employees = getDataManager()->getData();

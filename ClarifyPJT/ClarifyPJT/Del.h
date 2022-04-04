@@ -49,7 +49,7 @@ public:
 		deletePolicy[static_cast<int>(Column::Column_Certi)] = new CertiDeletePolicy();
 	}
 
-	vector<Employee> deleteEmployeeInfo(InputParameter input);
+	vector<Employee> Command(InputParameter input) override;
 
 private:
 

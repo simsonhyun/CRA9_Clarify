@@ -5,11 +5,11 @@ using namespace std;
 
 enum class Command
 {
-	Command_None = 0,
-	Command_Add,
+	Command_Add = 0,
 	Command_Sch,
 	Command_Del,
 	Command_Mod,
+	Command_None,
 };
 
 enum class Option1

@@ -10,17 +10,17 @@ public:
 	Add(DataManager& dataManager)
 		:CommandManager(dataManager) { }
 
-	bool Command(InputParameter inputParameter)
+	vector<Employee> Command(InputParameter inputParameter)
 	{
 		try {
 			_CheckInputdataValid(&inputParameter);
 		} catch (invalid_argument& e){
 			std::cout << " ERROR:Input 예외 발생!!! " << e.what() << std::endl;
-			return false;
+			return vector<Employee>();
 		}
 
 		getDataManager()->setData(inputParameter.inputEmployee);
-		return true;
+		return vector<Employee>();
 	}
 
 private:

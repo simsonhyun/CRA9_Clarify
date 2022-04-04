@@ -1,5 +1,6 @@
 #pragma once
 #include "DataManager.h"
+#include "CommonType.h"
 
 class CommandManager
 {
@@ -14,6 +15,8 @@ public:
 	{
 		return _dataManager;
 	}
+
+	virtual vector<Employee> Command(InputParameter input) { return vector<Employee>(); };
 
 public:
 private:

@@ -37,7 +37,7 @@ TEST_F(DeleteOption2Test, DeleteNameWithOptionFTestWithOptionP) {
 	Employee deleteEmployee = { 12345678, {"ȫ", "�浿"}, CareerLevel::CareerLevel_2,  {1234, 0000}, {1992, 01, 01}, Certi::Certi_PRO };
 	InputParameter input = { Command::Command_Del, Option1::Option1_p, Option2::Option2_Name_f, Column::Column_Name, Column::Column_None, deleteEmployee };
 
-	vector<Employee> result = deleteTest->deleteEmployeeInfo(input);
+	vector<Employee> result = deleteTest->Command(input);
 	int deleteCount = 0;
 	for (const Employee& aEmployee : result) {
 		EXPECT_EQ(aEmployee.GetName()._firstName, deleteEmployee.GetName()._firstName);
@@ -51,7 +51,7 @@ TEST_F(DeleteOption2Test, DeleteNameWithOptionLTestWithOptionP) {
 	Employee deleteEmployee = { 12345678, {"ȫ", "�浿"}, CareerLevel::CareerLevel_2,  {1234, 0000}, {1992, 01, 01}, Certi::Certi_PRO };
 	InputParameter input = { Command::Command_Del, Option1::Option1_p, Option2::Option2_Name_l, Column::Column_Name, Column::Column_None, deleteEmployee };
 
-	vector<Employee> result = deleteTest->deleteEmployeeInfo(input);
+	vector<Employee> result = deleteTest->Command(input);
 	int deleteCount = 0;
 	for (const Employee& aEmployee : result) {
 		EXPECT_EQ(aEmployee.GetName()._lastName, deleteEmployee.GetName()._lastName);
@@ -65,7 +65,7 @@ TEST_F(DeleteOption2Test, DeleteNameWithOptionXTestWithOptionP) {
 	Employee deleteEmployee = { 12345678, {"ȫ", "�浿"}, CareerLevel::CareerLevel_2,  {1234, 0000}, {1992, 01, 01}, Certi::Certi_PRO };
 	InputParameter input = { Command::Command_Del, Option1::Option1_p, Option2::Option2_None, Column::Column_Name, Column::Column_None, deleteEmployee };
 
-	vector<Employee> result = deleteTest->deleteEmployeeInfo(input);
+	vector<Employee> result = deleteTest->Command(input);
 	int deleteCount = 0;
 	for (const Employee& aEmployee : result) {
 		EXPECT_EQ(aEmployee.GetName(), deleteEmployee.GetName());
@@ -79,7 +79,7 @@ TEST_F(DeleteOption2Test, DeleteEmployeeNumWithOptionFTestWithOptionP) {
 	Employee deleteEmployee = { 12345678, {"ȫ", "�浿"}, CareerLevel::CareerLevel_2,  {1234, 0000}, {1992, 01, 01}, Certi::Certi_PRO };
 	InputParameter input = { Command::Command_Del, Option1::Option1_p, Option2::Option2_Name_f, Column::Column_employeeNum, Column::Column_None, deleteEmployee };
 
-	vector<Employee> result = deleteTest->deleteEmployeeInfo(input);
+	vector<Employee> result = deleteTest->Command(input);
 	int deleteCount = 0;
 	for (const Employee& aEmployee : result) {
 		EXPECT_EQ(aEmployee.GetName()._firstName, deleteEmployee.GetName()._firstName);
@@ -93,7 +93,7 @@ TEST_F(DeleteOption2Test, DeleteNameWithOptionFTestWithoutOptionP) {
 	Employee deleteEmployee = { 12345678, {"ȫ", "�浿"}, CareerLevel::CareerLevel_2,  {1234, 0000}, {1992, 01, 01}, Certi::Certi_PRO };
 	InputParameter input = { Command::Command_Del, Option1::Option1_None, Option2::Option2_Name_f, Column::Column_Name, Column::Column_None, deleteEmployee };
 
-	vector<Employee> result = deleteTest->deleteEmployeeInfo(input);
+	vector<Employee> result = deleteTest->Command(input);
 	int deleteCount = 0;
 	for (const Employee& aEmployee : result) {
 		EXPECT_EQ(aEmployee.GetName()._firstName, deleteEmployee.GetName()._firstName);
@@ -107,7 +107,7 @@ TEST_F(DeleteOption2Test, DeleteNameWithOptionLTestWithoutOptionP) {
 	Employee deleteEmployee = { 12345678, {"ȫ", "�浿"}, CareerLevel::CareerLevel_2,  {1234, 0000}, {1992, 01, 01}, Certi::Certi_PRO };
 	InputParameter input = { Command::Command_Del, Option1::Option1_None, Option2::Option2_Name_l, Column::Column_Name, Column::Column_None, deleteEmployee };
 
-	vector<Employee> result = deleteTest->deleteEmployeeInfo(input);
+	vector<Employee> result = deleteTest->Command(input);
 	int deleteCount = 0;
 	for (const Employee& aEmployee : result) {
 		EXPECT_EQ(aEmployee.GetName()._lastName, deleteEmployee.GetName()._lastName);
@@ -121,7 +121,7 @@ TEST_F(DeleteOption2Test, DeleteNameWithOptionXTestWithoutOptionP) {
 	Employee deleteEmployee = { 12345678, {"ȫ", "�浿"}, CareerLevel::CareerLevel_2,  {1234, 0000}, {1992, 01, 01}, Certi::Certi_PRO };
 	InputParameter input = { Command::Command_Del, Option1::Option1_None, Option2::Option2_None, Column::Column_Name, Column::Column_None, deleteEmployee };
 
-	vector<Employee> result = deleteTest->deleteEmployeeInfo(input);
+	vector<Employee> result = deleteTest->Command(input);
 	int deleteCount = 0;
 	for (const Employee& aEmployee : result) {
 		EXPECT_EQ(aEmployee.GetName(), deleteEmployee.GetName());
@@ -135,7 +135,7 @@ TEST_F(DeleteOption2Test, DeleteEmployeeNumWithOptionFTestWithoutOptionP) {
 	Employee deleteEmployee = { 12345678, {"ȫ", "�浿"}, CareerLevel::CareerLevel_2,  {1234, 0000}, {1992, 01, 01}, Certi::Certi_PRO };
 	InputParameter input = { Command::Command_Del, Option1::Option1_None, Option2::Option2_Name_f, Column::Column_employeeNum, Column::Column_None, deleteEmployee };
 
-	vector<Employee> result = deleteTest->deleteEmployeeInfo(input);
+	vector<Employee> result = deleteTest->Command(input);
 	int deleteCount = 0;
 	for (const Employee& aEmployee : result) {
 		EXPECT_EQ(aEmployee.GetName()._firstName, deleteEmployee.GetName()._firstName);
@@ -149,7 +149,7 @@ TEST_F(DeleteOption2Test, DeletePhoneNumWithOptionMTestWithOptionP) {
 	Employee deleteEmployee = { 12345678, {"ȫ", "�浿"}, CareerLevel::CareerLevel_2,  {1234, 0000}, {1992, 01, 01}, Certi::Certi_PRO };
 	InputParameter input = { Command::Command_Del, Option1::Option1_p, Option2::Option2_PhoneNum_m, Column::Column_PhoneNum, Column::Column_None, deleteEmployee };
 
-	vector<Employee> result = deleteTest->deleteEmployeeInfo(input);
+	vector<Employee> result = deleteTest->Command(input);
 	int deleteCount = 0;
 	for (const Employee& aEmployee : result) {
 		EXPECT_EQ(aEmployee.GetPhoneNum()._middleNum, deleteEmployee.GetPhoneNum()._middleNum);
@@ -163,7 +163,7 @@ TEST_F(DeleteOption2Test, DeletePhoneNumWithOptionLTestWithOptionP) {
 	Employee deleteEmployee = { 12345678, {"ȫ", "�浿"}, CareerLevel::CareerLevel_2,  {1234, 0000}, {1992, 01, 01}, Certi::Certi_PRO };
 	InputParameter input = { Command::Command_Del, Option1::Option1_p, Option2::Option2_PhoneNum_l, Column::Column_PhoneNum, Column::Column_None, deleteEmployee };
 
-	vector<Employee> result = deleteTest->deleteEmployeeInfo(input);
+	vector<Employee> result = deleteTest->Command(input);
 	int deleteCount = 0;
 	for (const Employee& aEmployee : result) {
 		EXPECT_EQ(aEmployee.GetPhoneNum()._lastNum, deleteEmployee.GetPhoneNum()._lastNum);
@@ -177,7 +177,7 @@ TEST_F(DeleteOption2Test, DeletePhoneNumWithOptionXTestWithOptionP) {
 	Employee deleteEmployee = { 12345678, {"ȫ", "�浿"}, CareerLevel::CareerLevel_2,  {1234, 0000}, {1992, 01, 01}, Certi::Certi_PRO };
 	InputParameter input = { Command::Command_Del, Option1::Option1_p, Option2::Option2_None, Column::Column_PhoneNum, Column::Column_None, deleteEmployee };
 
-	vector<Employee> result = deleteTest->deleteEmployeeInfo(input);
+	vector<Employee> result = deleteTest->Command(input);
 	int deleteCount = 0;
 	for (const Employee& aEmployee : result) {
 		EXPECT_EQ(aEmployee.GetPhoneNum(), deleteEmployee.GetPhoneNum());
@@ -191,7 +191,7 @@ TEST_F(DeleteOption2Test, DeleteEmployeeNumWithOptionMTestWithOptionP) {
 	Employee deleteEmployee = { 12345678, {"ȫ", "�浿"}, CareerLevel::CareerLevel_2,  {1234, 0000}, {1992, 01, 01}, Certi::Certi_PRO };
 	InputParameter input = { Command::Command_Del, Option1::Option1_p, Option2::Option2_PhoneNum_m, Column::Column_employeeNum, Column::Column_None, deleteEmployee };
 
-	vector<Employee> result = deleteTest->deleteEmployeeInfo(input);
+	vector<Employee> result = deleteTest->Command(input);
 	int deleteCount = 0;
 	for (const Employee& aEmployee : result) {
 		EXPECT_EQ(aEmployee.GetEmployeeNum(), deleteEmployee.GetEmployeeNum());
@@ -206,7 +206,7 @@ TEST_F(DeleteOption2Test, DeletePhoneNumWithOptionMTestWithoutOptionP) {
 	Employee deleteEmployee = { 12345678, {"ȫ", "�浿"}, CareerLevel::CareerLevel_2,  {1234, 0000}, {1992, 01, 01}, Certi::Certi_PRO };
 	InputParameter input = { Command::Command_Del, Option1::Option1_None, Option2::Option2_PhoneNum_m, Column::Column_PhoneNum, Column::Column_None, deleteEmployee };
 
-	vector<Employee> result = deleteTest->deleteEmployeeInfo(input);
+	vector<Employee> result = deleteTest->Command(input);
 	int deleteCount = 0;
 	for (const Employee& aEmployee : result) {
 		EXPECT_EQ(aEmployee.GetPhoneNum()._middleNum, deleteEmployee.GetPhoneNum()._middleNum);
@@ -220,7 +220,7 @@ TEST_F(DeleteOption2Test, DeletePhoneNumWithOptionLTestWithoutOptionP) {
 	Employee deleteEmployee = { 12345678, {"ȫ", "�浿"}, CareerLevel::CareerLevel_2,  {1234, 0000}, {1992, 01, 01}, Certi::Certi_PRO };
 	InputParameter input = { Command::Command_Del, Option1::Option1_None, Option2::Option2_PhoneNum_l, Column::Column_PhoneNum, Column::Column_None, deleteEmployee };
 
-	vector<Employee> result = deleteTest->deleteEmployeeInfo(input);
+	vector<Employee> result = deleteTest->Command(input);
 	int deleteCount = 0;
 	for (const Employee& aEmployee : result) {
 		EXPECT_EQ(aEmployee.GetPhoneNum()._lastNum, deleteEmployee.GetPhoneNum()._lastNum);
@@ -234,7 +234,7 @@ TEST_F(DeleteOption2Test, DeletePhoneNumWithOptionXTestWithoutOptionP) {
 	Employee deleteEmployee = { 12345678, {"ȫ", "�浿"}, CareerLevel::CareerLevel_2,  {1234, 0000}, {1992, 01, 01}, Certi::Certi_PRO };
 	InputParameter input = { Command::Command_Del, Option1::Option1_None, Option2::Option2_None, Column::Column_PhoneNum, Column::Column_None, deleteEmployee };
 
-	vector<Employee> result = deleteTest->deleteEmployeeInfo(input);
+	vector<Employee> result = deleteTest->Command(input);
 	int deleteCount = 0;
 	for (const Employee& aEmployee : result) {
 		EXPECT_EQ(aEmployee.GetPhoneNum(), deleteEmployee.GetPhoneNum());
@@ -248,7 +248,7 @@ TEST_F(DeleteOption2Test, DeleteEmployeeNumWithOptionMTestWithoutOptionP) {
 	Employee deleteEmployee = { 12345678, {"ȫ", "�浿"}, CareerLevel::CareerLevel_2,  {1234, 0000}, {1992, 01, 01}, Certi::Certi_PRO };
 	InputParameter input = { Command::Command_Del, Option1::Option1_None, Option2::Option2_PhoneNum_m, Column::Column_employeeNum, Column::Column_None, deleteEmployee };
 
-	vector<Employee> result = deleteTest->deleteEmployeeInfo(input);
+	vector<Employee> result = deleteTest->Command(input);
 	int deleteCount = 0;
 	for (const Employee& aEmployee : result) {
 		EXPECT_EQ(aEmployee.GetEmployeeNum(), deleteEmployee.GetEmployeeNum());
@@ -262,7 +262,7 @@ TEST_F(DeleteOption2Test, DeleteBirtyDayWithOptionYTestWithOptionP) {
 	Employee deleteEmployee = { 12345678, {"ȫ", "�浿"}, CareerLevel::CareerLevel_2,  {1234, 0000}, {1992, 01, 01}, Certi::Certi_PRO };
 	InputParameter input = { Command::Command_Del, Option1::Option1_p, Option2::Option2_BirthDay_y, Column::Column_BirthDay, Column::Column_None, deleteEmployee };
 
-	vector<Employee> result = deleteTest->deleteEmployeeInfo(input);
+	vector<Employee> result = deleteTest->Command(input);
 	int deleteCount = 0;
 	for (const Employee& aEmployee : result) {
 		EXPECT_EQ(aEmployee.GetBirthDay()._year, deleteEmployee.GetBirthDay()._year);
@@ -276,7 +276,7 @@ TEST_F(DeleteOption2Test, DeleteBirtyDayWithOptionMTestWithOptionP) {
 	Employee deleteEmployee = { 12345678, {"ȫ", "�浿"}, CareerLevel::CareerLevel_2,  {1234, 0000}, {1992, 01, 01}, Certi::Certi_PRO };
 	InputParameter input = { Command::Command_Del, Option1::Option1_p, Option2::Option2_BirthDay_m, Column::Column_BirthDay, Column::Column_None, deleteEmployee };
 
-	vector<Employee> result = deleteTest->deleteEmployeeInfo(input);
+	vector<Employee> result = deleteTest->Command(input);
 	int deleteCount = 0;
 	for (const Employee& aEmployee : result) {
 		EXPECT_EQ(aEmployee.GetBirthDay()._month, deleteEmployee.GetBirthDay()._month);
@@ -290,7 +290,7 @@ TEST_F(DeleteOption2Test, DeleteBirtyDayWithOptionDTestWithOptionP) {
 	Employee deleteEmployee = { 12345678, {"ȫ", "�浿"}, CareerLevel::CareerLevel_2,  {1234, 0000}, {1992, 01, 01}, Certi::Certi_PRO };
 	InputParameter input = { Command::Command_Del, Option1::Option1_p, Option2::Option2_BirthDay_d, Column::Column_BirthDay, Column::Column_None, deleteEmployee };
 
-	vector<Employee> result = deleteTest->deleteEmployeeInfo(input);
+	vector<Employee> result = deleteTest->Command(input);
 	int deleteCount = 0;
 	for (const Employee& aEmployee : result) {
 		EXPECT_EQ(aEmployee.GetBirthDay()._day, deleteEmployee.GetBirthDay()._day);
@@ -304,7 +304,7 @@ TEST_F(DeleteOption2Test, DeleteBirtyDayWithOptionXTestWithOptionP) {
 	Employee deleteEmployee = { 12345678, {"ȫ", "�浿"}, CareerLevel::CareerLevel_2,  {1234, 0000}, {1992, 01, 01}, Certi::Certi_PRO };
 	InputParameter input = { Command::Command_Del, Option1::Option1_p, Option2::Option2_None, Column::Column_BirthDay, Column::Column_None, deleteEmployee };
 
-	vector<Employee> result = deleteTest->deleteEmployeeInfo(input);
+	vector<Employee> result = deleteTest->Command(input);
 	int deleteCount = 0;
 	for (const Employee& aEmployee : result) {
 		EXPECT_EQ(aEmployee.GetBirthDay(), deleteEmployee.GetBirthDay());
@@ -318,7 +318,7 @@ TEST_F(DeleteOption2Test, DeleteEmployeeNumWithOptionYTestWithOptionP) {
 	Employee deleteEmployee = { 12345678, {"ȫ", "�浿"}, CareerLevel::CareerLevel_2,  {1234, 0000}, {1992, 01, 01}, Certi::Certi_PRO };
 	InputParameter input = { Command::Command_Del, Option1::Option1_p, Option2::Option2_BirthDay_y, Column::Column_employeeNum, Column::Column_None, deleteEmployee };
 
-	vector<Employee> result = deleteTest->deleteEmployeeInfo(input);
+	vector<Employee> result = deleteTest->Command(input);
 	int deleteCount = 0;
 	for (const Employee& aEmployee : result) {
 		EXPECT_EQ(aEmployee.GetEmployeeNum(), deleteEmployee.GetEmployeeNum());
@@ -332,7 +332,7 @@ TEST_F(DeleteOption2Test, DeleteBirtyDayWithOptionYTestWithoutOptionP) {
 	Employee deleteEmployee = { 12345678, {"ȫ", "�浿"}, CareerLevel::CareerLevel_2,  {1234, 0000}, {1992, 01, 01}, Certi::Certi_PRO };
 	InputParameter input = { Command::Command_Del, Option1::Option1_None, Option2::Option2_BirthDay_y, Column::Column_BirthDay, Column::Column_None, deleteEmployee };
 
-	vector<Employee> result = deleteTest->deleteEmployeeInfo(input);
+	vector<Employee> result = deleteTest->Command(input);
 	int deleteCount = 0;
 	for (const Employee& aEmployee : result) {
 		EXPECT_EQ(aEmployee.GetBirthDay()._year, deleteEmployee.GetBirthDay()._year);
@@ -346,7 +346,7 @@ TEST_F(DeleteOption2Test, DeleteBirtyDayWithOptionMTestWithoutOptionP) {
 	Employee deleteEmployee = { 12345678, {"ȫ", "�浿"}, CareerLevel::CareerLevel_2,  {1234, 0000}, {1992, 01, 01}, Certi::Certi_PRO };
 	InputParameter input = { Command::Command_Del, Option1::Option1_None, Option2::Option2_BirthDay_m, Column::Column_BirthDay, Column::Column_None, deleteEmployee };
 
-	vector<Employee> result = deleteTest->deleteEmployeeInfo(input);
+	vector<Employee> result = deleteTest->Command(input);
 	int deleteCount = 0;
 	for (const Employee& aEmployee : result) {
 		EXPECT_EQ(aEmployee.GetBirthDay()._month, deleteEmployee.GetBirthDay()._month);
@@ -360,7 +360,7 @@ TEST_F(DeleteOption2Test, DeleteBirtyDayWithOptionDTestWithoutOptionP) {
 	Employee deleteEmployee = { 12345678, {"ȫ", "�浿"}, CareerLevel::CareerLevel_2,  {1234, 0000}, {1992, 01, 01}, Certi::Certi_PRO };
 	InputParameter input = { Command::Command_Del, Option1::Option1_None, Option2::Option2_BirthDay_d, Column::Column_BirthDay, Column::Column_None, deleteEmployee };
 
-	vector<Employee> result = deleteTest->deleteEmployeeInfo(input);
+	vector<Employee> result = deleteTest->Command(input);
 	int deleteCount = 0;
 	for (const Employee& aEmployee : result) {
 		EXPECT_EQ(aEmployee.GetBirthDay()._day, deleteEmployee.GetBirthDay()._day);
@@ -374,7 +374,7 @@ TEST_F(DeleteOption2Test, DeleteBirtyDayWithOptionXTestWithoutOptionP) {
 	Employee deleteEmployee = { 12345678, {"ȫ", "�浿"}, CareerLevel::CareerLevel_2,  {1234, 0000}, {1992, 01, 01}, Certi::Certi_PRO };
 	InputParameter input = { Command::Command_Del, Option1::Option1_None, Option2::Option2_None, Column::Column_BirthDay, Column::Column_None, deleteEmployee };
 
-	vector<Employee> result = deleteTest->deleteEmployeeInfo(input);
+	vector<Employee> result = deleteTest->Command(input);
 	int deleteCount = 0;
 	for (const Employee& aEmployee : result) {
 		EXPECT_EQ(aEmployee.GetBirthDay(), deleteEmployee.GetBirthDay());
@@ -388,7 +388,7 @@ TEST_F(DeleteOption2Test, DeleteEmployeeNumWithOptionYTestWithoutOptionP) {
 	Employee deleteEmployee = { 12345678, {"ȫ", "�浿"}, CareerLevel::CareerLevel_2,  {1234, 0000}, {1992, 01, 01}, Certi::Certi_PRO };
 	InputParameter input = { Command::Command_Del, Option1::Option1_None, Option2::Option2_BirthDay_y, Column::Column_employeeNum, Column::Column_None, deleteEmployee };
 
-	vector<Employee> result = deleteTest->deleteEmployeeInfo(input);
+	vector<Employee> result = deleteTest->Command(input);
 	int deleteCount = 0;
 	for (const Employee& aEmployee : result) {
 		EXPECT_EQ(aEmployee.GetEmployeeNum(), deleteEmployee.GetEmployeeNum());

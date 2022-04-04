@@ -72,7 +72,7 @@ public:
 		searchPolicy[static_cast<int>(Column::Column_Certi)] = new CertiSearchPolicy();
 	}
 
-	vector<Employee> search(InputParameter input) {
+	vector<Employee> Command(InputParameter input) override {
 		vector<Employee> result;
 		for (const Employee& datum : getDataManager()->getData()) {
 			if (searchPolicy[static_cast<int>(input.column)]->searchByPolicy(input.option2, input.inputEmployee, datum))
