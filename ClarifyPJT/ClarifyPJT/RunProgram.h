@@ -1,7 +1,11 @@
 #pragma once
 #include "CommandParser.h"
 #include "DataManager.h"
+#include "PrintManager.h"
 #include "Add.h"
+#include "Sch.h"
+
+#define TEST_PRINT	(1)
 
 class RunProgram
 {
@@ -10,9 +14,15 @@ public:
 	{
 		DataManager* dataManager = new DataManager();
 		add = new Add(*dataManager);
+		search = new Search(*dataManager);
 	}
 
-	const void run(const string& cmdString)
+	const void run(const string& inputText)
+	{
+
+	}
+
+	const string _run(const string& cmdString)
 	{
 		InputParameter inputParameter = commandParser.ConvertParameter(cmdString);
 
@@ -22,7 +32,7 @@ public:
 		}
 		else if (inputParameter.command == Command::Command_Sch)
 		{
-
+			return printManager.Print(inputParameter.command, inputParameter.option1, search->search(inputParameter));
 		}
 		else if (inputParameter.command == Command::Command_Del)
 		{
@@ -38,8 +48,10 @@ private:
 public:
 private:
 	CommandParser commandParser;
+	PrintManager printManager;
+
 	Add* add;
-	// Sch* sch;
+	Search* search;
 	// Del* del;
 	// Mod* mod;
 };
