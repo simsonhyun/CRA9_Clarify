@@ -3,6 +3,7 @@
 #include "../ClarifyPJT/Employee.h"
 #include "../ClarifyPJT/CommandParser.cpp"
 #include "../ClarifyPJT/PrintManager.h"
+#include "../ClarifyPJT/RunProgram.h"
 
 TEST(TestDataManager, CheckCommandManagerConstructor)
 {

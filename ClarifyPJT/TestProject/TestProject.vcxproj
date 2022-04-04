@@ -49,6 +49,7 @@
     <ClCompile Include="test_Mod.cpp" />
     <ClCompile Include="test_Add.cpp" />
     <ClCompile Include="test_common.cpp" />
+    <ClCompile Include="test_common2.cpp" />
     <ClCompile Include="test_Sch.cpp" />
   </ItemGroup>
   <ItemGroup>
