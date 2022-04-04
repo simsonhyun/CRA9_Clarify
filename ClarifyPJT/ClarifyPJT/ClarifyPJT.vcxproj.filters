@@ -34,6 +34,9 @@
     <Filter Include="헤더 파일\Add">
       <UniqueIdentifier>{883b7162-e127-40db-bdb3-0f5b53e89a80}</UniqueIdentifier>
     </Filter>
+    <Filter Include="헤더 파일\Del">
+      <UniqueIdentifier>{a7190d71-c9bb-42b5-b266-47923a98105b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -41,6 +44,9 @@
     </ClCompile>
     <ClCompile Include="CommandParser.cpp">
       <Filter>소스 파일\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="Del.cpp">
+      <Filter>소스 파일\Del</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -73,6 +79,9 @@
     </ClInclude>
     <ClInclude Include="PhoneNum.h">
       <Filter>헤더 파일\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Del.h">
+      <Filter>헤더 파일\Del</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

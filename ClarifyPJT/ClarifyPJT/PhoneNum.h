@@ -36,6 +36,11 @@ public:
 		return (_middleNum != r._middleNum) || (_lastNum != r._lastNum);
 	}
 
+	friend bool operator==(const PhoneNum& P1, const PhoneNum& P2)
+	{
+		return (P1._middleNum == P2._middleNum) && (P1._lastNum == P2._lastNum);
+	}
+
 private:
 public:
 	int _middleNum;

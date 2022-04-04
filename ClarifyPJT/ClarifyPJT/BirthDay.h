@@ -39,6 +39,11 @@ public:
 		return (_year != r._year) || (_month != r._month) || (_day != r._day);
 	}
 
+	friend bool operator==(const BirthDay& B1, const BirthDay& B2)
+	{
+		return (B1._year == B2._year) && (B1._month == B2._month) && (B1._day == B2._day);
+	}
+
 private:
 public:
 	int _year;

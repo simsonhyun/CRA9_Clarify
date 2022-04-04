@@ -38,6 +38,11 @@ public:
 		return (_firstName != r._firstName) || (_lastName != r._lastName);
 	}
 
+	friend bool operator==(const Name& N1, const Name& N2)
+	{
+		return (N1._firstName == N2._firstName) && (N1._lastName == N2._lastName);
+	}
+
 private:
 public:
 	string _firstName;
