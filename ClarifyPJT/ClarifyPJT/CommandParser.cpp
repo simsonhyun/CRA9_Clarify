@@ -15,6 +15,7 @@ InputParameter CommandParser::ConvertParameter(const string& inputString)
 
 	if (inputParameter.command == Command::Command_Add)
 	{
+		inputParameter.destColumn = Column::Column_None;
 		inputParameter.inputEmployee.SetData(stoi(parsedStrings.at(ADDCMD_EMPLOYEENUM_OFFSET)),
 											 _ConvertName(parsedStrings.at(ADDCMD_NAME_OFFSET), inputParameter.option2),
 											 _ConvertCareerLevel(parsedStrings.at(ADDCMD_CL_OFFSET)),

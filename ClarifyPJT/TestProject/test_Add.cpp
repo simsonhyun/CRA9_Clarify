@@ -56,7 +56,7 @@ TEST(TEST_ADD_MODULE, ADD_MAX_SIZE_TEST) {
 	ASSERT_TRUE(dataManager.getSize() == 100000);
 
 	employeeNum = 90000000;
-	vector<Employee> employees = dataManager.getData(); //employeenum 순서대로 sorting되든, 입력대로 add되든 test가능
+	vector<Employee> employees = dataManager.getData(); //employeenum ???? sorting??, ???? add?? test??
 	for (auto employee : employees)
 	{
 		Employee inputEmployee(employeeNum++, Name("GILDONG", "HONG"), CareerLevel::CareerLevel_2, phonenum, birthday, Certi::Certi_PRO);
@@ -91,8 +91,8 @@ TEST(TEST_ADD_MODULE, ADD_SORT_TEST) {
 	{
 		if (employeeNum < 0)
 			employeeNum = 99999999;
-		Employee inputemployee(employeeNum, Name("GILDONG", "HONG"), CareerLevel::CareerLevel_2, phonenum, birthday, Certi::Certi_PRO);
-		InputParameter inputParameter = { Command::Command_None, Option1::Option1_None, Option2::Option2_None, Column::Column_None, Column::Column_None, inputemployee };
+		Employee inputEmployee(employeeNum, Name("GILDONG", "HONG"), CareerLevel::CareerLevel_2, phonenum, birthday, Certi::Certi_PRO);
+		InputParameter inputParameter = { Command::Command_None, Option1::Option1_None, Option2::Option2_None, Column::Column_None, Column::Column_None, inputEmployee };
 		add.Command(inputParameter);
 	}
 
@@ -118,4 +118,23 @@ TEST(TEST_ADD_MODULE, ADD_SORT_TEST) {
 		if (employeeNum >= 100000000)
 			employeeNum = 0;
 	}
+}
+
+TEST(TEST_ADD_MODULE, ADD_INPUT_EXCEPTION_TEST) {
+	DataManager dataManager = DataManager();
+	Add add = Add(dataManager);
+
+	PhoneNum phonenum;
+	phonenum._middleNum = 1234;
+	phonenum._lastNum = 5678;
+	BirthDay birthday;
+	birthday._year = 1990;
+	birthday._month = 01;
+	birthday._day = 23;
+	Employee employee(12345678, Name("GILDONGDONGG", "HONG"), CareerLevel::CareerLevel_2, phonenum, birthday, Certi::Certi_PRO);
+	InputParameter inputParameter = { Command::Command_None, Option1::Option1_None, Option2::Option2_None, Column::Column_None, Column::Column_None, employee };
+
+	add.Command(inputParameter);
+
+	ASSERT_TRUE(dataManager.getSize() != 1); // invalid? Input? ??? add?? ?? ?? ??
 }
