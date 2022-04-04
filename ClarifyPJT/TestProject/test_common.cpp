@@ -179,7 +179,7 @@ TEST(TestFileManager, FileInputTest)
 {
 	FileManager fileManager;
 
-	fileManager.InputOpen("InputTest.txt");
+	fileManager.InputOpen("CommonTestFiles/InputTest.txt");
 
 	EXPECT_EQ(fileManager.ReadOneLine(), "ADD, , , ,15123099,VXIHXOTH JHOP,CL3,010-3112-2609,19771211,ADV");
 	EXPECT_EQ(fileManager.ReadOneLine(), "ADD, , , ,17112609,FB NTAWR,CL4,010-5645-6122,19861203,PRO");
@@ -192,7 +192,7 @@ TEST(TestFileManager, FileOutputTest)
 {
 	FileManager fileManager;
 
-	fileManager.OutputOpen("OutputTest.txt");
+	fileManager.OutputOpen("CommonTestFiles/OutputTest.txt");
 
 	string writeString = "ADD, , , ,15123099,VXIHXOTH JHOP,CL3,010-3112-2609,19771211,ADV";
 	writeString += 0xA;
@@ -211,7 +211,7 @@ TEST(TestFileManager, FileOutputTest)
 
 
 
-	fileManager.InputOpen("OutputTest.txt");
+	fileManager.InputOpen("CommonTestFiles/OutputTest.txt");
 
 	EXPECT_EQ(fileManager.ReadOneLine(), "ADD, , , ,15123099,VXIHXOTH JHOP,CL3,010-3112-2609,19771211,ADV");
 	EXPECT_EQ(fileManager.ReadOneLine(), "ADD, , , ,17112609,FB NTAWR,CL4,010-5645-6122,19861203,PRO");

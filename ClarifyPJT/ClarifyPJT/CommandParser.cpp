@@ -72,7 +72,18 @@ void CommandParser::_SetValue(const string& inputString, const Column& column, c
 	}
 	else if (column == Column::Column_PhoneNum)
 	{
-		employee.SetData(0, {"", ""}, CareerLevel::CareerLevel_None, _ConvertPhoneNum(inputString), BirthDay(0, 0, 0), Certi::Certi_None);
+		if (option2 == Option2::Option2_PhoneNum_m)
+		{
+			employee.SetData(0, { "", "" }, CareerLevel::CareerLevel_None, PhoneNum(stoi(inputString), 0), BirthDay(0, 0, 0), Certi::Certi_None);
+		}
+		else if (option2 == Option2::Option2_PhoneNum_l)
+		{
+			employee.SetData(0, { "", "" }, CareerLevel::CareerLevel_None, PhoneNum(0, stoi(inputString)), BirthDay(0, 0, 0), Certi::Certi_None);
+		}
+		else
+		{
+			employee.SetData(0, { "", "" }, CareerLevel::CareerLevel_None, _ConvertPhoneNum(inputString), BirthDay(0, 0, 0), Certi::Certi_None);
+		}
 	}
 	else if (column == Column::Column_BirthDay)
 	{
