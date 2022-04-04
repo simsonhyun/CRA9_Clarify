@@ -82,7 +82,6 @@ private:
 	const string _run(const string& cmdString)
 	{
 		InputParameter inputParameter = commandParser.ConvertParameter(cmdString);
-
 		_checkInvalidCmd(inputParameter.command, cmdString);
 
 		if (inputParameter.command == Command::Command_Add)
