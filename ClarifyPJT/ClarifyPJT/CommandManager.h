@@ -1,25 +1,42 @@
 #pragma once
-#include "DataManager.h"
+#include <iostream>
 #include "CommonType.h"
+#include "DataManager.h"
 
 class CommandManager
 {
-public:
-	CommandManager(DataManager& dataManager) :
-		_dataManager(&dataManager)
-	{
+private:
+	CommandType _myCommandType;
+	DataManager* _dataManager;
 
-	}
+public:
+	CommandManager(CommandType command, DataManager& dataManager) :
+		_myCommandType(command),
+		_dataManager(&dataManager)
+	{ }
 
 	DataManager* getDataManager(void) const
 	{
 		return _dataManager;
 	}
 
-	virtual vector<Employee> Command(InputParameter input) { return vector<Employee>(); };
+	CommandType getCommandType(void) const
+	{
+		return _myCommandType;
+	}
 
-public:
-private:
-	DataManager* _dataManager;
+	virtual vector<Employee> Command(InputParameter input) = 0;
+	//{ 
+	//	try
+	//	{
+	//		throw exception("Invalid function");
+	//	}
+	//	catch (exception e)
+	//	{
+	//		std::cout << e.what() << endl;
+	//	}
+
+	//	return vector<Employee>(); 
+	//};
 
 };

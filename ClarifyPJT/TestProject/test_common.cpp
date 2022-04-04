@@ -4,15 +4,16 @@
 #include "../ClarifyPJT/CommandParser.cpp"
 #include "../ClarifyPJT/PrintManager.h"
 #include "../ClarifyPJT/FileManager.h"
+#include "../ClarifyPJT/Add.h"
 
 
 TEST(TestDataManager, CheckCommandManagerConstructor)
 {
 	DataManager dataManager = DataManager();
-	CommandManager commandManager = CommandManager(dataManager);
+	CommandManager* commandManager = new Add(dataManager);
 	//Add add = Add(dataManager);
 
-	EXPECT_EQ(&dataManager, commandManager.getDataManager());
+	EXPECT_EQ(&dataManager, commandManager->getDataManager());
 }
 
 TEST(TestEmployee, CheckEmployeeData)
@@ -142,7 +143,7 @@ TEST(TestPrintManager, CheckPrint0)
 	inputEmployees.push_back(Employee(2117175, Name("SBILHUT", "LDEXRI"), CareerLevel::CareerLevel_4, PhoneNum(2814, 1699), BirthDay(1995, 07, 04), Certi::Certi_ADV));
 	inputEmployees.push_back(Employee(2117175, Name("TEST", "LDEXRI"), CareerLevel::CareerLevel_4, PhoneNum(2814, 1699), BirthDay(1995, 07, 04), Certi::Certi_ADV));
 
-	EXPECT_EQ(printManager.Print(Command::Command_Sch, Option1::Option1_p, inputEmployees), testString);
+	EXPECT_EQ(printManager.Print(CommandType::Command_Sch, Option1::Option1_p, inputEmployees), testString);
 }
 
 TEST(TestPrintManager, CheckPrint1)
@@ -157,7 +158,7 @@ TEST(TestPrintManager, CheckPrint1)
 	// inputEmployees.push_back(Employee(2117175, Name("LDEXRI", "SBILHUT"), CareerLevel::CareerLevel_4, PhoneNum(2814, 1699), BirthDay(1995, 07, 04), Certi::Certi_ADV));
 	// inputEmployees.push_back(Employee(2117175, Name("LDEXRI", "TEST"), CareerLevel::CareerLevel_4, PhoneNum(2814, 1699), BirthDay(1995, 07, 04), Certi::Certi_ADV));
 
-	EXPECT_EQ(printManager.Print(Command::Command_Sch, Option1::Option1_p, inputEmployees), testString);
+	EXPECT_EQ(printManager.Print(CommandType::Command_Sch, Option1::Option1_p, inputEmployees), testString);
 }
 
 TEST(TestPrintManager, CheckPrint2)
@@ -172,7 +173,7 @@ TEST(TestPrintManager, CheckPrint2)
 	inputEmployees.push_back(Employee(2117175, Name("LDEXRI", "SBILHUT"), CareerLevel::CareerLevel_4, PhoneNum(2814, 1699), BirthDay(1995, 07, 04), Certi::Certi_ADV));
 	inputEmployees.push_back(Employee(2117175, Name("LDEXRI", "TEST"), CareerLevel::CareerLevel_4, PhoneNum(2814, 1699), BirthDay(1995, 07, 04), Certi::Certi_ADV));
 
-	EXPECT_EQ(printManager.Print(Command::Command_Sch, Option1::Option1_None, inputEmployees), testString);
+	EXPECT_EQ(printManager.Print(CommandType::Command_Sch, Option1::Option1_None, inputEmployees), testString);
 }
 
 TEST(TestFileManager, FileInputTest)
