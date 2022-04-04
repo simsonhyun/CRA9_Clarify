@@ -4,16 +4,16 @@
 class DeleteOption1Test : public ::testing::Test {
 protected:
 	void SetUp() override {
-		Employee employee1 = { 12345678, {"ȫ", "�浿"}, CareerLevel::CareerLevel_1,  {1234, 5678}, {1990, 01, 01}, Certi::Certi_ADV };
-		Employee employee2 = { 12345678, {"ȫ", "�浿"}, CareerLevel::CareerLevel_1,  {1234, 5678}, {1990, 01, 01}, Certi::Certi_ADV };
-		Employee employee3 = { 12345678, {"ȫ", "�浿"}, CareerLevel::CareerLevel_1,  {1234, 5678}, {1990, 01, 01}, Certi::Certi_ADV };
-		Employee employee4 = { 12345678, {"ȫ", "�浿"}, CareerLevel::CareerLevel_1,  {1234, 5678}, {1990, 01, 01}, Certi::Certi_ADV };
-		Employee employee5 = { 12345678, {"ȫ", "�浿"}, CareerLevel::CareerLevel_1,  {1234, 5678}, {1990, 01, 01}, Certi::Certi_ADV };
-		Employee employee6 = { 12345678, {"ȫ", "�浿"}, CareerLevel::CareerLevel_1,  {1234, 5678}, {1990, 01, 01}, Certi::Certi_ADV };
-		Employee employee7 = { 12345678, {"ȫ", "�浿"}, CareerLevel::CareerLevel_1,  {1234, 5678}, {1990, 01, 01}, Certi::Certi_ADV };
-		Employee employee8 = { 12345678, {"ȫ", "�浿"}, CareerLevel::CareerLevel_1,  {1234, 5678}, {1990, 01, 01}, Certi::Certi_ADV };
+		Employee employee1 = { 12345670, {"ȫ", "�浿"}, CareerLevel::CareerLevel_1,  {1234, 5678}, {1990, 01, 01}, Certi::Certi_ADV };
+		Employee employee2 = { 12345671, {"ȫ", "�浿"}, CareerLevel::CareerLevel_1,  {1234, 5678}, {1990, 01, 01}, Certi::Certi_ADV };
+		Employee employee3 = { 12345672, {"ȫ", "�浿"}, CareerLevel::CareerLevel_1,  {1234, 5678}, {1990, 01, 01}, Certi::Certi_ADV };
+		Employee employee4 = { 12345673, {"ȫ", "�浿"}, CareerLevel::CareerLevel_1,  {1234, 5678}, {1990, 01, 01}, Certi::Certi_ADV };
+		Employee employee5 = { 12345674, {"ȫ", "�浿"}, CareerLevel::CareerLevel_1,  {1234, 5678}, {1990, 01, 01}, Certi::Certi_ADV };
+		Employee employee6 = { 12345675, {"ȫ", "�浿"}, CareerLevel::CareerLevel_1,  {1234, 5678}, {1990, 01, 01}, Certi::Certi_ADV };
+		Employee employee7 = { 12345676, {"ȫ", "�浿"}, CareerLevel::CareerLevel_1,  {1234, 5678}, {1990, 01, 01}, Certi::Certi_ADV };
+		Employee employee8 = { 12345677, {"ȫ", "�浿"}, CareerLevel::CareerLevel_1,  {1234, 5678}, {1990, 01, 01}, Certi::Certi_ADV };
 		Employee employee9 = { 12345678, {"ȫ", "�浿"}, CareerLevel::CareerLevel_1,  {1234, 5678}, {1990, 01, 01}, Certi::Certi_ADV };
-		Employee employee10 = { 12345678, {"ȫ", "�浿"}, CareerLevel::CareerLevel_1,  {1234, 5678}, {1990, 01, 01}, Certi::Certi_ADV };
+		Employee employee10 = { 12345679, {"ȫ", "�浿"}, CareerLevel::CareerLevel_1,  {1234, 5678}, {1990, 01, 01}, Certi::Certi_ADV };
 		dataManager->setData(employee1);
 		dataManager->setData(employee2);
 		dataManager->setData(employee3);
@@ -43,8 +43,8 @@ TEST_F(DeleteOption1Test, DeleteAllByEmployeeNumTestWithOptionP) {
 		EXPECT_EQ(aEmployee.GetEmployeeNum(), deleteEmployee.GetEmployeeNum());
 		deleteCount++;
 	}
-	EXPECT_EQ(5, deleteCount);
-	EXPECT_EQ(5, dataManager->getSize());
+	EXPECT_EQ(1, deleteCount);
+	EXPECT_EQ(9, dataManager->getSize());
 };
 
 TEST_F(DeleteOption1Test, DeleteAllByEmployeeNumTestWithoutOptionP) {
@@ -57,8 +57,8 @@ TEST_F(DeleteOption1Test, DeleteAllByEmployeeNumTestWithoutOptionP) {
 		EXPECT_EQ(aEmployee.GetEmployeeNum(), deleteEmployee.GetEmployeeNum());
 		deleteCount++;
 	}
-	EXPECT_EQ(10, deleteCount);
-	EXPECT_EQ(0, dataManager->getSize());
+	EXPECT_EQ(1, deleteCount);
+	EXPECT_EQ(9, dataManager->getSize());
 };
 
 TEST_F(DeleteOption1Test, DeleteNoneByEmployeeNumTest) {
@@ -82,7 +82,7 @@ TEST_F(DeleteOption1Test, DeleteAllByNameTestWithOptionP) {
 		deleteCount++;
 	}
 	EXPECT_EQ(5, deleteCount);
-	EXPECT_EQ(5, dataManager->getSize());
+	EXPECT_EQ(0, dataManager->getSize());
 };
 
 TEST_F(DeleteOption1Test, DeleteAllByNameTestWithoutOptionP) {
@@ -120,7 +120,7 @@ TEST_F(DeleteOption1Test, DeleteAllByCareerLevelWithOptionP) {
 		deleteCount++;
 	}
 	EXPECT_EQ(5, deleteCount);
-	EXPECT_EQ(5, dataManager->getSize());
+	EXPECT_EQ(0, dataManager->getSize());
 };
 
 TEST_F(DeleteOption1Test, DeleteAllByCareerLevelWithoutOptionP) {
@@ -158,7 +158,7 @@ TEST_F(DeleteOption1Test, DeleteAllByPhoneNumTestWithOptionP) {
 		deleteCount++;
 	}
 	EXPECT_EQ(5, deleteCount);
-	EXPECT_EQ(5, dataManager->getSize());
+	EXPECT_EQ(0, dataManager->getSize());
 };
 
 TEST_F(DeleteOption1Test, DeleteAllByPhoneNumTestWithoutOptionP) {
@@ -196,7 +196,7 @@ TEST_F(DeleteOption1Test, DeleteAllByBirthDayTestWithOptionP) {
 		deleteCount++;
 	}
 	EXPECT_EQ(5, deleteCount);
-	EXPECT_EQ(5, dataManager->getSize());
+	EXPECT_EQ(0, dataManager->getSize());
 };
 
 TEST_F(DeleteOption1Test, DeleteAllByBirthDayTestWithoutOptionP) {
@@ -234,7 +234,7 @@ TEST_F(DeleteOption1Test, DeleteAllByCertiTestWithOptionP) {
 		deleteCount++;
 	}
 	EXPECT_EQ(5, deleteCount);
-	EXPECT_EQ(5, dataManager->getSize());
+	EXPECT_EQ(0, dataManager->getSize());
 };
 
 TEST_F(DeleteOption1Test, DeleteAllByCertiTestWithoutOptionP) {

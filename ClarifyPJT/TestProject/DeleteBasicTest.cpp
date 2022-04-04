@@ -6,8 +6,8 @@ protected:
 	void SetUp() override {
 		Employee employee1 = { 12345678, {"È«", "±æµ¿"}, CareerLevel::CareerLevel_1,  {1234, 5678}, {1990, 01, 01}, Certi::Certi_ADV };
 		Employee employee2 = { 87654321, {"±è", "Ã¶¼ö"}, CareerLevel::CareerLevel_2,  {1234, 8765}, {1990, 02, 01}, Certi::Certi_PRO };
-		Employee employee3 = { 12345678, {"ÀÌ", "¿µÈñ"}, CareerLevel::CareerLevel_3,  {9876, 5678}, {1990, 01, 02}, Certi::Certi_EX };
-		Employee employee4 = { 87654321, {"°í", "±æµ¿"}, CareerLevel::CareerLevel_4,  {1354, 9516}, {1990, 03, 02}, Certi::Certi_ADV };
+		Employee employee3 = { 12345679, {"ÀÌ", "¿µÈñ"}, CareerLevel::CareerLevel_3,  {9876, 5678}, {1990, 01, 02}, Certi::Certi_EX };
+		Employee employee4 = { 87654320, {"°í", "±æµ¿"}, CareerLevel::CareerLevel_4,  {1354, 9516}, {1990, 03, 02}, Certi::Certi_ADV };
 		Employee employee5 = { 11111111, {"È«", "±æµ¿"}, CareerLevel::CareerLevel_1,  {9513, 7412}, {1990, 04, 03}, Certi::Certi_PRO };
 		dataManager->setData(employee1);
 		dataManager->setData(employee2);
@@ -33,8 +33,8 @@ TEST_F(DeleteBasicTest, DeleteByEmployeeNumTestWithPrint) {
 		EXPECT_EQ(aEmployee.GetEmployeeNum(), deleteEmployee.GetEmployeeNum());
 		deleteCount++;
 	}
-	EXPECT_EQ(2, deleteCount);
-	EXPECT_EQ(3, dataManager->getSize());
+	EXPECT_EQ(1, deleteCount);
+	EXPECT_EQ(4, dataManager->getSize());
 };
 
 TEST_F(DeleteBasicTest, DeleteByEmployeeNumTestWithoutPrint) {
@@ -43,8 +43,8 @@ TEST_F(DeleteBasicTest, DeleteByEmployeeNumTestWithoutPrint) {
 
 	vector<Employee> result = deleteTest->Command(input);
 	size_t deleteCount = result.size();
-	EXPECT_EQ(2, deleteCount);
-	EXPECT_EQ(3, dataManager->getSize());
+	EXPECT_EQ(1, deleteCount);
+	EXPECT_EQ(4, dataManager->getSize());
 };
 
 TEST_F(DeleteBasicTest, DeleteByNameTestWithPrint) {
