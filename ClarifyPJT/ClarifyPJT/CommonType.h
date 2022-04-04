@@ -3,13 +3,13 @@
 #include "Employee.h"
 using namespace std;
 
-enum class Command
+enum class CommandType
 {
-	Command_None = 0,
-	Command_Add,
+	Command_Add = 0,
 	Command_Sch,
 	Command_Del,
 	Command_Mod,
+	Command_None,
 };
 
 enum class Option1
@@ -43,7 +43,7 @@ enum class Column
 
 typedef struct InputParameter
 {
-	Command command;
+	CommandType command;
 	Option1 option1;
 	Option2 option2;
 	Column column;

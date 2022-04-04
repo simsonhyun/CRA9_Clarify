@@ -51,7 +51,7 @@ void CertiModPolicy::ChangeModDataByPolicy(InputParameter targetEmployee, Employ
 	aEmployee.SetCerti(targetEmployee.inputDestEmployee.GetCerti());
 }
 
-vector<Employee> Mod::ModifyFunc(InputParameter targetEmployee) {
+vector<Employee> Mod::Command(InputParameter targetEmployee) {
 	DataManager* pdataManager = getDataManager();
 	vector<Employee> &aEmployeesData = pdataManager->getData();
 	vector<Employee> PrintEmployees;

@@ -13,7 +13,7 @@ TEST(TEST_ADD_MODULE, ADD_TEST) {
 	birthday._month = 01;
 	birthday._day = 23;
 	Employee employee(12345678, Name("GILDONG", "HONG"), CareerLevel::CareerLevel_2, phonenum, birthday, Certi::Certi_PRO);
-	InputParameter inputParameter = { Command::Command_None, Option1::Option1_None, Option2::Option2_None, Column::Column_None, Column::Column_None, employee };
+	InputParameter inputParameter = { CommandType::Command_None, Option1::Option1_None, Option2::Option2_None, Column::Column_None, Column::Column_None, employee };
 
 	add.Command(inputParameter);
 
@@ -49,7 +49,7 @@ TEST(TEST_ADD_MODULE, ADD_MAX_SIZE_TEST) {
 	for (int i = 0; i < 100000; i++, employeeNum++)
 	{
 		Employee inputemployee(employeeNum, Name("GILDONG", "HONG"), CareerLevel::CareerLevel_2, phonenum, birthday, Certi::Certi_PRO);
-		InputParameter inputParameter = { Command::Command_None, Option1::Option1_None, Option2::Option2_None, Column::Column_None, Column::Column_None, inputemployee };
+		InputParameter inputParameter = { CommandType::Command_None, Option1::Option1_None, Option2::Option2_None, Column::Column_None, Column::Column_None, inputemployee };
 		add.Command(inputParameter);
 	}
 
@@ -92,7 +92,7 @@ TEST(TEST_ADD_MODULE, ADD_SORT_TEST) {
 		if (employeeNum < 0)
 			employeeNum = 99999999;
 		Employee inputEmployee(employeeNum, Name("GILDONG", "HONG"), CareerLevel::CareerLevel_2, phonenum, birthday, Certi::Certi_PRO);
-		InputParameter inputParameter = { Command::Command_None, Option1::Option1_None, Option2::Option2_None, Column::Column_None, Column::Column_None, inputEmployee };
+		InputParameter inputParameter = { CommandType::Command_None, Option1::Option1_None, Option2::Option2_None, Column::Column_None, Column::Column_None, inputEmployee };
 		add.Command(inputParameter);
 	}
 
@@ -132,7 +132,7 @@ TEST(TEST_ADD_MODULE, ADD_INPUT_EXCEPTION_TEST) {
 	birthday._month = 01;
 	birthday._day = 23;
 	Employee employee(12345678, Name("GILDONGDONGG", "HONG"), CareerLevel::CareerLevel_2, phonenum, birthday, Certi::Certi_PRO);
-	InputParameter inputParameter = { Command::Command_None, Option1::Option1_None, Option2::Option2_None, Column::Column_None, Column::Column_None, employee };
+	InputParameter inputParameter = { CommandType::Command_None, Option1::Option1_None, Option2::Option2_None, Column::Column_None, Column::Column_None, employee };
 
 	add.Command(inputParameter);
 

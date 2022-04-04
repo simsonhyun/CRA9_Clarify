@@ -40,7 +40,7 @@ public:
 
 class Del : public CommandManager {
 public:
-	Del(DataManager& dataManager) : CommandManager(dataManager) {
+	Del(DataManager& dataManager) : CommandManager(CommandType::Command_Del, dataManager) {
 		deletePolicy[static_cast<int>(Column::Column_employeeNum)] = new EmployeeNumDeletePolicy();
 		deletePolicy[static_cast<int>(Column::Column_Name)] = new NameDeletePolicy();
 		deletePolicy[static_cast<int>(Column::Column_CareerLevel)] = new CareerLevelDeletePolicy();
@@ -49,7 +49,7 @@ public:
 		deletePolicy[static_cast<int>(Column::Column_Certi)] = new CertiDeletePolicy();
 	}
 
-	vector<Employee> deleteEmployeeInfo(InputParameter input);
+	vector<Employee> Command(InputParameter input) override;
 
 private:
 

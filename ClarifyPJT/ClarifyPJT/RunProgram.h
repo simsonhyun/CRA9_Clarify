@@ -15,19 +15,25 @@ public:
 	static const int ARGUMENT_COUNT = 3;
 	static const int MAX_FILELENGTH = 300;
 
+	// Command_None = 0,
+	// Command_Add,
+	// Command_Sch,
+	// Command_Del,
+	// Command_Mod,
+
 	RunProgram()
 	{
 		DataManager* dataManager = new DataManager();
-		add = new Add(*dataManager);
-		search = new Search(*dataManager);
-		del = new Del(*dataManager);
-		mod = new Mod(*dataManager);
+		commands.push_back(new Add(*dataManager));
+		commands.push_back(new Search(*dataManager));
+		commands.push_back(new Del(*dataManager));
+		commands.push_back(new Mod(*dataManager));
 	}
 
 	const void run(const string& inputText, const string& outputText)
 	{
-		checkInvalidFileName(inputText);
-		checkInvalidFileName(outputText);
+		_checkInvalidFileName(inputText);
+		_checkInvalidFileName(outputText);
 
 		fileManager.InputOpen(inputText);
 		fileManager.OutputOpen(outputText);
@@ -78,7 +84,40 @@ public:
 		return false;
 	}
 
-	const void checkInvalidFileName(const string& fileName) const
+private:
+	const string _run(const string& cmdString)
+	{
+		InputParameter inputParameter = commandParser.ConvertParameter(cmdString);
+		_checkInvalidCmd(inputParameter.command, cmdString);
+
+		try
+		{
+			if (inputParameter.command == CommandType::Command_None)
+			{
+				throw invalid_argument("Invalid Command!");
+			}
+		}
+		catch (exception e)
+		{
+			cout << e.what() << endl;
+		}
+
+		for (const auto& command : commands)
+		{
+			if (command->getCommandType() == inputParameter.command)
+			{
+				vector<Employee> ret = command->Command(inputParameter);
+				if (inputParameter.command == CommandType::Command_Add)
+				{
+					return ADD_RETURN_SIG;
+				}
+
+				return printManager.Print(inputParameter.command, inputParameter.option1, ret);
+			}
+		}
+	}
+
+	const void _checkInvalidFileName(const string& fileName) const
 	{
 		// 정책 
 		// 1. / 개수 3개 미만
@@ -110,40 +149,39 @@ public:
 		if (ret) throw invalid_argument("Input Invalid FileName");
 	}
 
-private:
-	const string _run(const string& cmdString)
+	const void _checkInvalidCmd(const CommandType& command, const string& oneLineString) const
 	{
-		InputParameter inputParameter = commandParser.ConvertParameter(cmdString);
+		// , 개수
+		// ADD 9개
+		// SCH 5개
+		// DEL 5개
+		// MOD 7개
+		static const char FIND_COMMA_CH = ',';
+		static const int ADD_COMMA_COUNT = 9;
+		static const int SCH_COMMA_COUNT = 5;
+		static const int DEL_COMMA_COUNT = 5;
+		static const int MOD_COMMA_COUNT = 7;
 
-		if (inputParameter.command == Command::Command_Add)
+		bool ret = false;
+		int findCount = 0;
+
+		for (auto ch : oneLineString)
 		{
-			add->Command(inputParameter);
-			return ADD_RETURN_SIG;
-		}
-		else if (inputParameter.command == Command::Command_Sch)
-		{
-			return printManager.Print(inputParameter.command, inputParameter.option1, search->search(inputParameter));
-		}
-		else if (inputParameter.command == Command::Command_Del)
-		{
-			return printManager.Print(inputParameter.command, inputParameter.option1, del->deleteEmployeeInfo(inputParameter));
-		}
-		else if (inputParameter.command == Command::Command_Mod)
-		{
-			if (inputParameter.option1 == Option1::Option1_None)
+			if (ch == FIND_COMMA_CH)
 			{
-				return printManager.Print(inputParameter.command, inputParameter.option1, mod->ModNotOption1(inputParameter));
-			}
-			else
-			{
-				return printManager.Print(inputParameter.command, inputParameter.option1, mod->ModOption1(inputParameter));
+				findCount++;
 			}
 		}
+
+		if ((command == CommandType::Command_Add) && (findCount == ADD_COMMA_COUNT)) {}
+		else if ((command == CommandType::Command_Del) && (findCount == DEL_COMMA_COUNT)) {}
+		else if ((command == CommandType::Command_Mod) && (findCount == MOD_COMMA_COUNT)) {}
+		else if ((command == CommandType::Command_Sch) && (findCount == SCH_COMMA_COUNT)) {}
 		else
 		{
-			_ASSERT(false);
-			return "";
+			throw invalid_argument("Invalid Command Input");
 		}
+
 	}
 
 public:
@@ -152,8 +190,5 @@ private:
 	PrintManager printManager;
 	FileManager fileManager;
 
-	Add* add;
-	Search* search;
-	Del* del;
-	Mod* mod;
+	vector<CommandManager*> commands;
 };
