@@ -1,6 +1,5 @@
 #pragma once
 #include "CommandManager.h"
-// #include "CommonType.h"
 #include <stdexcept>
 #include <iostream>
 
