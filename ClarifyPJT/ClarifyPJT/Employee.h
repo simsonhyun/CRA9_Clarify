@@ -83,6 +83,25 @@ public:
 		_certi = certi;
 	}
 
+	void SetEmployeeNum(int num) {
+		_employeeNum = num;
+	}
+	void SetName(Name name) {
+		_name = name;
+	}
+	void SetCl(CareerLevel cl) {
+		_cl = cl;
+	}
+	void SetPhoneNum(PhoneNum phoneNum) {
+		_phoneNum = phoneNum;
+	}
+	void SetBirthDay(BirthDay birthday) {
+		_birthDay = birthday;
+	}
+	void SetCerti(Certi certi) {
+		_certi = certi;
+	}
+
 private:
 	
 

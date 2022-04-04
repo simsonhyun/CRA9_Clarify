@@ -153,6 +153,7 @@
     <ClInclude Include="Employee.h" />
     <ClInclude Include="CommonType.h" />
     <ClInclude Include="Add.h" />
+    <ClInclude Include="Mod.h" />
     <ClInclude Include="Name.h" />
     <ClInclude Include="PhoneNum.h" />
     <ClInclude Include="RunProgram.h" />

@@ -36,6 +36,9 @@
     </Filter>
     <Filter Include="헤더 파일\Del">
       <UniqueIdentifier>{a7190d71-c9bb-42b5-b266-47923a98105b}</UniqueIdentifier>
+	</Filter>
+    <Filter Include="헤더 파일\Mod">
+      <UniqueIdentifier>{8f0562a9-a7e2-4dd0-9066-9334ddaf00d7}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -80,8 +83,23 @@
     <ClInclude Include="PhoneNum.h">
       <Filter>헤더 파일\Common</Filter>
     </ClInclude>
+<<<<<<< HEAD
     <ClInclude Include="Del.h">
       <Filter>헤더 파일\Del</Filter>
     </ClInclude>
+=======
+    <ClInclude Include="PrintManager.h">
+      <Filter>헤더 파일\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Sch.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Mod.h">
+      <Filter>헤더 파일\Mod</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+>>>>>>> 94e8cd6 ([TEST] [TEST_MOD 추가])
   </ItemGroup>
 </Project>

@@ -28,7 +28,6 @@ public:
 		_day = r._day;
 		return *this;
 	}
-
 	bool operator==(const BirthDay& r)
 	{
 		return (_year == r._year) && (_month == r._month) && (_day == r._day);
