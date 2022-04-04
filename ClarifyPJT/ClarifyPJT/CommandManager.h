@@ -20,23 +20,11 @@ public:
 		return _dataManager;
 	}
 
-	CommandType getCommandType(void) const
+	const CommandType getCommandType(void) const
 	{
 		return _myCommandType;
 	}
 
 	virtual vector<Employee> Command(InputParameter input) = 0;
-	//{ 
-	//	try
-	//	{
-	//		throw exception("Invalid function");
-	//	}
-	//	catch (exception e)
-	//	{
-	//		std::cout << e.what() << endl;
-	//	}
-
-	//	return vector<Employee>(); 
-	//};
 
 };
