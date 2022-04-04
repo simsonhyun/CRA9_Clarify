@@ -296,8 +296,10 @@ TEST_F(DeleteOption2Test, DeleteBirtyDayWithOptionDTestWithOptionP) {
 		EXPECT_EQ(aEmployee.GetBirthDay()._day, deleteEmployee.GetBirthDay()._day);
 		deleteCount++;
 	}
-	EXPECT_EQ(5, deleteCount);
-	EXPECT_EQ(5, dataManager->getSize());
+	int printCount = (deleteCount >= 5) ? 5 : deleteCount;
+	EXPECT_EQ(10, deleteCount);
+	EXPECT_EQ(0, dataManager->getSize());
+	EXPECT_EQ(5, printCount);
 };
 
 TEST_F(DeleteOption2Test, DeleteBirtyDayWithOptionXTestWithOptionP) {
