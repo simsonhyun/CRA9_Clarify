@@ -3,100 +3,61 @@
 
 class AbstractSearchPolicy {
 public:
-	virtual vector<Employee> searchByPolicyWithPrint(InputParameter input, DataManager& data) const = 0;
-	virtual int searchByPolicyWithoutPrint(InputParameter input, DataManager& data) const = 0;
+	virtual bool searchByPolicy(Option2 option, const Employee& input, const Employee& data) const = 0;
 };
 
 class EmployeeNumSearchPolicy : public AbstractSearchPolicy {
 public:
-	virtual vector<Employee> searchByPolicyWithPrint(InputParameter input, DataManager& data) const override {
-		vector<Employee> searchList;
-		for (const Employee& datum : data.getData()) {
-			if (input.inputEmployee.GetEmployeeNum() == datum.GetEmployeeNum())
-				searchList.push_back(datum);
-		}
-		return searchList;
-	}
-	virtual int searchByPolicyWithoutPrint(InputParameter input, DataManager& data) const override {
-		int searchList = 0;
-		for (const Employee& datum : data.getData()) {
-			if (input.inputEmployee.GetEmployeeNum() == datum.GetEmployeeNum())
-				searchList++;
-		}
-		return searchList;
+	virtual bool searchByPolicy(Option2 option, const Employee& input, const Employee& data) const override {
+		if (option == Option2::Option2_None && input.GetEmployeeNum() != data.GetEmployeeNum()) return false;
+		return true;
 	}
 };
 
 class NameSearchPolicy : public AbstractSearchPolicy {
 public:
-	virtual vector<Employee> searchByPolicyWithPrint(InputParameter input, DataManager& data) const override {
-		vector<Employee> searchList;
-		return searchList;
-	}
-	virtual int searchByPolicyWithoutPrint(InputParameter input, DataManager& data) const override {
-		return 0;
+	virtual bool searchByPolicy(Option2 option, const Employee& input, const Employee& data) const override {
+		if (option == Option2::Option2_Name_f && input.GetName()._firstName != data.GetName()._firstName) return false;
+		if (option == Option2::Option2_Name_l && input.GetName()._lastName != data.GetName()._lastName) return false;
+		if (option == Option2::Option2_None && input.GetName() != data.GetName()) return false;
+		return true;
 	}
 };
 
 class CareerLevelSearchPolicy : public AbstractSearchPolicy {
 public:
-	virtual vector<Employee> searchByPolicyWithPrint(InputParameter input, DataManager& data) const override {
-		vector<Employee> searchList;
-		for (const Employee& datum : data.getData()) {
-			if (input.inputEmployee.GetCl() == datum.GetCl())
-				searchList.push_back(datum);
-		}
-		return searchList;
-	}
-	virtual int searchByPolicyWithoutPrint(InputParameter input, DataManager& data) const override {
-		int searchList = 0;
-		for (const Employee& datum : data.getData()) {
-			if (input.inputEmployee.GetCl() == datum.GetCl())
-				searchList++;
-		}
-		return searchList;
+	virtual bool searchByPolicy(Option2 option, const Employee& input, const Employee& data) const override {
+		if (option == Option2::Option2_None && input.GetCl() != data.GetCl()) return false;
+		return true;
 	}
 };
 
 class PhoneNumSearchPolicy : public AbstractSearchPolicy {
 public:
-	virtual vector<Employee> searchByPolicyWithPrint(InputParameter input, DataManager& data) const override {
-		vector<Employee> searchList;
-		return searchList;
-	}
-	virtual int searchByPolicyWithoutPrint(InputParameter input, DataManager& data) const override {
-		return 0;
+	virtual bool searchByPolicy(Option2 option, const Employee& input, const Employee& data) const override {
+		if (option == Option2::Option2_PhoneNum_l && input.GetPhoneNum()._lastNum != data.GetPhoneNum()._lastNum) return false;
+		if (option == Option2::Option2_PhoneNum_m && input.GetPhoneNum()._middleNum != data.GetPhoneNum()._middleNum) return false;
+		if (option == Option2::Option2_None && input.GetPhoneNum() != data.GetPhoneNum()) return false;
+		return true;
 	}
 };
 
 class BirthDaySearchPolicy : public AbstractSearchPolicy {
 public:
-	virtual vector<Employee> searchByPolicyWithPrint(InputParameter input, DataManager& data) const override {
-		vector<Employee> searchList;
-		return searchList;
-	}
-	virtual int searchByPolicyWithoutPrint(InputParameter input, DataManager& data) const override {
-		return 0;
+	virtual bool searchByPolicy(Option2 option, const Employee& input, const Employee& data) const override {
+		if (option == Option2::Option2_BirthDay_y && input.GetBirthDay()._year != data.GetBirthDay()._year) return false;
+		if (option == Option2::Option2_BirthDay_m && input.GetBirthDay()._month != data.GetBirthDay()._month) return false;
+		if (option == Option2::Option2_BirthDay_d && input.GetBirthDay()._day != data.GetBirthDay()._day) return false;
+		if (option == Option2::Option2_None && input.GetBirthDay() != data.GetBirthDay()) return false;
+		return true;
 	}
 };
 
 class CertiSearchPolicy : public AbstractSearchPolicy {
 public:
-	virtual vector<Employee> searchByPolicyWithPrint(InputParameter input, DataManager& data) const override {
-		vector<Employee> searchList;
-		for (const Employee& datum : data.getData()) {
-			if (input.inputEmployee.GetCerti() == datum.GetCerti())
-				searchList.push_back(datum);
-		}
-		return searchList;
-	}
-	virtual int searchByPolicyWithoutPrint(InputParameter input, DataManager& data) const override {
-		int searchList = 0;
-		for (const Employee& datum : data.getData()) {
-			if (input.inputEmployee.GetCerti() == datum.GetCerti())
-				searchList++;
-		}
-		return searchList;
+	virtual bool searchByPolicy(Option2 option, const Employee& input, const Employee& data) const override {
+		if (option == Option2::Option2_None && input.GetCerti() != data.GetCerti()) return false;
+		return true;
 	}
 };
 
@@ -111,11 +72,14 @@ public:
 		searchPolicy[static_cast<int>(Column::Column_Certi)] = new CertiSearchPolicy();
 	}
 
-	vector<Employee> searchWithPrint(InputParameter input) {
-		return searchPolicy[static_cast<int>(input.column)]->searchByPolicyWithPrint(input, *getDataManager());
-	}
-	int searchWithoutPrint(InputParameter input) {
-		return searchPolicy[static_cast<int>(input.column)]->searchByPolicyWithoutPrint(input, *getDataManager());
+	vector<Employee> search(InputParameter input) {
+		vector<Employee> result;
+		for (const Employee& datum : getDataManager()->getData()) {
+			if (searchPolicy[static_cast<int>(input.column)]->searchByPolicy(input.option2, input.inputEmployee, datum))
+				result.push_back(datum);
+			if (input.option1 == Option1::Option1_p && result.size() >= 5) return result;
+		}
+		return result;
 	}
 
 public:

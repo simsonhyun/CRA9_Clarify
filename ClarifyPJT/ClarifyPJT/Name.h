@@ -33,6 +33,11 @@ public:
 		return (_firstName == r._firstName) && (_lastName == r._lastName);
 	}
 
+	bool operator!=(const Name& r)
+	{
+		return (_firstName != r._firstName) || (_lastName != r._lastName);
+	}
+
 private:
 public:
 	string _firstName;
