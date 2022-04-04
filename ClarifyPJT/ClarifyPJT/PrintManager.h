@@ -39,7 +39,7 @@ private:
 
 	string _ConvertName(const Name& name) const
 	{
-		return string(name._lastName) + " " + string(name._firstName) + ",";
+		return string(name._firstName) + " " + string(name._lastName) + ",";
 	}
 
 	string _ConvertCl(const CareerLevel& cl) const
@@ -102,11 +102,11 @@ private:
 		}
 		else if (certi == Certi::Certi_PRO)
 		{
-			outString = "ADV";
+			outString = "PRO";
 		}
 		else if (certi == Certi::Certi_EX)
 		{
-			outString = "ADV";
+			outString = "EX";
 		}
 		outString += 0xA; // Next Line
 

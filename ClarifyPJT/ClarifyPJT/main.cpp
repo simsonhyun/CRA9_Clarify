@@ -6,7 +6,6 @@ int main(int argc, char* argv[])
 
 	if (runProgram->checkArgument(argc))
 	{
-		runProgram->init();
 		runProgram->run(argv[1], argv[2]);
 	}
 	else
