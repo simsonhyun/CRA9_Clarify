@@ -1,9 +1,11 @@
-#include "Add.h"
-#include "DataManager.h"
+#include "RunProgram.h"
 
 int main(int argc, char* argv[])
 {
-	DataManager* dataManager = new DataManager();
+	RunProgram* runProgram = new RunProgram();
+
+	runProgram->init();
+	runProgram->run("ADD, , , ,17111236,VSID TVO,CL1,010-3669-1077,20120718,PRO");
 
 	return 0;
 }
