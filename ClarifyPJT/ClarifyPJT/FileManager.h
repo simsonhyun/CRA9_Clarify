@@ -15,13 +15,15 @@ public:
 	{
 		if (IsFileExists(outputText) == true)
 		{
-			outputFile.open(outputText);
+			bool status = remove(outputText.c_str());
+			if (status != 0)
+			{
+				_ASSERT(false);
+			}
 		}
-		else
-		{
-			ofstream createfile (outputText);
-			outputFile.open(outputText);
-		}
+
+		ofstream createfile (outputText);
+		outputFile.open(outputText);
 	}
 
 	const void InputClose(void)
@@ -53,7 +55,7 @@ public:
 
 	const void WriteString(const string& inputString)
 	{
-		outputFile << inputString;
+		outputFile.write(inputString.c_str(), inputString.length());
 	}
 
 
