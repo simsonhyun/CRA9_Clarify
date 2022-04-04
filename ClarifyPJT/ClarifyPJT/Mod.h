@@ -51,8 +51,7 @@ public:
 
 	}
 
-	vector<Employee> ModNotOption1(InputParameter targetEmployee);
-	vector<Employee> ModOption1(InputParameter targetEmployee);
+	vector<Employee> ModifyFunc(InputParameter targetEmployee);
 private:
 
 public:

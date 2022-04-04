@@ -51,35 +51,21 @@ void CertiModPolicy::ChangeModDataByPolicy(InputParameter targetEmployee, Employ
 	aEmployee.SetCerti(targetEmployee.inputDestEmployee.GetCerti());
 }
 
-vector<Employee> Mod::ModNotOption1(InputParameter targetEmployee) {
+vector<Employee> Mod::ModifyFunc(InputParameter targetEmployee) {
 	DataManager* pdataManager = getDataManager();
 	vector<Employee> &aEmployeesData = pdataManager->getData();
+	vector<Employee> PrintEmployees;
 	vector<Employee> TargetEmployees;
 
 	Column targetColumn = targetEmployee.column;
 	Column changeTargetColumn = targetEmployee.destColumn;
 	for (int EmployeeIndex = 0; EmployeeIndex < aEmployeesData.size(); EmployeeIndex++) {
 		if (paFindModDatabyColumn[static_cast<int>(targetColumn)]->findmodDataByPolicy(targetEmployee, aEmployeesData[EmployeeIndex])) {
+			if ((targetEmployee.option1 == Option1::Option1_p) && (PrintEmployees.size() < 5)) PrintEmployees.push_back(aEmployeesData[EmployeeIndex]);
 			paFindModDatabyColumn[static_cast<int>(changeTargetColumn)]->ChangeModDataByPolicy(targetEmployee, aEmployeesData[EmployeeIndex]);
 			TargetEmployees.push_back(aEmployeesData[EmployeeIndex]);
 		}
 	}
+	if (targetEmployee.option1 == Option1::Option1_p) return PrintEmployees;
 	return TargetEmployees;
-}
-vector<Employee> Mod::ModOption1(InputParameter targetEmployee) {
-	DataManager* pdataManager = getDataManager();
-	vector<Employee> &aEmployeesData = pdataManager->getData();
-	vector<Employee> PrintEmployees;
-
-	Column targetColumn = targetEmployee.column;
-	Column changeTargetColumn = targetEmployee.destColumn;
-	for (int EmployeeIndex = 0; EmployeeIndex < aEmployeesData.size(); EmployeeIndex++) {
-		if (paFindModDatabyColumn[static_cast<int>(targetColumn)]->findmodDataByPolicy(targetEmployee, aEmployeesData[EmployeeIndex])) {	
-			if (PrintEmployees.size() < 5) {
-				PrintEmployees.push_back(aEmployeesData[EmployeeIndex]);
-			}
-			paFindModDatabyColumn[static_cast<int>(changeTargetColumn)]->ChangeModDataByPolicy(targetEmployee, aEmployeesData[EmployeeIndex]);
-		}
-	}
-	return PrintEmployees;
 }
