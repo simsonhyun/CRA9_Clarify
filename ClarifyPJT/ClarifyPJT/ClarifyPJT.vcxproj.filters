@@ -80,6 +80,9 @@
     <ClInclude Include="PrintManager.h">
       <Filter>헤더 파일\Common</Filter>
     </ClInclude>
+    <ClInclude Include="FileManager.h">
+      <Filter>헤더 파일\Common</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

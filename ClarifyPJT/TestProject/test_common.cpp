@@ -3,7 +3,8 @@
 #include "../ClarifyPJT/Employee.h"
 #include "../ClarifyPJT/CommandParser.cpp"
 #include "../ClarifyPJT/PrintManager.h"
-#include "../ClarifyPJT/RunProgram.h"
+#include "../ClarifyPJT/FileManager.h"
+
 
 TEST(TestDataManager, CheckCommandManagerConstructor)
 {
@@ -35,7 +36,6 @@ TEST(TestEmployee, CheckEmployeeData)
 	EXPECT_EQ(testEmployee.GetCerti(), Certi::Certi_ADV);
 
 }
-
 
 TEST(TestCommandParser, CheckParsing0)
 {
@@ -173,4 +173,49 @@ TEST(TestPrintManager, CheckPrint2)
 	inputEmployees.push_back(Employee(2117175, Name("LDEXRI", "TEST"), CareerLevel::CareerLevel_4, PhoneNum(2814, 1699), BirthDay(1995, 07, 04), Certi::Certi_ADV));
 
 	EXPECT_EQ(printManager.Print(Command::Command_Sch, Option1::Option1_None, inputEmployees), testString);
+}
+
+TEST(TestFileManager, FileInputTest)
+{
+	FileManager fileManager;
+
+	fileManager.InputOpen("InputTest.txt");
+
+	EXPECT_EQ(fileManager.ReadOneLine(), "ADD, , , ,15123099,VXIHXOTH JHOP,CL3,010-3112-2609,19771211,ADV");
+	EXPECT_EQ(fileManager.ReadOneLine(), "ADD, , , ,17112609,FB NTAWR,CL4,010-5645-6122,19861203,PRO");
+	EXPECT_EQ(fileManager.ReadOneLine(), "ADD, , , ,18115040,TTETHU HBO,CL3,010-4581-2050,20080718,ADV");
+
+	fileManager.InputClose();
+}
+
+TEST(TestFileManager, FileOutputTest)
+{
+	FileManager fileManager;
+
+	fileManager.OutputOpen("OutputTest.txt");
+
+	string writeString = "ADD, , , ,15123099,VXIHXOTH JHOP,CL3,010-3112-2609,19771211,ADV";
+	writeString += 0xA;
+	fileManager.WriteString(writeString);
+
+	writeString = "ADD, , , ,17112609,FB NTAWR,CL4,010-5645-6122,19861203,PRO";
+	writeString += 0xA;
+	fileManager.WriteString(writeString);
+
+	writeString = "ADD, , , ,18115040,TTETHU HBO,CL3,010-4581-2050,20080718,ADV";
+	writeString += 0xA;
+	fileManager.WriteString(writeString);
+
+	fileManager.OutputClose();
+
+
+
+
+	fileManager.InputOpen("OutputTest.txt");
+
+	EXPECT_EQ(fileManager.ReadOneLine(), "ADD, , , ,15123099,VXIHXOTH JHOP,CL3,010-3112-2609,19771211,ADV");
+	EXPECT_EQ(fileManager.ReadOneLine(), "ADD, , , ,17112609,FB NTAWR,CL4,010-5645-6122,19861203,PRO");
+	EXPECT_EQ(fileManager.ReadOneLine(), "ADD, , , ,18115040,TTETHU HBO,CL3,010-4581-2050,20080718,ADV");
+
+	fileManager.InputClose();
 }
