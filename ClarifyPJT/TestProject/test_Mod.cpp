@@ -1,5 +1,6 @@
 #include "pch.h"
 #include"../ClarifyPJT/Mod.h"
+#include"../ClarifyPJT/Mod.cpp"
 
 TEST(BasicModTest, NotOptionNotDupliModifyData) {
 	DataManager dataManager = DataManager();

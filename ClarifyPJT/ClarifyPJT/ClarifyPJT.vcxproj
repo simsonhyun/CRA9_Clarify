@@ -143,6 +143,7 @@
     <ClCompile Include="CommandParser.cpp" />
     <ClCompile Include="Del.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Mod.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BirthDay.h" />
