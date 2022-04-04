@@ -4,8 +4,16 @@ int main(int argc, char* argv[])
 {
 	RunProgram* runProgram = new RunProgram();
 
-	runProgram->init();
-	runProgram->_run("ADD, , , ,17111236,VSID TVO,CL1,010-3669-1077,20120718,PRO");
+	if (runProgram->checkArgument(argc))
+	{
+		runProgram->init();
+		runProgram->run(argv[1], argv[2]);
+	}
+	else
+	{
+		cout << "Please Check Argument" << endl;
+		cout << "Current Argc : " << argc << endl;
+	}
 
 	return 0;
 }
