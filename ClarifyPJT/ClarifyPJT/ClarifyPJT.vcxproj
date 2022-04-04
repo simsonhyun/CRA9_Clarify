@@ -141,6 +141,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="CommandParser.cpp" />
+    <ClCompile Include="Del.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -148,10 +149,12 @@
     <ClInclude Include="CommandManager.h" />
     <ClInclude Include="CommandParser.h" />
     <ClInclude Include="DataManager.h" />
+    <ClInclude Include="Del.h" />
     <ClInclude Include="Employee.h" />
     <ClInclude Include="CommonType.h" />
     <ClInclude Include="Add.h" />
     <ClInclude Include="FileManager.h" />
+    <ClInclude Include="Mod.h" />
     <ClInclude Include="Name.h" />
     <ClInclude Include="PhoneNum.h" />
     <ClInclude Include="PrintManager.h" />
