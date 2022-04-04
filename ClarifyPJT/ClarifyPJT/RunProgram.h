@@ -12,6 +12,7 @@ class RunProgram
 {
 public:
 	const string ADD_RETURN_SIG = "ADD_RETURN";
+	static const int ARGUMENT_COUNT = 3;
 
 	const void init(void)
 	{
@@ -58,6 +59,22 @@ public:
 		fileManager.InputClose();
 	}
 
+	const bool compareFiles(const std::string& p1, const std::string& p2)
+	{
+		return fileManager.compareFiles(p1, p2);
+	}
+
+	const bool checkArgument(int argc)
+	{
+		if (argc == ARGUMENT_COUNT)
+		{
+			return true;
+		}
+
+		return false;
+	}
+
+private:
 	const string _run(const string& cmdString)
 	{
 		InputParameter inputParameter = commandParser.ConvertParameter(cmdString);
@@ -92,13 +109,6 @@ public:
 			return "";
 		}
 	}
-
-	bool compareFiles(const std::string& p1, const std::string& p2)
-	{
-		return fileManager.compareFiles(p1, p2);
-	}
-
-private:
 
 public:
 private:
