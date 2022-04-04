@@ -44,7 +44,7 @@ TEST_F(DeleteOption1Test, DeleteAllByEmployeeNumTestWithOptionP) {
 		deleteCount++;
 	}
 	EXPECT_EQ(5, deleteCount);
-	EXPECT_EQ(5, dataManager->getSize());
+	EXPECT_EQ(0, dataManager->getSize());
 };
 
 TEST_F(DeleteOption1Test, DeleteAllByEmployeeNumTestWithoutOptionP) {
@@ -82,7 +82,7 @@ TEST_F(DeleteOption1Test, DeleteAllByNameTestWithOptionP) {
 		deleteCount++;
 	}
 	EXPECT_EQ(5, deleteCount);
-	EXPECT_EQ(5, dataManager->getSize());
+	EXPECT_EQ(0, dataManager->getSize());
 };
 
 TEST_F(DeleteOption1Test, DeleteAllByNameTestWithoutOptionP) {
@@ -120,7 +120,7 @@ TEST_F(DeleteOption1Test, DeleteAllByCareerLevelWithOptionP) {
 		deleteCount++;
 	}
 	EXPECT_EQ(5, deleteCount);
-	EXPECT_EQ(5, dataManager->getSize());
+	EXPECT_EQ(0, dataManager->getSize());
 };
 
 TEST_F(DeleteOption1Test, DeleteAllByCareerLevelWithoutOptionP) {
@@ -158,7 +158,7 @@ TEST_F(DeleteOption1Test, DeleteAllByPhoneNumTestWithOptionP) {
 		deleteCount++;
 	}
 	EXPECT_EQ(5, deleteCount);
-	EXPECT_EQ(5, dataManager->getSize());
+	EXPECT_EQ(0, dataManager->getSize());
 };
 
 TEST_F(DeleteOption1Test, DeleteAllByPhoneNumTestWithoutOptionP) {
@@ -196,7 +196,7 @@ TEST_F(DeleteOption1Test, DeleteAllByBirthDayTestWithOptionP) {
 		deleteCount++;
 	}
 	EXPECT_EQ(5, deleteCount);
-	EXPECT_EQ(5, dataManager->getSize());
+	EXPECT_EQ(0, dataManager->getSize());
 };
 
 TEST_F(DeleteOption1Test, DeleteAllByBirthDayTestWithoutOptionP) {
@@ -234,7 +234,7 @@ TEST_F(DeleteOption1Test, DeleteAllByCertiTestWithOptionP) {
 		deleteCount++;
 	}
 	EXPECT_EQ(5, deleteCount);
-	EXPECT_EQ(5, dataManager->getSize());
+	EXPECT_EQ(0, dataManager->getSize());
 };
 
 TEST_F(DeleteOption1Test, DeleteAllByCertiTestWithoutOptionP) {

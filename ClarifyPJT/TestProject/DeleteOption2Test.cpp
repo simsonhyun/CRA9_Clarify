@@ -297,7 +297,7 @@ TEST_F(DeleteOption2Test, DeleteBirtyDayWithOptionDTestWithOptionP) {
 		deleteCount++;
 	}
 	EXPECT_EQ(5, deleteCount);
-	EXPECT_EQ(5, dataManager->getSize());
+	EXPECT_EQ(0, dataManager->getSize());
 };
 
 TEST_F(DeleteOption2Test, DeleteBirtyDayWithOptionXTestWithOptionP) {
