@@ -91,8 +91,8 @@ TEST(TEST_ADD_MODULE, ADD_SORT_TEST) {
 	{
 		if (employeeNum < 0)
 			employeeNum = 99999999;
-		Employee inputEmployee(employeeNum, Name("GILDONG", "HONG"), CareerLevel::CareerLevel_2, phonenum, birthday, Certi::Certi_PRO);
-		InputParameter inputParameter = { Command::Command_None, Option1::Option1_None, Option2::Option2_None, Column::Column_None, Column::Column_None, inputEmployee };
+		Employee inputemployee(employeeNum, Name("GILDONG", "HONG"), CareerLevel::CareerLevel_2, phonenum, birthday, Certi::Certi_PRO);
+		InputParameter inputParameter = { Command::Command_None, Option1::Option1_None, Option2::Option2_None, Column::Column_None, Column::Column_None, inputemployee };
 		add.Command(inputParameter);
 	}
 
