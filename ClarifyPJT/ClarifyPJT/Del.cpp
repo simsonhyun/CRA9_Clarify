@@ -44,7 +44,7 @@ CertiDeletePolicy::deleteByPolicy(InputParameter input, Employee& aEmployee) con
 }
 
 vector<Employee>
-FastDelete::deleteFast(InputParameter input, DataManager* dataManager) const {
+FastDelete::deleteData(InputParameter input, DataManager* dataManager) const {
 	vector<Employee> deleteList;
 	deleteList.reserve(dataManager->MAX_EMPLOYEE_COUNT);
 	vector<Employee>& employees = dataManager->getData();
@@ -60,7 +60,7 @@ FastDelete::deleteFast(InputParameter input, DataManager* dataManager) const {
 }
 
 vector<Employee>
-NotFastDelete::deleteFast(InputParameter input, DataManager* dataManager) const {
+NotFastDelete::deleteData(InputParameter input, DataManager* dataManager) const {
 	vector<Employee> deleteList;
 	deleteList.reserve(dataManager->MAX_EMPLOYEE_COUNT);
 	vector<Employee>& employees = dataManager->getData();
@@ -77,5 +77,5 @@ NotFastDelete::deleteFast(InputParameter input, DataManager* dataManager) const 
 
 vector<Employee>
 Del::Command(InputParameter input) {
-	return _deleteFast[static_cast<int>(input.column)]->deleteFast(input, getDataManager());
+	return _fastPolicy[static_cast<int>(input.column)]->deleteData(input, getDataManager());
 }
