@@ -51,7 +51,7 @@ public:
 
 	}
 
-	vector<Employee> ModifyFunc(InputParameter targetEmployee);
+	vector<Employee> Command(InputParameter targetEmployee) override;
 private:
 
 public:
