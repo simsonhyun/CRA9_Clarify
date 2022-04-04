@@ -50,8 +50,8 @@ Del::deleteEmployeeInfo(InputParameter input) {
 	vector<Employee>& employees = getDataManager()->getData();
 	for (vector<Employee>::iterator aEmployee = employees.begin(); aEmployee != employees.end(); ) {
 		if (deletePolicy[static_cast<int>(input.column)]->deleteByPolicy(input, *aEmployee)) {
-			deleteList.push_back(*aEmployee);
 			aEmployee = employees.erase(aEmployee);
+			if ((input.option1 != Option1::Option1_p) || (deleteList.size() < 5)) deleteList.push_back(*aEmployee);
 			continue;
 		}
 		aEmployee++;
