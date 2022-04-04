@@ -54,6 +54,9 @@
     <ClCompile Include="Del.cpp">
       <Filter>소스 파일\Del</Filter>
     </ClCompile>
+    <ClCompile Include="Mod.cpp">
+      <Filter>소스 파일\Mod</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CommonType.h">
