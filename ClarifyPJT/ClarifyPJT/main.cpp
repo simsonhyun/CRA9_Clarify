@@ -1,9 +1,19 @@
-#include "Add.h"
-#include "DataManager.h"
+#include "RunProgram.h"
 
 int main(int argc, char* argv[])
 {
-	DataManager* dataManager = new DataManager();
+	RunProgram* runProgram = new RunProgram();
+
+	if (runProgram->checkArgument(argc))
+	{
+		runProgram->init();
+		runProgram->run(argv[1], argv[2]);
+	}
+	else
+	{
+		cout << "Please Check Argument" << endl;
+		cout << "Current Argc : " << argc << endl;
+	}
 
 	return 0;
 }

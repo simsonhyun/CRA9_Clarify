@@ -15,6 +15,7 @@ InputParameter CommandParser::ConvertParameter(const string& inputString)
 
 	if (inputParameter.command == Command::Command_Add)
 	{
+		inputParameter.destColumn = Column::Column_None;
 		inputParameter.inputEmployee.SetData(stoi(parsedStrings.at(ADDCMD_EMPLOYEENUM_OFFSET)),
 											 _ConvertName(parsedStrings.at(ADDCMD_NAME_OFFSET), inputParameter.option2),
 											 _ConvertCareerLevel(parsedStrings.at(ADDCMD_CL_OFFSET)),
@@ -72,7 +73,18 @@ void CommandParser::_SetValue(const string& inputString, const Column& column, c
 	}
 	else if (column == Column::Column_PhoneNum)
 	{
-		employee.SetData(0, {"", ""}, CareerLevel::CareerLevel_None, _ConvertPhoneNum(inputString), BirthDay(0, 0, 0), Certi::Certi_None);
+		if (option2 == Option2::Option2_PhoneNum_m)
+		{
+			employee.SetData(0, { "", "" }, CareerLevel::CareerLevel_None, PhoneNum(stoi(inputString), 0), BirthDay(0, 0, 0), Certi::Certi_None);
+		}
+		else if (option2 == Option2::Option2_PhoneNum_l)
+		{
+			employee.SetData(0, { "", "" }, CareerLevel::CareerLevel_None, PhoneNum(0, stoi(inputString)), BirthDay(0, 0, 0), Certi::Certi_None);
+		}
+		else
+		{
+			employee.SetData(0, { "", "" }, CareerLevel::CareerLevel_None, _ConvertPhoneNum(inputString), BirthDay(0, 0, 0), Certi::Certi_None);
+		}
 	}
 	else if (column == Column::Column_BirthDay)
 	{

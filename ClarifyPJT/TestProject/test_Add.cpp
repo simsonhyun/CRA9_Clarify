@@ -56,7 +56,7 @@ TEST(TEST_ADD_MODULE, ADD_MAX_SIZE_TEST) {
 	ASSERT_TRUE(dataManager.getSize() == 100000);
 
 	employeeNum = 90000000;
-	vector<Employee> employees = dataManager.getData(); //employeenum 순서대로 sorting되든, 입력대로 add되든 test가능
+	vector<Employee> employees = dataManager.getData(); //employeenum ???? sorting??, ???? add?? test??
 	for (auto employee : employees)
 	{
 		Employee inputEmployee(employeeNum++, Name("GILDONG", "HONG"), CareerLevel::CareerLevel_2, phonenum, birthday, Certi::Certi_PRO);
@@ -136,5 +136,5 @@ TEST(TEST_ADD_MODULE, ADD_INPUT_EXCEPTION_TEST) {
 
 	add.Command(inputParameter);
 
-	ASSERT_TRUE(dataManager.getSize() != 1); // invalid한 Input에 대해서 add되지 않은 것을 확인
+	ASSERT_TRUE(dataManager.getSize() != 1); // invalid? Input? ??? add?? ?? ?? ??
 }
