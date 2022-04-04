@@ -33,7 +33,7 @@ private:
 	string _ConvertEmployeeNum(const int& employeeNum) const
 	{
 		char buf[10];
-		sprintf_s(buf, "%08d", employeeNum);	// 8자리 맞추기 위한 sprintf_s() 호출
+		sprintf(buf, "%08d", employeeNum);
 		return string(buf) + ",";
 	}
 
