@@ -2,6 +2,7 @@
 #include "CommandParser.h"
 #include "DataManager.h"
 #include "PrintManager.h"
+#include "FileManager.h"
 #include "Add.h"
 #include "Sch.h"
 
@@ -17,9 +18,21 @@ public:
 		search = new Search(*dataManager);
 	}
 
-	const void run(const string& inputText)
+	const void run(const string& inputText, const string& outputText)
 	{
+		fileManager.InputOpen(inputText);
+		fileManager.OutputOpen(outputText);
 
+		string oneLineString = fileManager.ReadOneLine();
+
+		do
+		{
+			oneLineString = fileManager.ReadOneLine();
+			fileManager.WriteString(_run(oneLineString));
+		} while (oneLineString != "");
+
+		fileManager.OutputClose();
+		fileManager.InputClose();
 	}
 
 	const string _run(const string& cmdString)
@@ -43,12 +56,19 @@ public:
 
 		}
 	}
+
+	bool compareFiles(const std::string& p1, const std::string& p2)
+	{
+		return fileManager.compareFiles(p1, p2);
+	}
+
 private:
 
 public:
 private:
 	CommandParser commandParser;
 	PrintManager printManager;
+	FileManager fileManager;
 
 	Add* add;
 	Search* search;
