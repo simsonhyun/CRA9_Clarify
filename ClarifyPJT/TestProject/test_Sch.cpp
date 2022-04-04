@@ -25,7 +25,7 @@ public:
 
 TEST_F(SearchTest, SearchByEmployeeNumTest) {
 	Employee searchEmployee = { 12345678, {"±è", "Ã¶¼ö"}, CareerLevel::CareerLevel_2,  {1234, 8765}, {1990, 02, 01}, Certi::Certi_PRO };
-	InputParameter input = { Command::Command_Sch, Option1::Option1_None, Option2::Option2_None, Column::Column_employeeNum, Column::Column_None, searchEmployee };
+	InputParameter input = { CommandType::Command_Sch, Option1::Option1_None, Option2::Option2_None, Column::Column_employeeNum, Column::Column_None, searchEmployee };
 
 	vector<Employee> result = searchTest->Command(input);
 	for (const Employee& ep : result) {
@@ -36,7 +36,7 @@ TEST_F(SearchTest, SearchByEmployeeNumTest) {
 
 TEST_F(SearchTest, SearchByCareerLevelTest) {
 	Employee searchEmployee = { 11111111, {"È«", "±æµ¿"}, CareerLevel::CareerLevel_1,  {9513, 7412}, {1990, 04, 03}, Certi::Certi_PRO };
-	InputParameter input = { Command::Command_Sch, Option1::Option1_None, Option2::Option2_None, Column::Column_CareerLevel, Column::Column_None, searchEmployee };
+	InputParameter input = { CommandType::Command_Sch, Option1::Option1_None, Option2::Option2_None, Column::Column_CareerLevel, Column::Column_None, searchEmployee };
 
 	vector<Employee> result = searchTest->Command(input);
 	for (const Employee& ep : result) {
@@ -47,7 +47,7 @@ TEST_F(SearchTest, SearchByCareerLevelTest) {
 
 TEST_F(SearchTest, SearchByCertiTest) {
 	Employee searchEmployee = { 87654321, {"°í", "±æµ¿"}, CareerLevel::CareerLevel_4,  {1354, 9516}, {1990, 03, 02}, Certi::Certi_ADV };
-	InputParameter input = { Command::Command_Sch, Option1::Option1_None, Option2::Option2_None, Column::Column_Certi, Column::Column_None, searchEmployee };
+	InputParameter input = { CommandType::Command_Sch, Option1::Option1_None, Option2::Option2_None, Column::Column_Certi, Column::Column_None, searchEmployee };
 
 	vector<Employee> result = searchTest->Command(input);
 	for (const Employee& ep : result) {
@@ -58,7 +58,7 @@ TEST_F(SearchTest, SearchByCertiTest) {
 
 TEST_F(SearchTest, SearchByNameTest) {
 	Employee searchEmployee = { 87654321, {"È«", "±æµ¿"}, CareerLevel::CareerLevel_4,  {1354, 9516}, {1990, 03, 02}, Certi::Certi_ADV };
-	InputParameter input = { Command::Command_Sch, Option1::Option1_None, Option2::Option2_None, Column::Column_Name, Column::Column_None, searchEmployee };
+	InputParameter input = { CommandType::Command_Sch, Option1::Option1_None, Option2::Option2_None, Column::Column_Name, Column::Column_None, searchEmployee };
 
 	vector<Employee> result = searchTest->Command(input);
 	for (const Employee& ep : result) {
@@ -67,7 +67,7 @@ TEST_F(SearchTest, SearchByNameTest) {
 	}
 	EXPECT_EQ(2, result.size());
 
-	input = { Command::Command_Sch, Option1::Option1_None, Option2::Option2_Name_f, Column::Column_Name, Column::Column_None, searchEmployee };
+	input = { CommandType::Command_Sch, Option1::Option1_None, Option2::Option2_Name_f, Column::Column_Name, Column::Column_None, searchEmployee };
 	result.clear();
 	result = searchTest->Command(input);
 	for (const Employee& ep : result) {
@@ -75,7 +75,7 @@ TEST_F(SearchTest, SearchByNameTest) {
 	}
 	EXPECT_EQ(2, result.size());
 
-	input = { Command::Command_Sch, Option1::Option1_None, Option2::Option2_Name_l, Column::Column_Name, Column::Column_None, searchEmployee };
+	input = { CommandType::Command_Sch, Option1::Option1_None, Option2::Option2_Name_l, Column::Column_Name, Column::Column_None, searchEmployee };
 	result.clear();
 	result = searchTest->Command(input);
 	for (const Employee& ep : result) {
@@ -86,7 +86,7 @@ TEST_F(SearchTest, SearchByNameTest) {
 
 TEST_F(SearchTest, SearchByPhoneNumTest) {
 	Employee searchEmployee = { 12345678, {"È«", "±æµ¿"}, CareerLevel::CareerLevel_1,  {1234, 5678}, {1990, 01, 01}, Certi::Certi_ADV };
-	InputParameter input = { Command::Command_Sch, Option1::Option1_None, Option2::Option2_None, Column::Column_PhoneNum, Column::Column_None, searchEmployee };
+	InputParameter input = { CommandType::Command_Sch, Option1::Option1_None, Option2::Option2_None, Column::Column_PhoneNum, Column::Column_None, searchEmployee };
 
 	vector<Employee> result = searchTest->Command(input);
 	for (const Employee& ep : result) {
@@ -95,7 +95,7 @@ TEST_F(SearchTest, SearchByPhoneNumTest) {
 	}
 	EXPECT_EQ(1, result.size());
 
-	input = { Command::Command_Sch, Option1::Option1_None, Option2::Option2_PhoneNum_m, Column::Column_PhoneNum, Column::Column_None, searchEmployee };
+	input = { CommandType::Command_Sch, Option1::Option1_None, Option2::Option2_PhoneNum_m, Column::Column_PhoneNum, Column::Column_None, searchEmployee };
 	result.clear();
 	result = searchTest->Command(input);
 	for (const Employee& ep : result) {
@@ -103,7 +103,7 @@ TEST_F(SearchTest, SearchByPhoneNumTest) {
 	}
 	EXPECT_EQ(2, result.size());
 
-	input = { Command::Command_Sch, Option1::Option1_None, Option2::Option2_PhoneNum_l, Column::Column_PhoneNum, Column::Column_None, searchEmployee };
+	input = { CommandType::Command_Sch, Option1::Option1_None, Option2::Option2_PhoneNum_l, Column::Column_PhoneNum, Column::Column_None, searchEmployee };
 	result.clear();
 	result = searchTest->Command(input);
 	for (const Employee& ep : result) {
@@ -114,7 +114,7 @@ TEST_F(SearchTest, SearchByPhoneNumTest) {
 
 TEST_F(SearchTest, SearchByBirthDayTest) {
 	Employee searchEmployee = { 12345678, {"È«", "±æµ¿"}, CareerLevel::CareerLevel_1,  {1234, 5678}, {1990, 01, 01}, Certi::Certi_ADV };
-	InputParameter input = { Command::Command_Sch, Option1::Option1_None, Option2::Option2_None, Column::Column_BirthDay, Column::Column_None, searchEmployee };
+	InputParameter input = { CommandType::Command_Sch, Option1::Option1_None, Option2::Option2_None, Column::Column_BirthDay, Column::Column_None, searchEmployee };
 
 	vector<Employee> result = searchTest->Command(input);
 	for (const Employee& ep : result) {
@@ -124,7 +124,7 @@ TEST_F(SearchTest, SearchByBirthDayTest) {
 	}
 	EXPECT_EQ(1, result.size());
 
-	input = { Command::Command_Sch, Option1::Option1_None, Option2::Option2_BirthDay_y, Column::Column_BirthDay, Column::Column_None, searchEmployee };
+	input = { CommandType::Command_Sch, Option1::Option1_None, Option2::Option2_BirthDay_y, Column::Column_BirthDay, Column::Column_None, searchEmployee };
 	result.clear();
 	result = searchTest->Command(input);
 	for (const Employee& ep : result) {
@@ -132,7 +132,7 @@ TEST_F(SearchTest, SearchByBirthDayTest) {
 	}
 	EXPECT_EQ(5, result.size());
 
-	input = { Command::Command_Sch, Option1::Option1_None, Option2::Option2_BirthDay_m, Column::Column_BirthDay, Column::Column_None, searchEmployee };
+	input = { CommandType::Command_Sch, Option1::Option1_None, Option2::Option2_BirthDay_m, Column::Column_BirthDay, Column::Column_None, searchEmployee };
 	result.clear();
 	result = searchTest->Command(input);
 	for (const Employee& ep : result) {
@@ -140,7 +140,7 @@ TEST_F(SearchTest, SearchByBirthDayTest) {
 	}
 	EXPECT_EQ(2, result.size());
 
-	input = { Command::Command_Sch, Option1::Option1_None, Option2::Option2_BirthDay_d, Column::Column_BirthDay, Column::Column_None, searchEmployee };
+	input = { CommandType::Command_Sch, Option1::Option1_None, Option2::Option2_BirthDay_d, Column::Column_BirthDay, Column::Column_None, searchEmployee };
 	result.clear();
 	result = searchTest->Command(input);
 	for (const Employee& ep : result) {

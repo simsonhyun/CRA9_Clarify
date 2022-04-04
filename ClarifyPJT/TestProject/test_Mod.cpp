@@ -12,7 +12,7 @@ TEST(BasicModTest, NotOptionNotDupliModifyData) {
 	dataManager.setData(employee);
 	dataManager.setData(employee2);
 	dataManager.setData(employee3);
-	InputParameter inputParameter = { Command::Command_Mod, Option1::Option1_None, Option2::Option2_None, 
+	InputParameter inputParameter = { CommandType::Command_Mod, Option1::Option1_None, Option2::Option2_None, 
 										Column::Column_employeeNum, Column::Column_Certi,employee, employee2 };
 
 	ASSERT_TRUE(mod.ModifyFunc(inputParameter).size()==1);
@@ -31,7 +31,7 @@ TEST(BasicModTest, NotOptionDupliModifyData) {
 	dataManager.setData(employee);
 	dataManager.setData(employee2);
 	dataManager.setData(employee3);
-	InputParameter inputParameter = { Command::Command_Mod, Option1::Option1_None, Option2::Option2_None,
+	InputParameter inputParameter = { CommandType::Command_Mod, Option1::Option1_None, Option2::Option2_None,
 										Column::Column_Name, Column::Column_Certi,employee, employee3 };
 
 	ASSERT_TRUE(mod.ModifyFunc(inputParameter).size() == 2);
@@ -50,7 +50,7 @@ TEST(BasicModTest, Option2NameModifyData) {
 	dataManager.setData(employee);
 	dataManager.setData(employee2);
 	dataManager.setData(employee3);
-	InputParameter inputParameter = { Command::Command_Mod, Option1::Option1_None, Option2::Option2_Name_f,
+	InputParameter inputParameter = { CommandType::Command_Mod, Option1::Option1_None, Option2::Option2_Name_f,
 										Column::Column_Name, Column::Column_CareerLevel,employee, employee3 };
 
 	ASSERT_TRUE(mod.ModifyFunc(inputParameter).size() == 2);
@@ -69,7 +69,7 @@ TEST(BasicModTest, Option2phoneModifyData) {
 	dataManager.setData(employee);
 	dataManager.setData(employee2);
 	dataManager.setData(employee3);
-	InputParameter inputParameter = { Command::Command_Mod, Option1::Option1_None, Option2::Option2_PhoneNum_l,
+	InputParameter inputParameter = { CommandType::Command_Mod, Option1::Option1_None, Option2::Option2_PhoneNum_l,
 										Column::Column_PhoneNum, Column::Column_BirthDay,employee, employee3 };
 
 	ASSERT_TRUE(mod.ModifyFunc(inputParameter).size() == 2);
@@ -96,7 +96,7 @@ TEST(BasicModTest, Option1DupliModifyData) {
 	dataManager.setData(employee5);
 	dataManager.setData(employee6);
 	dataManager.setData(employee7);
-	InputParameter inputParameter = { Command::Command_Mod, Option1::Option1_p, Option2::Option2_None,
+	InputParameter inputParameter = { CommandType::Command_Mod, Option1::Option1_p, Option2::Option2_None,
 										Column::Column_Name, Column::Column_Certi,employee, employee3 };
 	vector<Employee> resultOption1 = mod.ModifyFunc(inputParameter);
 	ASSERT_TRUE(resultOption1.size() != 6);
@@ -126,7 +126,7 @@ TEST(BasicModTest, Option1and2ModifyData) {
 	dataManager.setData(employee5);
 	dataManager.setData(employee6);
 	dataManager.setData(employee7);
-	InputParameter inputParameter = { Command::Command_Mod, Option1::Option1_p, Option2::Option2_Name_l,
+	InputParameter inputParameter = { CommandType::Command_Mod, Option1::Option1_p, Option2::Option2_Name_l,
 										Column::Column_Name, Column::Column_Certi,employee, employee3 };
 
 	ASSERT_TRUE(mod.ModifyFunc(inputParameter).size() == 5);

@@ -24,10 +24,10 @@ public:
 	RunProgram()
 	{
 		DataManager* dataManager = new DataManager();
-		commands.push_back(Add(*dataManager));
-		commands.push_back(Search(*dataManager));
-		commands.push_back(Del(*dataManager));
-		commands.push_back(Mod(*dataManager));
+		commands.push_back(new Add(*dataManager));
+		commands.push_back(new Search(*dataManager));
+		commands.push_back(new Del(*dataManager));
+		commands.push_back(new Mod(*dataManager));
 	}
 
 	const void run(const string& inputText, const string& outputText)
@@ -92,7 +92,7 @@ private:
 
 		try
 		{
-			if (inputParameter.command == Command::Command_None)
+			if (inputParameter.command == CommandType::Command_None)
 			{
 				throw invalid_argument("Invalid Command!");
 			}
@@ -102,13 +102,19 @@ private:
 			cout << e.what() << endl;
 		}
 
-		vector<Employee> ret = commands.at(static_cast<int>(inputParameter.command)).Command(inputParameter);
-		if (inputParameter.command == Command::Command_Add)
+		for (const auto& command : commands)
 		{
-			return ADD_RETURN_SIG;
-		}
+			if (command->getCommandType() == inputParameter.command)
+			{
+				vector<Employee> ret = command->Command(inputParameter);
+				if (inputParameter.command == CommandType::Command_Add)
+				{
+					return ADD_RETURN_SIG;
+				}
 
-		return printManager.Print(inputParameter.command, inputParameter.option1, ret);
+				return printManager.Print(inputParameter.command, inputParameter.option1, ret);
+			}
+		}
 	}
 
 	const void _checkInvalidFileName(const string& fileName) const
@@ -143,7 +149,7 @@ private:
 		if (ret) throw invalid_argument("Input Invalid FileName");
 	}
 
-	const void _checkInvalidCmd(const Command& command, const string& oneLineString) const
+	const void _checkInvalidCmd(const CommandType& command, const string& oneLineString) const
 	{
 		// , °³¼ö
 		// ADD 9°³
@@ -167,10 +173,10 @@ private:
 			}
 		}
 
-		if ((command == Command::Command_Add) && (findCount == ADD_COMMA_COUNT)) {}
-		else if ((command == Command::Command_Del) && (findCount == DEL_COMMA_COUNT)) {}
-		else if ((command == Command::Command_Mod) && (findCount == MOD_COMMA_COUNT)) {}
-		else if ((command == Command::Command_Sch) && (findCount == SCH_COMMA_COUNT)) {}
+		if ((command == CommandType::Command_Add) && (findCount == ADD_COMMA_COUNT)) {}
+		else if ((command == CommandType::Command_Del) && (findCount == DEL_COMMA_COUNT)) {}
+		else if ((command == CommandType::Command_Mod) && (findCount == MOD_COMMA_COUNT)) {}
+		else if ((command == CommandType::Command_Sch) && (findCount == SCH_COMMA_COUNT)) {}
 		else
 		{
 			throw invalid_argument("Invalid Command Input");
@@ -184,5 +190,5 @@ private:
 	PrintManager printManager;
 	FileManager fileManager;
 
-	vector<CommandManager> commands;
+	vector<CommandManager*> commands;
 };

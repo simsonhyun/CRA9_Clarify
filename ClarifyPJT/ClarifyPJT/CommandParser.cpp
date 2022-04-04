@@ -13,7 +13,7 @@ InputParameter CommandParser::ConvertParameter(const string& inputString)
 	inputParameter.option2 = _ConvertOption2(parsedStrings.at(OPTION2_OFFSET), column);
 	inputParameter.column = column;
 
-	if (inputParameter.command == Command::Command_Add)
+	if (inputParameter.command == CommandType::Command_Add)
 	{
 		inputParameter.destColumn = Column::Column_None;
 		inputParameter.inputEmployee.SetData(stoi(parsedStrings.at(ADDCMD_EMPLOYEENUM_OFFSET)),
@@ -23,7 +23,7 @@ InputParameter CommandParser::ConvertParameter(const string& inputString)
 											 _ConvertBirthDay(parsedStrings.at(ADDCMD_BIRTHDAY_OFFSET)),
 											 _ConvertCerti(parsedStrings.at(ADDCMD_CERTI_OFFSET)));
 	}
-	else if (inputParameter.command == Command::Command_Mod)
+	else if (inputParameter.command == CommandType::Command_Mod)
 	{
 		_SetValue(parsedStrings.at(VALUE_OFFSET), column, inputParameter.option2, inputParameter.inputEmployee);
 
@@ -111,27 +111,27 @@ void CommandParser::_SetValue(const string& inputString, const Column& column, c
 	}
 }
 
-Command CommandParser::_ConvertCommand(const string& inputString)
+CommandType CommandParser::_ConvertCommand(const string& inputString)
 {
 	if (inputString == "ADD")
 	{
-		return Command::Command_Add;
+		return CommandType::Command_Add;
 	}
 	else if (inputString == "SCH")
 	{
-		return Command::Command_Sch;
+		return CommandType::Command_Sch;
 	}
 	else if (inputString == "DEL")
 	{
-		return Command::Command_Del;
+		return CommandType::Command_Del;
 	}
 	else if (inputString == "MOD")
 	{
-		return Command::Command_Mod;
+		return CommandType::Command_Mod;
 	}
 	else 
 	{
-		return Command::Command_None;
+		return CommandType::Command_None;
 	}
 }
 

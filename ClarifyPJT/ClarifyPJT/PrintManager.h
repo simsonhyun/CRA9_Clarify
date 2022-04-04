@@ -6,21 +6,21 @@ using namespace std;
 class PrintManager
 {
 private:
-	string _GetCommandString(const Command& command)
+	string _GetCommandString(const CommandType& command)
 	{
-		if (command == Command::Command_Add)
+		if (command == CommandType::Command_Add)
 		{
 			return "ADD,";
 		}
-		else if (command == Command::Command_Sch)
+		else if (command == CommandType::Command_Sch)
 		{
 			return "SCH,";
 		}
-		else if (command == Command::Command_Del)
+		else if (command == CommandType::Command_Del)
 		{
 			return "DEL,";
 		}
-		else if (command == Command::Command_Mod)
+		else if (command == CommandType::Command_Mod)
 		{
 			return "MOD,";
 		}
@@ -114,7 +114,7 @@ private:
 	}
 
 public:
-	string Print(const Command& command, const Option1& option1, const vector< Employee>& commandResultEmployees)
+	string Print(const CommandType& command, const Option1& option1, const vector< Employee>& commandResultEmployees)
 	{
 		static const int MAX_PRINT_COUNT = 5;
 

@@ -63,7 +63,7 @@ public:
 
 class Search : public CommandManager {
 public:
-	Search(DataManager& dataManager) : CommandManager(dataManager) {
+	Search(DataManager& dataManager) : CommandManager(CommandType::Command_Sch, dataManager) {
 		searchPolicy[static_cast<int>(Column::Column_employeeNum)] = new EmployeeNumSearchPolicy();
 		searchPolicy[static_cast<int>(Column::Column_Name)] = new NameSearchPolicy();
 		searchPolicy[static_cast<int>(Column::Column_CareerLevel)] = new CareerLevelSearchPolicy();

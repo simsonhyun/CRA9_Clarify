@@ -41,7 +41,7 @@ public:
 
 class Mod : public CommandManager {
 public:
-	Mod(DataManager& dataManager) :CommandManager(dataManager) {
+	Mod(DataManager& dataManager) :CommandManager(CommandType::Command_Mod, dataManager) {
 		paFindModDatabyColumn[static_cast<int>(Column::Column_employeeNum)] = new EmployeeNumModPolicy();
 		paFindModDatabyColumn[static_cast<int>(Column::Column_Name)] = new NameModPolicy();
 		paFindModDatabyColumn[static_cast<int>(Column::Column_CareerLevel)] = new CareerLevelModPolicy();
