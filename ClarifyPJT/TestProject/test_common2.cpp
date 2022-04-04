@@ -54,12 +54,12 @@ public:
 //SCH, 08123556, WN XV, CL1, 010 - 7986 - 5047, 20100614, PRO");
 //}
 
-TEST(RunTest2, CheckRun1)
-{
-	RunProgram runProgram;
-
-	runProgram.init();
-	runProgram.run("TestCase/input_20_20.txt", "output_20_20_test.txt");
-
-	EXPECT_TRUE(runProgram.compareFiles("output_20_20_test.txt", "TestCase/output_20_20.txt"));
-}
+//TEST(RunTest2, CheckRun1)
+//{
+//	RunProgram runProgram;
+//
+//	runProgram.init();
+//	runProgram.run("TestCase/input_20_20.txt", "output_20_20_test.txt");
+//
+//	EXPECT_TRUE(runProgram.compareFiles("output_20_20_test.txt", "TestCase/output_20_20.txt"));
+//}
