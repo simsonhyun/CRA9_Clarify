@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include <iostream>
 #include <fstream>
 using namespace std;
 
@@ -8,21 +9,37 @@ class FileManager
 public:
 	const void InputOpen(const string& inputText)
 	{
+		try
+		{
+			ifstream inputTest(inputText);
+			if (!inputTest.is_open())
+			{
+				throw exception("input file not exists");
+			}
+		}
+		catch (exception e)
+		{
+			cout << e.what() << endl;
+		}
+
 		inputFile.open(inputText);
 	}
 
 	const void OutputOpen(const string& outputText)
 	{
-		if (IsFileExists(outputText) == true)
+		try
 		{
-			bool status = remove(outputText.c_str());
-			if (status != 0)
+			ofstream outputTest(outputText, ios::trunc);
+			if (!outputTest.is_open())
 			{
-				_ASSERT(false);
+				throw exception("output file fail");
 			}
 		}
+		catch (exception e)
+		{
+			cout << e.what() << endl;
+		}
 
-		ofstream createfile (outputText);
 		outputFile.open(outputText);
 	}
 
@@ -58,7 +75,6 @@ public:
 		outputFile.write(inputString.c_str(), inputString.length());
 	}
 
-
 	bool compareFiles(const std::string& p1, const std::string& p2) 
 	{
 		std::ifstream f1(p1, std::ifstream::binary | std::ifstream::ate);
@@ -81,12 +97,6 @@ public:
 	}
 
 private:
-	bool IsFileExists(const string& fileName) 
-	{
-		ifstream f(fileName.c_str());
-		return f.good();
-	}
-
 
 public:
 private:
