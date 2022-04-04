@@ -1,9 +1,7 @@
 #include "pch.h"
 #include "../ClarifyPJT/Add.h"
 
-
-#if 0
-#TEST(TEST_ADD_MODULE, ADD_TEST) {
+TEST(TEST_ADD_MODULE, ADD_TEST) {
 	DataManager dataManager = DataManager();
 	Add add = Add(dataManager);
 
@@ -121,5 +119,3 @@ TEST(TEST_ADD_MODULE, ADD_SORT_TEST) {
 			employeeNum = 0;
 	}
 }
-
-#endif
