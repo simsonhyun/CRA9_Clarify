@@ -53,56 +53,33 @@ void CertiModPolicy::ChangeModDataByPolicy(InputParameter targetEmployee, Employ
 
 vector<Employee> Mod::ModNotOption1(InputParameter targetEmployee) {
 	DataManager* pdataManager = getDataManager();
+	vector<Employee> &aEmployeesData = pdataManager->getData();
 	vector<Employee> TargetEmployees;
-	vector<int> idxChangeEmployees;
-	vector<Employee> aEmployees = pdataManager->getData();
-	vector<Employee>* pEmployees = pdataManager->getPointerData();
 
-	int sameCnt = 0;
 	Column targetColumn = targetEmployee.column;
-	for (int EmployeeIndex = 0; EmployeeIndex < aEmployees.size(); EmployeeIndex++) {
-		if (paFindModDatabyColumn[static_cast<int>(targetColumn)]->findmodDataByPolicy(targetEmployee, aEmployees[EmployeeIndex])) {
-			sameCnt++;
-			TargetEmployees.push_back(aEmployees[EmployeeIndex]);//값 변경되기전 백터를 return에 넣어줌
-			idxChangeEmployees.push_back(EmployeeIndex);
+	Column changeTargetColumn = targetEmployee.destColumn;
+	for (int EmployeeIndex = 0; EmployeeIndex < aEmployeesData.size(); EmployeeIndex++) {
+		if (paFindModDatabyColumn[static_cast<int>(targetColumn)]->findmodDataByPolicy(targetEmployee, aEmployeesData[EmployeeIndex])) {
+			paFindModDatabyColumn[static_cast<int>(changeTargetColumn)]->ChangeModDataByPolicy(targetEmployee, aEmployeesData[EmployeeIndex]);
+			TargetEmployees.push_back(aEmployeesData[EmployeeIndex]);
 		}
 	}
-	Column changeTargetColumn = targetEmployee.destColumn;
-	for (int EmployeeIndex = 0; EmployeeIndex < idxChangeEmployees.size(); EmployeeIndex++) {
-		paFindModDatabyColumn[static_cast<int>(changeTargetColumn)]->ChangeModDataByPolicy(targetEmployee, TargetEmployees[EmployeeIndex]);
-		pEmployees->erase(pEmployees->begin() + idxChangeEmployees[EmployeeIndex]);
-		pEmployees->insert(pEmployees->begin() + idxChangeEmployees[EmployeeIndex], TargetEmployees[EmployeeIndex]);
-
-	}
-
 	return TargetEmployees;
 }
 vector<Employee> Mod::ModOption1(InputParameter targetEmployee) {
 	DataManager* pdataManager = getDataManager();
-	vector<Employee> aEmployees = pdataManager->getData();
-	vector<Employee>* pEmployees = pdataManager->getPointerData();
-	vector<Employee> TargetEmployees;
+	vector<Employee> &aEmployeesData = pdataManager->getData();
 	vector<Employee> PrintEmployees;
-	vector<int> idxChangeEmployees;
 
 	Column targetColumn = targetEmployee.column;
-	for (int EmployeeIndex = 0; EmployeeIndex < aEmployees.size(); EmployeeIndex++) {
-		if (paFindModDatabyColumn[static_cast<int>(targetColumn)]->findmodDataByPolicy(targetEmployee, aEmployees[EmployeeIndex])) {
-			TargetEmployees.push_back(aEmployees[EmployeeIndex]);
-			idxChangeEmployees.push_back(EmployeeIndex);
+	Column changeTargetColumn = targetEmployee.destColumn;
+	for (int EmployeeIndex = 0; EmployeeIndex < aEmployeesData.size(); EmployeeIndex++) {
+		if (paFindModDatabyColumn[static_cast<int>(targetColumn)]->findmodDataByPolicy(targetEmployee, aEmployeesData[EmployeeIndex])) {	
+			if (PrintEmployees.size() < 5) {
+				PrintEmployees.push_back(aEmployeesData[EmployeeIndex]);
+			}
+			paFindModDatabyColumn[static_cast<int>(changeTargetColumn)]->ChangeModDataByPolicy(targetEmployee, aEmployeesData[EmployeeIndex]);
 		}
 	}
-
-	for (int BeforeChangeDataIdx = 0; BeforeChangeDataIdx < TargetEmployees.size(); BeforeChangeDataIdx++) {
-		if (PrintEmployees.size() >= 5) break;
-		PrintEmployees.push_back(TargetEmployees[BeforeChangeDataIdx]);
-	}
-	Column changeTargetColumn = targetEmployee.destColumn;
-	for (int EmployeeIndex = 0; EmployeeIndex < idxChangeEmployees.size(); EmployeeIndex++) {
-		paFindModDatabyColumn[static_cast<int>(changeTargetColumn)]->ChangeModDataByPolicy(targetEmployee, TargetEmployees[EmployeeIndex]);
-		pEmployees->erase(pEmployees->begin() + idxChangeEmployees[EmployeeIndex]);
-		pEmployees->insert(pEmployees->begin() + idxChangeEmployees[EmployeeIndex], TargetEmployees[EmployeeIndex]);
-	}
-
 	return PrintEmployees;
 }
