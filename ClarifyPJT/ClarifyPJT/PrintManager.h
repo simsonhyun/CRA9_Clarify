@@ -102,11 +102,11 @@ private:
 		}
 		else if (certi == Certi::Certi_PRO)
 		{
-			outString = "ADV";
+			outString = "PRO";
 		}
 		else if (certi == Certi::Certi_EX)
 		{
-			outString = "ADV";
+			outString = "EX";
 		}
 		outString += 0xA; // Next Line
 
