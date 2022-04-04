@@ -1,4 +1,5 @@
 #pragma once
+#include "CommonType.h"
 #include "CommandManager.h"
 #include <stdexcept>
 #include <iostream>
@@ -6,11 +7,10 @@
 class Add : public CommandManager
 {
 public:
-	Add(DataManager& dataManager) :
-		 CommandManager(CommandType::Command_Add, dataManager)
-	{ }
+	Add(DataManager& dataManager)
+		:CommandManager(dataManager) { }
 
-	vector<Employee> Command(InputParameter inputParameter) override
+	vector<Employee> Command(InputParameter inputParameter)
 	{
 		try {
 			_CheckInputdataValid(&inputParameter);

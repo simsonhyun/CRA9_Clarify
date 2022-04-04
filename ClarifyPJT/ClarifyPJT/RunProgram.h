@@ -15,13 +15,19 @@ public:
 	static const int ARGUMENT_COUNT = 3;
 	static const int MAX_FILELENGTH = 300;
 
+	// Command_None = 0,
+	// Command_Add,
+	// Command_Sch,
+	// Command_Del,
+	// Command_Mod,
+
 	RunProgram()
 	{
 		DataManager* dataManager = new DataManager();
-		add = new Add(*dataManager);
-		search = new Search(*dataManager);
-		del = new Del(*dataManager);
-		mod = new Mod(*dataManager);
+		commands.push_back(Add(*dataManager));
+		commands.push_back(Search(*dataManager));
+		commands.push_back(Del(*dataManager));
+		commands.push_back(Mod(*dataManager));
 	}
 
 	const void run(const string& inputText, const string& outputText)
@@ -84,31 +90,25 @@ private:
 		InputParameter inputParameter = commandParser.ConvertParameter(cmdString);
 		_checkInvalidCmd(inputParameter.command, cmdString);
 
+		try
+		{
+			if (inputParameter.command == Command::Command_None)
+			{
+				throw invalid_argument("Invalid Command!");
+			}
+		}
+		catch (exception e)
+		{
+			cout << e.what() << endl;
+		}
+
+		vector<Employee> ret = commands.at(static_cast<int>(inputParameter.command)).Command(inputParameter);
 		if (inputParameter.command == Command::Command_Add)
 		{
-			add->Command(inputParameter);
 			return ADD_RETURN_SIG;
 		}
-		else if (inputParameter.command == Command::Command_Sch)
-		{
-			return printManager.Print(inputParameter.command, inputParameter.option1, search->search(inputParameter));
-		}
-		else if (inputParameter.command == Command::Command_Del)
-		{
-			return printManager.Print(inputParameter.command, inputParameter.option1, del->deleteEmployeeInfo(inputParameter));
-		}
-		else if (inputParameter.command == Command::Command_Mod)
-		{
-			if (inputParameter.option1 == Option1::Option1_None)
-			{
-				return printManager.Print(inputParameter.command, inputParameter.option1, mod->ModNotOption1(inputParameter));
-			}
-			else
-			{
-				return printManager.Print(inputParameter.command, inputParameter.option1, mod->ModOption1(inputParameter));
-			}
-		}
-		else throw invalid_argument("Invalid CMD Parsed");
+
+		return printManager.Print(inputParameter.command, inputParameter.option1, ret);
 	}
 
 	const void _checkInvalidFileName(const string& fileName) const
@@ -184,8 +184,5 @@ private:
 	PrintManager printManager;
 	FileManager fileManager;
 
-	Add* add;
-	Search* search;
-	Del* del;
-	Mod* mod;
+	vector<CommandManager> commands;
 };
