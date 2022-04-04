@@ -34,15 +34,6 @@
     <Filter Include="헤더 파일\Add">
       <UniqueIdentifier>{883b7162-e127-40db-bdb3-0f5b53e89a80}</UniqueIdentifier>
     </Filter>
-    <Filter Include="헤더 파일\Del">
-      <UniqueIdentifier>{e22af6eb-4d50-44f5-a6bb-25d79317b095}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="헤더 파일\Mod">
-      <UniqueIdentifier>{af2c2b2e-a442-4e45-93da-0ea468193147}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="헤더 파일\Sch">
-      <UniqueIdentifier>{09fa9b1d-697f-4d21-a8b8-25c317a1159c}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -50,12 +41,6 @@
     </ClCompile>
     <ClCompile Include="CommandParser.cpp">
       <Filter>소스 파일\Common</Filter>
-    </ClCompile>
-    <ClCompile Include="Del.cpp">
-      <Filter>소스 파일\Del</Filter>
-    </ClCompile>
-    <ClCompile Include="Mod.cpp">
-      <Filter>소스 파일\Mod</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -89,20 +74,11 @@
     <ClInclude Include="PhoneNum.h">
       <Filter>헤더 파일\Common</Filter>
     </ClInclude>
+    <ClInclude Include="Sch.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
     <ClInclude Include="PrintManager.h">
       <Filter>헤더 파일\Common</Filter>
-    </ClInclude>
-    <ClInclude Include="FileManager.h">
-      <Filter>헤더 파일\Common</Filter>
-    </ClInclude>
-    <ClInclude Include="Sch.h">
-      <Filter>헤더 파일\Sch</Filter>
-    </ClInclude>
-    <ClInclude Include="Del.h">
-      <Filter>헤더 파일\Del</Filter>
-    </ClInclude>
-    <ClInclude Include="Mod.h">
-      <Filter>헤더 파일\Mod</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
