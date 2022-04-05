@@ -7,7 +7,7 @@ using namespace std;
 class PrintManager
 {
 public:
-	string Print(const CommandType& command, const Option1& option1, const OutputParameter& commandResult)
+	string Print(const CommandType& command, const Option1& option1, OutputParameter& commandResult)
 	{
 		static const int MAX_PRINT_COUNT = 5;
 
