@@ -4,16 +4,16 @@
 class DeleteOption2Test : public ::testing::Test {
 protected:
 	void SetUp() override {
-		Employee employee1 = { 12345678, {"È«", "±æµ¿"}, CareerLevel::CareerLevel_2,  {1234, 5678}, {1995, 01, 01}, Certi::Certi_EX };
-		Employee employee2 = { 11010678, {"ÀÌ", "±æµ¿"}, CareerLevel::CareerLevel_1,  {1234, 1234}, {1991, 02, 01}, Certi::Certi_PRO };
-		Employee employee3 = { 10340608, {"È«", "ÀÏµ¿"}, CareerLevel::CareerLevel_2,  {1234, 4321}, {1992, 03, 01}, Certi::Certi_EX };
-		Employee employee4 = { 14475488, {"ÀÌ", "¼ø½Å"}, CareerLevel::CareerLevel_2,  {5678, 5678}, {1999, 01, 01}, Certi::Certi_EX };
-		Employee employee5 = { 13481675, {"±è", "À¯½Å"}, CareerLevel::CareerLevel_3,  {4321, 5678}, {1992, 01, 01}, Certi::Certi_ADV };
-		Employee employee6 = { 12197457, {"À±", "¼®¿­"}, CareerLevel::CareerLevel_2,  {3456, 4321}, {1995, 02, 01}, Certi::Certi_PRO };
-		Employee employee7 = { 17841097, {"ÀÌ", "Àç¸í"}, CareerLevel::CareerLevel_4,  {7890, 2345}, {1993, 12, 01}, Certi::Certi_PRO };
-		Employee employee8 = { 15686355, {"È«", "ÁØÇ¥"}, CareerLevel::CareerLevel_2,  {1234, 8765}, {1997, 01, 01}, Certi::Certi_PRO };
-		Employee employee9 = { 11183073, {"ÀÌ", "ÁØ¼®"}, CareerLevel::CareerLevel_2,  {1243, 1234}, {1992, 05, 01}, Certi::Certi_PRO };
-		Employee employee10 = { 10208468, {"½É", "»óÁ¤"}, CareerLevel::CareerLevel_1,  {8765, 5678}, {1996, 03, 01}, Certi::Certi_PRO };
+		Employee employee1 = { 12345678, {"HONG", "GILDONG"}, CareerLevel::CareerLevel_2,  {1234, 5678}, {1995, 01, 01}, Certi::Certi_EX };
+		Employee employee2 = { 11010678, {"LEE", "GILDONG"}, CareerLevel::CareerLevel_1,  {1234, 1234}, {1991, 02, 01}, Certi::Certi_PRO };
+		Employee employee3 = { 10340608, {"HONG", "ILDONG"}, CareerLevel::CareerLevel_2,  {1234, 4321}, {1992, 03, 01}, Certi::Certi_EX };
+		Employee employee4 = { 14475488, {"LEE", "SOONSIN"}, CareerLevel::CareerLevel_2,  {5678, 5678}, {1999, 01, 01}, Certi::Certi_EX };
+		Employee employee5 = { 13481675, {"KIM", "YOUSIN"}, CareerLevel::CareerLevel_3,  {4321, 5678}, {1992, 01, 01}, Certi::Certi_ADV };
+		Employee employee6 = { 12197457, {"YOON", "SEOKYUL"}, CareerLevel::CareerLevel_2,  {3456, 4321}, {1995, 02, 01}, Certi::Certi_PRO };
+		Employee employee7 = { 17841097, {"LEE", "JAEMYUNG"}, CareerLevel::CareerLevel_4,  {7890, 2345}, {1993, 12, 01}, Certi::Certi_PRO };
+		Employee employee8 = { 15686355, {"HONG", "JOONPYO"}, CareerLevel::CareerLevel_2,  {1234, 8765}, {1997, 01, 01}, Certi::Certi_PRO };
+		Employee employee9 = { 11183073, {"LEE", "JOONSEOK"}, CareerLevel::CareerLevel_2,  {1243, 1234}, {1992, 05, 01}, Certi::Certi_PRO };
+		Employee employee10 = { 10208468, {"SIM", "SANGJEONG"}, CareerLevel::CareerLevel_1,  {8765, 5678}, {1996, 03, 01}, Certi::Certi_PRO };
 		dataManager->setData(employee1);
 		dataManager->setData(employee2);
 		dataManager->setData(employee3);
@@ -34,7 +34,7 @@ public:
 };
 
 TEST_F(DeleteOption2Test, DeleteNameWithOptionFTestWithOptionP) {
-	Employee deleteEmployee = { 12345678, {"È«", "±æµ¿"}, CareerLevel::CareerLevel_2,  {1234, 0000}, {1992, 01, 01}, Certi::Certi_PRO };
+	Employee deleteEmployee = { 12345678, {"HONG", "GILDONG"}, CareerLevel::CareerLevel_2,  {1234, 0000}, {1992, 01, 01}, Certi::Certi_PRO };
 	InputParameter input = { CommandType::Command_Del, Option1::Option1_p, Option2::Option2_Name_f, Column::Column_Name, Column::Column_None, deleteEmployee };
 
 	vector<Employee> result = deleteTest->Command(input);
@@ -48,7 +48,7 @@ TEST_F(DeleteOption2Test, DeleteNameWithOptionFTestWithOptionP) {
 };
 
 TEST_F(DeleteOption2Test, DeleteNameWithOptionLTestWithOptionP) {
-	Employee deleteEmployee = { 12345678, {"È«", "±æµ¿"}, CareerLevel::CareerLevel_2,  {1234, 0000}, {1992, 01, 01}, Certi::Certi_PRO };
+	Employee deleteEmployee = { 12345678, {"HONG", "GILDONG"}, CareerLevel::CareerLevel_2,  {1234, 0000}, {1992, 01, 01}, Certi::Certi_PRO };
 	InputParameter input = { CommandType::Command_Del, Option1::Option1_p, Option2::Option2_Name_l, Column::Column_Name, Column::Column_None, deleteEmployee };
 
 	vector<Employee> result = deleteTest->Command(input);
@@ -62,7 +62,7 @@ TEST_F(DeleteOption2Test, DeleteNameWithOptionLTestWithOptionP) {
 };
 
 TEST_F(DeleteOption2Test, DeleteNameWithOptionXTestWithOptionP) {
-	Employee deleteEmployee = { 12345678, {"È«", "±æµ¿"}, CareerLevel::CareerLevel_2,  {1234, 0000}, {1992, 01, 01}, Certi::Certi_PRO };
+	Employee deleteEmployee = { 12345678, {"HONG", "GILDONG"}, CareerLevel::CareerLevel_2,  {1234, 0000}, {1992, 01, 01}, Certi::Certi_PRO };
 	InputParameter input = { CommandType::Command_Del, Option1::Option1_p, Option2::Option2_None, Column::Column_Name, Column::Column_None, deleteEmployee };
 
 	vector<Employee> result = deleteTest->Command(input);
@@ -76,7 +76,7 @@ TEST_F(DeleteOption2Test, DeleteNameWithOptionXTestWithOptionP) {
 };
 
 TEST_F(DeleteOption2Test, DeleteEmployeeNumWithOptionFTestWithOptionP) {
-	Employee deleteEmployee = { 12345678, {"È«", "±æµ¿"}, CareerLevel::CareerLevel_2,  {1234, 0000}, {1992, 01, 01}, Certi::Certi_PRO };
+	Employee deleteEmployee = { 12345678, {"HONG", "GILDONG"}, CareerLevel::CareerLevel_2,  {1234, 0000}, {1992, 01, 01}, Certi::Certi_PRO };
 	InputParameter input = { CommandType::Command_Del, Option1::Option1_p, Option2::Option2_Name_f, Column::Column_employeeNum, Column::Column_None, deleteEmployee };
 
 	vector<Employee> result = deleteTest->Command(input);
@@ -90,7 +90,7 @@ TEST_F(DeleteOption2Test, DeleteEmployeeNumWithOptionFTestWithOptionP) {
 };
 
 TEST_F(DeleteOption2Test, DeleteNameWithOptionFTestWithoutOptionP) {
-	Employee deleteEmployee = { 12345678, {"È«", "±æµ¿"}, CareerLevel::CareerLevel_2,  {1234, 0000}, {1992, 01, 01}, Certi::Certi_PRO };
+	Employee deleteEmployee = { 12345678, {"HONG", "GILDONG"}, CareerLevel::CareerLevel_2,  {1234, 0000}, {1992, 01, 01}, Certi::Certi_PRO };
 	InputParameter input = { CommandType::Command_Del, Option1::Option1_None, Option2::Option2_Name_f, Column::Column_Name, Column::Column_None, deleteEmployee };
 
 	vector<Employee> result = deleteTest->Command(input);
@@ -104,7 +104,7 @@ TEST_F(DeleteOption2Test, DeleteNameWithOptionFTestWithoutOptionP) {
 };
 
 TEST_F(DeleteOption2Test, DeleteNameWithOptionLTestWithoutOptionP) {
-	Employee deleteEmployee = { 12345678, {"È«", "±æµ¿"}, CareerLevel::CareerLevel_2,  {1234, 0000}, {1992, 01, 01}, Certi::Certi_PRO };
+	Employee deleteEmployee = { 12345678, {"HONG", "GILDONG"}, CareerLevel::CareerLevel_2,  {1234, 0000}, {1992, 01, 01}, Certi::Certi_PRO };
 	InputParameter input = { CommandType::Command_Del, Option1::Option1_None, Option2::Option2_Name_l, Column::Column_Name, Column::Column_None, deleteEmployee };
 
 	vector<Employee> result = deleteTest->Command(input);
@@ -118,7 +118,7 @@ TEST_F(DeleteOption2Test, DeleteNameWithOptionLTestWithoutOptionP) {
 };
 
 TEST_F(DeleteOption2Test, DeleteNameWithOptionXTestWithoutOptionP) {
-	Employee deleteEmployee = { 12345678, {"È«", "±æµ¿"}, CareerLevel::CareerLevel_2,  {1234, 0000}, {1992, 01, 01}, Certi::Certi_PRO };
+	Employee deleteEmployee = { 12345678, {"HONG", "GILDONG"}, CareerLevel::CareerLevel_2,  {1234, 0000}, {1992, 01, 01}, Certi::Certi_PRO };
 	InputParameter input = { CommandType::Command_Del, Option1::Option1_None, Option2::Option2_None, Column::Column_Name, Column::Column_None, deleteEmployee };
 
 	vector<Employee> result = deleteTest->Command(input);
@@ -132,7 +132,7 @@ TEST_F(DeleteOption2Test, DeleteNameWithOptionXTestWithoutOptionP) {
 };
 
 TEST_F(DeleteOption2Test, DeleteEmployeeNumWithOptionFTestWithoutOptionP) {
-	Employee deleteEmployee = { 12345678, {"È«", "±æµ¿"}, CareerLevel::CareerLevel_2,  {1234, 0000}, {1992, 01, 01}, Certi::Certi_PRO };
+	Employee deleteEmployee = { 12345678, {"HONG", "GILDONG"}, CareerLevel::CareerLevel_2,  {1234, 0000}, {1992, 01, 01}, Certi::Certi_PRO };
 	InputParameter input = { CommandType::Command_Del, Option1::Option1_None, Option2::Option2_Name_f, Column::Column_employeeNum, Column::Column_None, deleteEmployee };
 
 	vector<Employee> result = deleteTest->Command(input);
@@ -146,7 +146,7 @@ TEST_F(DeleteOption2Test, DeleteEmployeeNumWithOptionFTestWithoutOptionP) {
 };
 
 TEST_F(DeleteOption2Test, DeletePhoneNumWithOptionMTestWithOptionP) {
-	Employee deleteEmployee = { 12345678, {"È«", "±æµ¿"}, CareerLevel::CareerLevel_2,  {1234, 0000}, {1992, 01, 01}, Certi::Certi_PRO };
+	Employee deleteEmployee = { 12345678, {"HONG", "GILDONG"}, CareerLevel::CareerLevel_2,  {1234, 0000}, {1992, 01, 01}, Certi::Certi_PRO };
 	InputParameter input = { CommandType::Command_Del, Option1::Option1_p, Option2::Option2_PhoneNum_m, Column::Column_PhoneNum, Column::Column_None, deleteEmployee };
 
 	vector<Employee> result = deleteTest->Command(input);
@@ -160,7 +160,7 @@ TEST_F(DeleteOption2Test, DeletePhoneNumWithOptionMTestWithOptionP) {
 };
 
 TEST_F(DeleteOption2Test, DeletePhoneNumWithOptionLTestWithOptionP) {
-	Employee deleteEmployee = { 12345678, {"È«", "±æµ¿"}, CareerLevel::CareerLevel_2,  {1234, 0000}, {1992, 01, 01}, Certi::Certi_PRO };
+	Employee deleteEmployee = { 12345678, {"HONG", "GILDONG"}, CareerLevel::CareerLevel_2,  {1234, 0000}, {1992, 01, 01}, Certi::Certi_PRO };
 	InputParameter input = { CommandType::Command_Del, Option1::Option1_p, Option2::Option2_PhoneNum_l, Column::Column_PhoneNum, Column::Column_None, deleteEmployee };
 
 	vector<Employee> result = deleteTest->Command(input);
@@ -174,7 +174,7 @@ TEST_F(DeleteOption2Test, DeletePhoneNumWithOptionLTestWithOptionP) {
 };
 
 TEST_F(DeleteOption2Test, DeletePhoneNumWithOptionXTestWithOptionP) {
-	Employee deleteEmployee = { 12345678, {"È«", "±æµ¿"}, CareerLevel::CareerLevel_2,  {1234, 0000}, {1992, 01, 01}, Certi::Certi_PRO };
+	Employee deleteEmployee = { 12345678, {"HONG", "GILDONG"}, CareerLevel::CareerLevel_2,  {1234, 0000}, {1992, 01, 01}, Certi::Certi_PRO };
 	InputParameter input = { CommandType::Command_Del, Option1::Option1_p, Option2::Option2_None, Column::Column_PhoneNum, Column::Column_None, deleteEmployee };
 
 	vector<Employee> result = deleteTest->Command(input);
@@ -188,7 +188,7 @@ TEST_F(DeleteOption2Test, DeletePhoneNumWithOptionXTestWithOptionP) {
 };
 
 TEST_F(DeleteOption2Test, DeleteEmployeeNumWithOptionMTestWithOptionP) {
-	Employee deleteEmployee = { 12345678, {"È«", "±æµ¿"}, CareerLevel::CareerLevel_2,  {1234, 0000}, {1992, 01, 01}, Certi::Certi_PRO };
+	Employee deleteEmployee = { 12345678, {"HONG", "GILDONG"}, CareerLevel::CareerLevel_2,  {1234, 0000}, {1992, 01, 01}, Certi::Certi_PRO };
 	InputParameter input = { CommandType::Command_Del, Option1::Option1_p, Option2::Option2_PhoneNum_m, Column::Column_employeeNum, Column::Column_None, deleteEmployee };
 
 	vector<Employee> result = deleteTest->Command(input);
@@ -203,7 +203,7 @@ TEST_F(DeleteOption2Test, DeleteEmployeeNumWithOptionMTestWithOptionP) {
 
 
 TEST_F(DeleteOption2Test, DeletePhoneNumWithOptionMTestWithoutOptionP) {
-	Employee deleteEmployee = { 12345678, {"È«", "±æµ¿"}, CareerLevel::CareerLevel_2,  {1234, 0000}, {1992, 01, 01}, Certi::Certi_PRO };
+	Employee deleteEmployee = { 12345678, {"HONG", "GILDONG"}, CareerLevel::CareerLevel_2,  {1234, 0000}, {1992, 01, 01}, Certi::Certi_PRO };
 	InputParameter input = { CommandType::Command_Del, Option1::Option1_None, Option2::Option2_PhoneNum_m, Column::Column_PhoneNum, Column::Column_None, deleteEmployee };
 
 	vector<Employee> result = deleteTest->Command(input);
@@ -217,7 +217,7 @@ TEST_F(DeleteOption2Test, DeletePhoneNumWithOptionMTestWithoutOptionP) {
 };
 
 TEST_F(DeleteOption2Test, DeletePhoneNumWithOptionLTestWithoutOptionP) {
-	Employee deleteEmployee = { 12345678, {"È«", "±æµ¿"}, CareerLevel::CareerLevel_2,  {1234, 0000}, {1992, 01, 01}, Certi::Certi_PRO };
+	Employee deleteEmployee = { 12345678, {"HONG", "GILDONG"}, CareerLevel::CareerLevel_2,  {1234, 0000}, {1992, 01, 01}, Certi::Certi_PRO };
 	InputParameter input = { CommandType::Command_Del, Option1::Option1_None, Option2::Option2_PhoneNum_l, Column::Column_PhoneNum, Column::Column_None, deleteEmployee };
 
 	vector<Employee> result = deleteTest->Command(input);
@@ -231,7 +231,7 @@ TEST_F(DeleteOption2Test, DeletePhoneNumWithOptionLTestWithoutOptionP) {
 };
 
 TEST_F(DeleteOption2Test, DeletePhoneNumWithOptionXTestWithoutOptionP) {
-	Employee deleteEmployee = { 12345678, {"È«", "±æµ¿"}, CareerLevel::CareerLevel_2,  {1234, 0000}, {1992, 01, 01}, Certi::Certi_PRO };
+	Employee deleteEmployee = { 12345678, {"HONG", "GILDONG"}, CareerLevel::CareerLevel_2,  {1234, 0000}, {1992, 01, 01}, Certi::Certi_PRO };
 	InputParameter input = { CommandType::Command_Del, Option1::Option1_None, Option2::Option2_None, Column::Column_PhoneNum, Column::Column_None, deleteEmployee };
 
 	vector<Employee> result = deleteTest->Command(input);
@@ -245,7 +245,7 @@ TEST_F(DeleteOption2Test, DeletePhoneNumWithOptionXTestWithoutOptionP) {
 };
 
 TEST_F(DeleteOption2Test, DeleteEmployeeNumWithOptionMTestWithoutOptionP) {
-	Employee deleteEmployee = { 12345678, {"È«", "±æµ¿"}, CareerLevel::CareerLevel_2,  {1234, 0000}, {1992, 01, 01}, Certi::Certi_PRO };
+	Employee deleteEmployee = { 12345678, {"HONG", "GILDONG"}, CareerLevel::CareerLevel_2,  {1234, 0000}, {1992, 01, 01}, Certi::Certi_PRO };
 	InputParameter input = { CommandType::Command_Del, Option1::Option1_None, Option2::Option2_PhoneNum_m, Column::Column_employeeNum, Column::Column_None, deleteEmployee };
 
 	vector<Employee> result = deleteTest->Command(input);
@@ -259,7 +259,7 @@ TEST_F(DeleteOption2Test, DeleteEmployeeNumWithOptionMTestWithoutOptionP) {
 };
 
 TEST_F(DeleteOption2Test, DeleteBirtyDayWithOptionYTestWithOptionP) {
-	Employee deleteEmployee = { 12345678, {"È«", "±æµ¿"}, CareerLevel::CareerLevel_2,  {1234, 0000}, {1992, 01, 01}, Certi::Certi_PRO };
+	Employee deleteEmployee = { 12345678, {"HONG", "GILDONG"}, CareerLevel::CareerLevel_2,  {1234, 0000}, {1992, 01, 01}, Certi::Certi_PRO };
 	InputParameter input = { CommandType::Command_Del, Option1::Option1_p, Option2::Option2_BirthDay_y, Column::Column_BirthDay, Column::Column_None, deleteEmployee };
 
 	vector<Employee> result = deleteTest->Command(input);
@@ -273,7 +273,7 @@ TEST_F(DeleteOption2Test, DeleteBirtyDayWithOptionYTestWithOptionP) {
 };
 
 TEST_F(DeleteOption2Test, DeleteBirtyDayWithOptionMTestWithOptionP) {
-	Employee deleteEmployee = { 12345678, {"È«", "±æµ¿"}, CareerLevel::CareerLevel_2,  {1234, 0000}, {1992, 01, 01}, Certi::Certi_PRO };
+	Employee deleteEmployee = { 12345678, {"HONG", "GILDONG"}, CareerLevel::CareerLevel_2,  {1234, 0000}, {1992, 01, 01}, Certi::Certi_PRO };
 	InputParameter input = { CommandType::Command_Del, Option1::Option1_p, Option2::Option2_BirthDay_m, Column::Column_BirthDay, Column::Column_None, deleteEmployee };
 
 	vector<Employee> result = deleteTest->Command(input);
@@ -287,7 +287,7 @@ TEST_F(DeleteOption2Test, DeleteBirtyDayWithOptionMTestWithOptionP) {
 };
 
 TEST_F(DeleteOption2Test, DeleteBirtyDayWithOptionDTestWithOptionP) {
-	Employee deleteEmployee = { 12345678, {"È«", "±æµ¿"}, CareerLevel::CareerLevel_2,  {1234, 0000}, {1992, 01, 01}, Certi::Certi_PRO };
+	Employee deleteEmployee = { 12345678, {"HONG", "GILDONG"}, CareerLevel::CareerLevel_2,  {1234, 0000}, {1992, 01, 01}, Certi::Certi_PRO };
 	InputParameter input = { CommandType::Command_Del, Option1::Option1_p, Option2::Option2_BirthDay_d, Column::Column_BirthDay, Column::Column_None, deleteEmployee };
 
 	vector<Employee> result = deleteTest->Command(input);
@@ -301,7 +301,7 @@ TEST_F(DeleteOption2Test, DeleteBirtyDayWithOptionDTestWithOptionP) {
 };
 
 TEST_F(DeleteOption2Test, DeleteBirtyDayWithOptionXTestWithOptionP) {
-	Employee deleteEmployee = { 12345678, {"È«", "±æµ¿"}, CareerLevel::CareerLevel_2,  {1234, 0000}, {1992, 01, 01}, Certi::Certi_PRO };
+	Employee deleteEmployee = { 12345678, {"HONG", "GILDONG"}, CareerLevel::CareerLevel_2,  {1234, 0000}, {1992, 01, 01}, Certi::Certi_PRO };
 	InputParameter input = { CommandType::Command_Del, Option1::Option1_p, Option2::Option2_None, Column::Column_BirthDay, Column::Column_None, deleteEmployee };
 
 	vector<Employee> result = deleteTest->Command(input);
@@ -315,7 +315,7 @@ TEST_F(DeleteOption2Test, DeleteBirtyDayWithOptionXTestWithOptionP) {
 };
 
 TEST_F(DeleteOption2Test, DeleteEmployeeNumWithOptionYTestWithOptionP) {
-	Employee deleteEmployee = { 12345678, {"È«", "±æµ¿"}, CareerLevel::CareerLevel_2,  {1234, 0000}, {1992, 01, 01}, Certi::Certi_PRO };
+	Employee deleteEmployee = { 12345678, {"HONG", "GILDONG"}, CareerLevel::CareerLevel_2,  {1234, 0000}, {1992, 01, 01}, Certi::Certi_PRO };
 	InputParameter input = { CommandType::Command_Del, Option1::Option1_p, Option2::Option2_BirthDay_y, Column::Column_employeeNum, Column::Column_None, deleteEmployee };
 
 	vector<Employee> result = deleteTest->Command(input);
@@ -329,7 +329,7 @@ TEST_F(DeleteOption2Test, DeleteEmployeeNumWithOptionYTestWithOptionP) {
 };
 
 TEST_F(DeleteOption2Test, DeleteBirtyDayWithOptionYTestWithoutOptionP) {
-	Employee deleteEmployee = { 12345678, {"È«", "±æµ¿"}, CareerLevel::CareerLevel_2,  {1234, 0000}, {1992, 01, 01}, Certi::Certi_PRO };
+	Employee deleteEmployee = { 12345678, {"HONG", "GILDONG"}, CareerLevel::CareerLevel_2,  {1234, 0000}, {1992, 01, 01}, Certi::Certi_PRO };
 	InputParameter input = { CommandType::Command_Del, Option1::Option1_None, Option2::Option2_BirthDay_y, Column::Column_BirthDay, Column::Column_None, deleteEmployee };
 
 	vector<Employee> result = deleteTest->Command(input);
@@ -343,7 +343,7 @@ TEST_F(DeleteOption2Test, DeleteBirtyDayWithOptionYTestWithoutOptionP) {
 };
 
 TEST_F(DeleteOption2Test, DeleteBirtyDayWithOptionMTestWithoutOptionP) {
-	Employee deleteEmployee = { 12345678, {"È«", "±æµ¿"}, CareerLevel::CareerLevel_2,  {1234, 0000}, {1992, 01, 01}, Certi::Certi_PRO };
+	Employee deleteEmployee = { 12345678, {"HONG", "GILDONG"}, CareerLevel::CareerLevel_2,  {1234, 0000}, {1992, 01, 01}, Certi::Certi_PRO };
 	InputParameter input = { CommandType::Command_Del, Option1::Option1_None, Option2::Option2_BirthDay_m, Column::Column_BirthDay, Column::Column_None, deleteEmployee };
 
 	vector<Employee> result = deleteTest->Command(input);
@@ -357,7 +357,7 @@ TEST_F(DeleteOption2Test, DeleteBirtyDayWithOptionMTestWithoutOptionP) {
 };
 
 TEST_F(DeleteOption2Test, DeleteBirtyDayWithOptionDTestWithoutOptionP) {
-	Employee deleteEmployee = { 12345678, {"È«", "±æµ¿"}, CareerLevel::CareerLevel_2,  {1234, 0000}, {1992, 01, 01}, Certi::Certi_PRO };
+	Employee deleteEmployee = { 12345678, {"HONG", "GILDONG"}, CareerLevel::CareerLevel_2,  {1234, 0000}, {1992, 01, 01}, Certi::Certi_PRO };
 	InputParameter input = { CommandType::Command_Del, Option1::Option1_None, Option2::Option2_BirthDay_d, Column::Column_BirthDay, Column::Column_None, deleteEmployee };
 
 	vector<Employee> result = deleteTest->Command(input);
@@ -371,7 +371,7 @@ TEST_F(DeleteOption2Test, DeleteBirtyDayWithOptionDTestWithoutOptionP) {
 };
 
 TEST_F(DeleteOption2Test, DeleteBirtyDayWithOptionXTestWithoutOptionP) {
-	Employee deleteEmployee = { 12345678, {"È«", "±æµ¿"}, CareerLevel::CareerLevel_2,  {1234, 0000}, {1992, 01, 01}, Certi::Certi_PRO };
+	Employee deleteEmployee = { 12345678, {"HONG", "GILDONG"}, CareerLevel::CareerLevel_2,  {1234, 0000}, {1992, 01, 01}, Certi::Certi_PRO };
 	InputParameter input = { CommandType::Command_Del, Option1::Option1_None, Option2::Option2_None, Column::Column_BirthDay, Column::Column_None, deleteEmployee };
 
 	vector<Employee> result = deleteTest->Command(input);
@@ -385,7 +385,7 @@ TEST_F(DeleteOption2Test, DeleteBirtyDayWithOptionXTestWithoutOptionP) {
 };
 
 TEST_F(DeleteOption2Test, DeleteEmployeeNumWithOptionYTestWithoutOptionP) {
-	Employee deleteEmployee = { 12345678, {"È«", "±æµ¿"}, CareerLevel::CareerLevel_2,  {1234, 0000}, {1992, 01, 01}, Certi::Certi_PRO };
+	Employee deleteEmployee = { 12345678, {"HONG", "GILDONG"}, CareerLevel::CareerLevel_2,  {1234, 0000}, {1992, 01, 01}, Certi::Certi_PRO };
 	InputParameter input = { CommandType::Command_Del, Option1::Option1_None, Option2::Option2_BirthDay_y, Column::Column_employeeNum, Column::Column_None, deleteEmployee };
 
 	vector<Employee> result = deleteTest->Command(input);
