@@ -55,6 +55,7 @@ OutputParameter Mod::Command(InputParameter targetEmployee) {
 	DataManager* pdataManager = getDataManager();
 	vector<Employee> &aEmployeesData = pdataManager->getData();
 	OutputParameter result;
+	if(targetEmployee.option1 == Option1::Option1_p) result.resultVector.reserve(pdataManager->MAX_EMPLOYEE_COUNT);
 	result.resultCount = 0;
 	Column targetColumn = targetEmployee.column;
 	Column changeTargetColumn = targetEmployee.destColumn;
