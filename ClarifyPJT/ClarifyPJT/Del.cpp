@@ -52,7 +52,7 @@ FastDelete::deleteData(InputParameter input, DataManager* dataManager) const {
 		if (_deletePolicy->deleteByPolicy(input, *aEmployee)) {
 			deleteList.resultCount = 1;
 			deleteList.resultVector.push_back(*aEmployee);
-			iter_swap(aEmployee, employees.back());
+			iter_swap(aEmployee, employees.end() - 1);
 			employees.pop_back();
 			break;
 		}
@@ -71,7 +71,11 @@ NotFastDelete::deleteData(InputParameter input, DataManager* dataManager) const 
 		if (_deletePolicy->deleteByPolicy(input, *aEmployee)) {
 			deleteList.resultCount++;
 			if (input.option1 == Option1::Option1_p) deleteList.resultVector.push_back(*aEmployee);
-			iter_swap(aEmployee, employees.back());
+			if (aEmployee == employees.end() - 1) {
+				employees.pop_back();
+				break;
+			}
+			iter_swap(aEmployee, employees.end() - 1);
 			employees.pop_back();
 			continue;
 		}
@@ -82,6 +86,5 @@ NotFastDelete::deleteData(InputParameter input, DataManager* dataManager) const 
 
 OutputParameter
 Del::Command(InputParameter input) {
-	// return _fastPolicy[static_cast<int>(input.column)]->deleteData(input, getDataManager());
-	return OutputParameter();
+	return _fastPolicy[static_cast<int>(input.column)]->deleteData(input, getDataManager());
 }
