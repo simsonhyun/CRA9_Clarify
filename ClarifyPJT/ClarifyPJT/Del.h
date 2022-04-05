@@ -78,7 +78,7 @@ public:
 		_fastPolicy[static_cast<int>(Column::Column_Certi)] = new NotFastDelete(new CertiDeletePolicy());
 	}
 
-	vector<Employee> Command(InputParameter input) override;
+	OutputParameter Command(InputParameter input) override;
 
 private:
 

@@ -51,7 +51,7 @@ public:
 
 	}
 
-	vector<Employee> Command(InputParameter targetEmployee) override;
+	OutputParameter Command(InputParameter targetEmployee) override;
 private:
 
 public:

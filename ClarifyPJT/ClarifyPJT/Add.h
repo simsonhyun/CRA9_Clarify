@@ -10,17 +10,17 @@ public:
 		 CommandManager(CommandType::Command_Add, dataManager)
 	{ }
 
-	vector<Employee> Command(InputParameter inputParameter) override
+	OutputParameter Command(InputParameter inputParameter) override
 	{
 		try {
 			_CheckInputdataValid(&inputParameter);
 		} catch (invalid_argument& e){
 			std::cout << " ERROR:Input 예외 발생!!! " << e.what() << std::endl;
-			return vector<Employee>();
+			return OutputParameter();
 		}
 
 		getDataManager()->setData(inputParameter.inputEmployee);
-		return vector<Employee>();
+		return OutputParameter();
 	}
 
 private:
