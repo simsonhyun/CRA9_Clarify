@@ -77,7 +77,7 @@ TEST_F(DeleteOption1Test, DeleteAllByNameTestWithOptionP) {
 		EXPECT_EQ(aEmployee.GetName(), deleteEmployee.GetName());
 		deleteCount++;
 	}*/
-	EXPECT_EQ(5, result.resultCount);
+	EXPECT_EQ(10, result.resultCount);
 	EXPECT_EQ(0, dataManager->getSize());
 };
 
@@ -112,7 +112,7 @@ TEST_F(DeleteOption1Test, DeleteAllByCareerLevelWithOptionP) {
 		EXPECT_EQ(aEmployee.GetCl(), deleteEmployee.GetCl());
 		deleteCount++;
 	}*/
-	EXPECT_EQ(5, result.resultCount);
+	EXPECT_EQ(10, result.resultCount);
 	EXPECT_EQ(0, dataManager->getSize());
 };
 
@@ -147,7 +147,7 @@ TEST_F(DeleteOption1Test, DeleteAllByPhoneNumTestWithOptionP) {
 		EXPECT_EQ(aEmployee.GetPhoneNum(), deleteEmployee.GetPhoneNum());
 		deleteCount++;
 	}*/
-	EXPECT_EQ(5, result.resultCount);
+	EXPECT_EQ(10, result.resultCount);
 	EXPECT_EQ(0, dataManager->getSize());
 };
 
@@ -182,7 +182,7 @@ TEST_F(DeleteOption1Test, DeleteAllByBirthDayTestWithOptionP) {
 		EXPECT_EQ(aEmployee.GetBirthDay(), deleteEmployee.GetBirthDay());
 		deleteCount++;
 	}*/
-	EXPECT_EQ(5, result.resultCount);
+	EXPECT_EQ(10, result.resultCount);
 	EXPECT_EQ(0, dataManager->getSize());
 };
 
@@ -217,7 +217,7 @@ TEST_F(DeleteOption1Test, DeleteAllByCertiTestWithOptionP) {
 		EXPECT_EQ(aEmployee.GetCerti(), deleteEmployee.GetCerti());
 		deleteCount++;
 	}*/
-	EXPECT_EQ(5, result.resultCount);
+	EXPECT_EQ(10, result.resultCount);
 	EXPECT_EQ(0, dataManager->getSize());
 };
 
