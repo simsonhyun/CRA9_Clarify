@@ -51,7 +51,7 @@ void CertiModPolicy::ChangeModDataByPolicy(InputParameter targetEmployee, Employ
 	aEmployee.SetCerti(targetEmployee.inputDestEmployee.GetCerti());
 }
 
-vector<Employee> Mod::Command(InputParameter targetEmployee) {
+OutputParameter Mod::Command(InputParameter targetEmployee) {
 	DataManager* pdataManager = getDataManager();
 	vector<Employee> &aEmployeesData = pdataManager->getData();
 	vector<Employee> PrintEmployees;
@@ -66,6 +66,7 @@ vector<Employee> Mod::Command(InputParameter targetEmployee) {
 			TargetEmployees.push_back(aEmployeesData[EmployeeIndex]);
 		}
 	}
-	if (targetEmployee.option1 == Option1::Option1_p) return PrintEmployees;
-	return TargetEmployees;
+	// if (targetEmployee.option1 == Option1::Option1_p) return PrintEmployees;
+	// return TargetEmployees;
+	return OutputParameter();
 }

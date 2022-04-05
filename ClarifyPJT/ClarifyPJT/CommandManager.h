@@ -25,6 +25,6 @@ public:
 		return _myCommandType;
 	}
 
-	virtual vector<Employee> Command(InputParameter input) = 0;
+	virtual OutputParameter Command(InputParameter input) = 0;
 
 };

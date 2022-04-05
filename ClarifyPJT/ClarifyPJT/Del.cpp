@@ -75,7 +75,8 @@ NotFastDelete::deleteData(InputParameter input, DataManager* dataManager) const 
 	return deleteList;
 }
 
-vector<Employee>
+OutputParameter
 Del::Command(InputParameter input) {
-	return _fastPolicy[static_cast<int>(input.column)]->deleteData(input, getDataManager());
+	// return _fastPolicy[static_cast<int>(input.column)]->deleteData(input, getDataManager());
+	return OutputParameter();
 }

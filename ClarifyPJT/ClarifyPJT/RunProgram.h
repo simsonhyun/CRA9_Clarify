@@ -106,7 +106,7 @@ private:
 		{
 			if (command->getCommandType() == inputParameter.command)
 			{
-				vector<Employee> ret = command->Command(inputParameter);
+				OutputParameter ret = command->Command(inputParameter);
 				if (inputParameter.command == CommandType::Command_Add)
 				{
 					return ADD_RETURN_SIG;

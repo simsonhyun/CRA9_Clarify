@@ -114,13 +114,13 @@ private:
 	}
 
 public:
-	string Print(const CommandType& command, const Option1& option1, const vector< Employee>& commandResultEmployees)
+	string Print(const CommandType& command, const Option1& option1, const OutputParameter& commandResult)
 	{
 		static const int MAX_PRINT_COUNT = 5;
 
 		string retString;
 
-		if (commandResultEmployees.size() == 0)
+		if ((commandResult.resultCount == 0) && (commandResult.resultVector.size() == 0))
 		{
 			retString = _GetCommandString(command);
 			retString.append("NONE");
@@ -132,7 +132,7 @@ public:
 		if (option1 == Option1::Option1_None)
 		{
 			retString = _GetCommandString(command);
-			retString.append(to_string(commandResultEmployees.size()));
+			retString.append(to_string(commandResult.resultCount));
 			retString += 0xA; // Next Line
 
 			return retString;
@@ -140,12 +140,7 @@ public:
 
 		try
 		{
-			if (commandResultEmployees.size() > MAX_PRINT_COUNT)
-			{
-				throw exception("in -p Option, size error");
-			}
-
-			for (auto employee : commandResultEmployees)
+			for (auto employee : commandResult.resultVector)
 			{
 				retString.append(_GetCommandString(command));
 				retString.append(_ConvertEmployeeNum(employee.GetEmployeeNum()));
