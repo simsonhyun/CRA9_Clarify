@@ -143,7 +143,11 @@ TEST(TestPrintManager, CheckPrint0)
 	inputEmployees.push_back(Employee(2117175, Name("SBILHUT", "LDEXRI"), CareerLevel::CareerLevel_4, PhoneNum(2814, 1699), BirthDay(1995, 07, 04), Certi::Certi_ADV));
 	inputEmployees.push_back(Employee(2117175, Name("TEST", "LDEXRI"), CareerLevel::CareerLevel_4, PhoneNum(2814, 1699), BirthDay(1995, 07, 04), Certi::Certi_ADV));
 
-	EXPECT_EQ(printManager.Print(CommandType::Command_Sch, Option1::Option1_p, inputEmployees), testString);
+	OutputParameter outputParamter;
+	outputParamter.resultCount = 0;
+	outputParamter.resultVector = inputEmployees;
+
+	EXPECT_EQ(printManager.Print(CommandType::Command_Sch, Option1::Option1_p, outputParamter), testString);
 }
 
 TEST(TestPrintManager, CheckPrint1)
@@ -158,7 +162,11 @@ TEST(TestPrintManager, CheckPrint1)
 	// inputEmployees.push_back(Employee(2117175, Name("LDEXRI", "SBILHUT"), CareerLevel::CareerLevel_4, PhoneNum(2814, 1699), BirthDay(1995, 07, 04), Certi::Certi_ADV));
 	// inputEmployees.push_back(Employee(2117175, Name("LDEXRI", "TEST"), CareerLevel::CareerLevel_4, PhoneNum(2814, 1699), BirthDay(1995, 07, 04), Certi::Certi_ADV));
 
-	EXPECT_EQ(printManager.Print(CommandType::Command_Sch, Option1::Option1_p, inputEmployees), testString);
+	OutputParameter outputParamter;
+	outputParamter.resultCount = 0;
+	outputParamter.resultVector = inputEmployees;
+
+	EXPECT_EQ(printManager.Print(CommandType::Command_Sch, Option1::Option1_p, outputParamter), testString);
 }
 
 TEST(TestPrintManager, CheckPrint2)
@@ -173,7 +181,11 @@ TEST(TestPrintManager, CheckPrint2)
 	inputEmployees.push_back(Employee(2117175, Name("LDEXRI", "SBILHUT"), CareerLevel::CareerLevel_4, PhoneNum(2814, 1699), BirthDay(1995, 07, 04), Certi::Certi_ADV));
 	inputEmployees.push_back(Employee(2117175, Name("LDEXRI", "TEST"), CareerLevel::CareerLevel_4, PhoneNum(2814, 1699), BirthDay(1995, 07, 04), Certi::Certi_ADV));
 
-	EXPECT_EQ(printManager.Print(CommandType::Command_Sch, Option1::Option1_None, inputEmployees), testString);
+	OutputParameter outputParamter;
+	outputParamter.resultCount = 0;
+	outputParamter.resultVector = inputEmployees;
+
+	EXPECT_EQ(printManager.Print(CommandType::Command_Sch, Option1::Option1_None, outputParamter), testString);
 }
 
 TEST(TestFileManager, FileInputTest)
