@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include <vector>
 #include "Employee.h"
 using namespace std;
 
@@ -51,3 +52,9 @@ typedef struct InputParameter
 	Employee inputEmployee;
 	Employee inputDestEmployee;
 } InputParameter;
+
+typedef struct OutputParameter
+{
+	int resultCount;
+	vector<Employee> resultVector;
+} OutputParameter;
