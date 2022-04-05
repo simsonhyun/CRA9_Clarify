@@ -43,15 +43,17 @@ CertiDeletePolicy::deleteByPolicy(InputParameter input, Employee& aEmployee) con
 	return false;
 }
 
-vector<Employee>
+OutputParameter
 FastDelete::deleteData(InputParameter input, DataManager* dataManager) const {
-	vector<Employee> deleteList;
-	deleteList.reserve(dataManager->MAX_EMPLOYEE_COUNT);
+	OutputParameter deleteList;
+	deleteList.resultCount = 0;
 	vector<Employee>& employees = dataManager->getData();
 	for (vector<Employee>::iterator aEmployee = employees.begin(); aEmployee != employees.end(); ) {
 		if (_deletePolicy->deleteByPolicy(input, *aEmployee)) {
-			if ((input.option1 != Option1::Option1_p) || (deleteList.size() < 5)) deleteList.push_back(*aEmployee);
-			aEmployee = employees.erase(aEmployee);
+			deleteList.resultCount = 1;
+			deleteList.resultVector.push_back(*aEmployee);
+			iter_swap(aEmployee, employees.back());
+			employees.pop_back();
 			break;
 		}
 		aEmployee++;
@@ -59,15 +61,18 @@ FastDelete::deleteData(InputParameter input, DataManager* dataManager) const {
 	return deleteList;
 }
 
-vector<Employee>
+OutputParameter
 NotFastDelete::deleteData(InputParameter input, DataManager* dataManager) const {
-	vector<Employee> deleteList;
-	deleteList.reserve(dataManager->MAX_EMPLOYEE_COUNT);
+	OutputParameter deleteList;
+	deleteList.resultVector.reserve(dataManager->MAX_EMPLOYEE_COUNT);
+	deleteList.resultCount = 0;
 	vector<Employee>& employees = dataManager->getData();
 	for (vector<Employee>::iterator aEmployee = employees.begin(); aEmployee != employees.end(); ) {
 		if (_deletePolicy->deleteByPolicy(input, *aEmployee)) {
-			if ((input.option1 != Option1::Option1_p) || (deleteList.size() < 5)) deleteList.push_back(*aEmployee);
-			aEmployee = employees.erase(aEmployee);
+			deleteList.resultCount++;
+			if (input.option1 == Option1::Option1_p) deleteList.resultVector.push_back(*aEmployee);
+			iter_swap(aEmployee, employees.back());
+			employees.pop_back();
 			continue;
 		}
 		aEmployee++;

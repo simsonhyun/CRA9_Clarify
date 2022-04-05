@@ -40,7 +40,7 @@ public:
 
 class AbstractFastDelete {
 public:
-	virtual vector<Employee> deleteData(InputParameter input, DataManager* dataManager) const = 0;
+	virtual OutputParameter deleteData(InputParameter input, DataManager* dataManager) const = 0;
 };
 
 class FastDelete : public AbstractFastDelete {
@@ -49,7 +49,7 @@ public:
 		_deletePolicy = deletePolicy;
 	}
 
-	virtual vector<Employee> deleteData(InputParameter input, DataManager* dataManager) const override;
+	virtual OutputParameter deleteData(InputParameter input, DataManager* dataManager) const override;
 
 private:
 	AbstractDeletePolicy* _deletePolicy;
@@ -61,7 +61,7 @@ public:
 		_deletePolicy = deletePolicy;
 	}
 
-	virtual vector<Employee> deleteData(InputParameter input, DataManager* dataManager) const override;
+	virtual OutputParameter deleteData(InputParameter input, DataManager* dataManager) const override;
 
 private:
 	AbstractDeletePolicy* _deletePolicy;
