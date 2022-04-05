@@ -104,6 +104,9 @@
     <ClInclude Include="Mod.h">
       <Filter>헤더 파일\Mod</Filter>
     </ClInclude>
+    <ClInclude Include="SortManager.h">
+      <Filter>헤더 파일\Common</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

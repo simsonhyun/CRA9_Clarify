@@ -1,10 +1,66 @@
 #pragma once
 #include <vector>
 #include "Employee.h"
+#include "SortManager.h"
 using namespace std;
 
 class PrintManager
 {
+public:
+	string Print(const CommandType& command, const Option1& option1, const OutputParameter& commandResult)
+	{
+		static const int MAX_PRINT_COUNT = 5;
+
+		string retString;
+
+		if ((commandResult.resultCount == 0) && (commandResult.resultVector.size() == 0))
+		{
+			retString = _GetCommandString(command);
+			retString.append("NONE");
+			retString += 0xA; // Next Line
+
+			return retString;
+		}
+
+		if (option1 == Option1::Option1_None)
+		{
+			retString = _GetCommandString(command);
+			retString.append(to_string(commandResult.resultCount));
+			retString += 0xA; // Next Line
+
+			return retString;
+		}
+
+		try
+		{
+			sortManager.Sorting(commandResult.resultVector);
+
+			int printCount = 0;
+			for (auto employee : commandResult.resultVector)
+			{
+				retString.append(_GetCommandString(command));
+				retString.append(_ConvertEmployeeNum(employee.GetEmployeeNum()));
+				retString.append(_ConvertName(employee.GetName()));
+				retString.append(_ConvertCl(employee.GetCl()));
+				retString.append(_ConvertPhoneNum(employee.GetPhoneNum()));
+				retString.append(_ConvertBirthDay(employee.GetBirthDay()));
+				retString.append(_ConvertCerti(employee.GetCerti()));
+
+				printCount++;
+				if (printCount >= MAX_PRINT_COUNT)
+				{
+					break;
+				}
+			}
+		}
+		catch (exception e)
+		{
+			cout << e.what() << endl;
+		}
+
+		return retString;
+	}
+
 private:
 	string _GetCommandString(const CommandType& command)
 	{
@@ -113,53 +169,8 @@ private:
 		return outString;
 	}
 
+
 public:
-	string Print(const CommandType& command, const Option1& option1, const OutputParameter& commandResult)
-	{
-		static const int MAX_PRINT_COUNT = 5;
-
-		string retString;
-
-		if ((commandResult.resultCount == 0) && (commandResult.resultVector.size() == 0))
-		{
-			retString = _GetCommandString(command);
-			retString.append("NONE");
-			retString += 0xA; // Next Line
-
-			return retString;
-		}
-
-		if (option1 == Option1::Option1_None)
-		{
-			retString = _GetCommandString(command);
-			retString.append(to_string(commandResult.resultCount));
-			retString += 0xA; // Next Line
-
-			return retString;
-		}
-
-		try
-		{
-			for (auto employee : commandResult.resultVector)
-			{
-				retString.append(_GetCommandString(command));
-				retString.append(_ConvertEmployeeNum(employee.GetEmployeeNum()));
-				retString.append(_ConvertName(employee.GetName()));
-				retString.append(_ConvertCl(employee.GetCl()));
-				retString.append(_ConvertPhoneNum(employee.GetPhoneNum()));
-				retString.append(_ConvertBirthDay(employee.GetBirthDay()));
-				retString.append(_ConvertCerti(employee.GetCerti()));
-			}
-		}
-		catch (exception e)
-		{
-			cout << e.what() << endl;
-		}
-
-		return retString;
-	}
-
 private:
-public:
-
+	SortManager sortManager;
 };

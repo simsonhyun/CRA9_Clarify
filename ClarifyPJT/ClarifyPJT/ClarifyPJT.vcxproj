@@ -161,6 +161,7 @@
     <ClInclude Include="PrintManager.h" />
     <ClInclude Include="RunProgram.h" />
     <ClInclude Include="Sch.h" />
+    <ClInclude Include="SortManager.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
