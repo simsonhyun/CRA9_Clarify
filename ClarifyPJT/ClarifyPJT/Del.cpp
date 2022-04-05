@@ -49,8 +49,8 @@ FastDelete::deleteData(InputParameter input, DataManager* dataManager) const {
 	vector<Employee>& employees = dataManager->getData();
 	for (vector<Employee>::iterator aEmployee = employees.begin(); aEmployee != employees.end(); ) {
 		if (_deletePolicy->deleteByPolicy(input, *aEmployee)) {
-			deleteList.resultVector.push_back(*aEmployee);
 			deleteList.resultCount = 1;
+			deleteList.resultVector.push_back(*aEmployee);
 			aEmployee = employees.erase(aEmployee);
 			break;
 		}
