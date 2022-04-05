@@ -3,7 +3,7 @@
 class SortManager
 {
 public:
-	void Sorting(vector<Employee> targetVector)
+	void Sorting(vector<Employee>& targetVector)
 	{
 		sort(targetVector.begin(), targetVector.end(), SortManager::_compare);
 	}
