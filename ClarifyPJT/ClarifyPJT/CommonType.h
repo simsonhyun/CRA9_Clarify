@@ -51,3 +51,9 @@ typedef struct InputParameter
 	Employee inputEmployee;
 	Employee inputDestEmployee;
 } InputParameter;
+
+typedef struct OutputParameter
+{
+	int resultCount;
+	vector<Employee> resultVector;
+} OutputParameter;
