@@ -82,6 +82,5 @@ NotFastDelete::deleteData(InputParameter input, DataManager* dataManager) const 
 
 OutputParameter
 Del::Command(InputParameter input) {
-	// return _fastPolicy[static_cast<int>(input.column)]->deleteData(input, getDataManager());
-	return OutputParameter();
+	return _fastPolicy[static_cast<int>(input.column)]->deleteData(input, getDataManager());
 }
