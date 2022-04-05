@@ -182,7 +182,7 @@ TEST(TestPrintManager, CheckPrint2)
 	inputEmployees.push_back(Employee(2117175, Name("LDEXRI", "TEST"), CareerLevel::CareerLevel_4, PhoneNum(2814, 1699), BirthDay(1995, 07, 04), Certi::Certi_ADV));
 
 	OutputParameter outputParamter;
-	outputParamter.resultCount = 0;
+	outputParamter.resultCount = 2;
 	outputParamter.resultVector = inputEmployees;
 
 	EXPECT_EQ(printManager.Print(CommandType::Command_Sch, Option1::Option1_None, outputParamter), testString);
