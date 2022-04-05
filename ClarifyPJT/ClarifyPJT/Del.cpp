@@ -46,6 +46,7 @@ CertiDeletePolicy::deleteByPolicy(InputParameter input, Employee& aEmployee) con
 OutputParameter
 FastDelete::deleteData(InputParameter input, DataManager* dataManager) const {
 	OutputParameter deleteList;
+	deleteList.resultCount = 0;
 	vector<Employee>& employees = dataManager->getData();
 	for (vector<Employee>::iterator aEmployee = employees.begin(); aEmployee != employees.end(); ) {
 		if (_deletePolicy->deleteByPolicy(input, *aEmployee)) {
