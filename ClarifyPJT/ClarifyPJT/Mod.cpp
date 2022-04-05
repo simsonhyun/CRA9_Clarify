@@ -54,19 +54,20 @@ void CertiModPolicy::ChangeModDataByPolicy(InputParameter targetEmployee, Employ
 OutputParameter Mod::Command(InputParameter targetEmployee) {
 	DataManager* pdataManager = getDataManager();
 	vector<Employee> &aEmployeesData = pdataManager->getData();
-	vector<Employee> PrintEmployees;
-	vector<Employee> TargetEmployees;
-
+	OutputParameter result;
+	result.resultCount = 0;
 	Column targetColumn = targetEmployee.column;
 	Column changeTargetColumn = targetEmployee.destColumn;
 	for (int EmployeeIndex = 0; EmployeeIndex < aEmployeesData.size(); EmployeeIndex++) {
 		if (paFindModDatabyColumn[static_cast<int>(targetColumn)]->findmodDataByPolicy(targetEmployee, aEmployeesData[EmployeeIndex])) {
-			if ((targetEmployee.option1 == Option1::Option1_p) && (PrintEmployees.size() < 5)) PrintEmployees.push_back(aEmployeesData[EmployeeIndex]);
+			if (targetEmployee.option1 == Option1::Option1_p) {
+				result.resultVector.push_back(aEmployeesData[EmployeeIndex]);
+			}
+			else{
+				result.resultCount++;
+			}
 			paFindModDatabyColumn[static_cast<int>(changeTargetColumn)]->ChangeModDataByPolicy(targetEmployee, aEmployeesData[EmployeeIndex]);
-			TargetEmployees.push_back(aEmployeesData[EmployeeIndex]);
 		}
 	}
-	// if (targetEmployee.option1 == Option1::Option1_p) return PrintEmployees;
-	// return TargetEmployees;
-	return OutputParameter();
+	return result;
 }
